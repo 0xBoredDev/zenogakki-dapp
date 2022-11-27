@@ -1,5 +1,7 @@
 @font-face {
   font-family: "CitypopMain-Regular";
-  src: url("../fonts/CitypopMain-Regular.otf") format("opentype");
+  src: url("../fonts/citypopmain-regular-webfont.woff") format("woff"),
+    url("../fonts/citypopmain-regular-webfont.woff2") format("woff2");
+  font-weight: normal;
   font-style: normal;
 }

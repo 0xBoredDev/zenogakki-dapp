@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 // import "../components/Spinner.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "../../components/Header";
-import Menu from "../../components/Menu";
+// import Header from "../../components/Header";
+// import Menu from "../../components/Menu";
 import Footer from "../../components/Footer";
 import bg_light from "../../images/home_light.png";
 import bg_dark from "../../images/home_dark.png";
@@ -23,9 +23,9 @@ function HomePage() {
   });
   return (
     <>
-      <Menu />
+      {/* <Menu /> */}
       {/* <MenuV2 /> */}
-      <Header />
+      {/* <Header /> */}
       <div className="parallax">
         <img
           src={backgroundSrc}

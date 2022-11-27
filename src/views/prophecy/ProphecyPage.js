@@ -6,8 +6,8 @@ import "../../components/Spinner.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
-import Header from "../../components/Header";
-import Menu from "../../components/Menu";
+// import Header from "../../components/Header";
+// import Menu from "../../components/Menu";
 import Footer from "../../components/Footer";
 import skull from "../../models/skull.json";
 

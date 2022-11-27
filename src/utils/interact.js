@@ -1,21 +1,25 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const { MerkleTree } = require("merkletreejs");
-const keccak256 = require("keccak256");
-
-const whitelist = require("./whitelist.json");
-
 const API_URL =
-  "https://eth-mainnet.alchemyapi.io/v2/qmuA1_caZxbrsZi3TO5TH2isPwtjxon2"; //alchemyapi
+  "https://eth-goerli.g.alchemy.com/v2/CH1V81ZMzVXNjIFWnRNNTTgY0nD_Twh6";
 const web3 = createAlchemyWeb3(API_URL);
 
-const contractABI = require("./abi.json");
-const contractAddress = "0xeE685197220D03782E3a58fc2Db83d8831216a39"; //smart contract address
-const nftContract = new web3.eth.Contract(contractABI, contractAddress);
+//collection config
+const collectionABI = require("./abi/collectionABI.json");
+const c_addressCollection = "0x924D4Ed3090B44600b5577F19Bb02C53D5C5A9e1";
+const contractCollection = new web3.eth.Contract(
+  collectionABI,
+  c_addressCollection
+);
 
-// Calculate merkle root from the whitelist array
-const leafNodes = whitelist.map((addr) => keccak256(addr));
-const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
-const root = merkleTree.getRoot();
+//reward config
+const tokenABI = require("./abi/tokenABI.json");
+const c_addressToken = "0xB5160972eeD85c7795c27f66b00118b051033425";
+const contractToken = new web3.eth.Contract(tokenABI, c_addressToken);
+
+//staking config
+const stakingABI = require("./abi/stakingABI.json");
+const c_addressStaking = "0x5BF9E606B55E548054Dd10456B57E267c7Cf3163";
+const contractStaking = new web3.eth.Contract(stakingABI, c_addressStaking);
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -33,29 +37,14 @@ export const connectWallet = async () => {
     } catch (err) {
       return {
         address: "",
-        status: "😞" + err.message,
+        status: err.message,
       };
     }
   } else {
     return {
       address: "",
-      status: (
-        <span>
-          <p>
-            {" "}
-            🦊{" "}
-            <a
-              target="_blank"
-              style={{ color: "white" }}
-              rel="noreferrer"
-              href="https://metamask.io/download.html"
-            >
-              You must install MetaMask, a virtual Ethereum wallet, in your
-              browser.
-            </a>
-          </p>
-        </span>
-      ),
+      status:
+        "You must install MetaMask, a virtual Ethereum wallet, in your browser.",
     };
   }
 };
@@ -81,85 +70,16 @@ export const getCurrentWalletConnected = async () => {
     } catch (err) {
       return {
         address: "",
-        status: "😞" + err.message,
+        status: err.message,
       };
     }
   } else {
     return {
       address: "",
-      status: (
-        <span>
-          <p>
-            {" "}
-            🦊{" "}
-            <a
-              target="_blank"
-              style={{ color: "white" }}
-              rel="noreferrer"
-              href="https://metamask.io/download.html"
-            >
-              You must install MetaMask, a virtual Ethereum wallet, in your
-              browser.
-            </a>
-          </p>
-        </span>
-      ),
+      status:
+        "You must install MetaMask, a virtual Ethereum wallet, in your browser.",
     };
   }
-};
-
-//contract function
-
-export const getTotalSupply = async () => {
-  const result = await nftContract.methods.totalSupply().call();
-  return result;
-};
-
-export const getMaxSupply = async () => {
-  const result = await nftContract.methods.maxSupply().call();
-  return result;
-};
-
-const getNoPaidNFT = async () => {
-  const result = await nftContract.methods.noPaidNfts().call();
-  return result;
-};
-
-export const getPaused = async () => {
-  const result = await nftContract.methods.paused().call();
-  return result;
-};
-
-export const getWhitelistMintEnabled = async () => {
-  const result = await nftContract.methods.whitelistMintEnabled().call();
-  return result;
-};
-
-export const getMaxMintAmountPerTx = async () => {
-  const result = await nftContract.methods.maxMintAmountPerTx().call();
-  return result;
-};
-
-const getNftPrice = async () => {
-  const result = await nftContract.methods.cost().call();
-  const resultEther = web3.utils.fromWei(result, "ether");
-  return resultEther;
-};
-
-const checkIfValidWl = async (address) => {
-  const leaf = keccak256(address);
-  const proof = merkleTree.getHexProof(leaf);
-
-  // Verify Merkle Proof
-  const isValid = merkleTree.verify(proof, leaf, root);
-
-  console.log(
-    "valid for whitelist - inside function checkIfValidWl",
-    isValid,
-    proof
-  );
-
-  return { isValid, proof };
 };
 
 let response = {
@@ -167,119 +87,137 @@ let response = {
   status: "",
 };
 
-export const mintWhitelist = async (amount, account) => {
-  if (!window.ethereum.selectedAddress) {
-    return {
-      success: false,
-      status: (
-        <p>
-          🦊 Connect to Metamask using{" "}
-          <span className="px-2 text-purple-600">Connect Wallet</span> button.
-        </p>
-      ),
-    };
-  }
+// Contract Methods
 
-  const { isValid, proof } = await checkIfValidWl(account);
-  const costEther = await getNftPrice();
-  const costWEI = web3.utils.toWei(costEther, "ether");
+export const getTotalSupply = async () => {
+  const result = await contractCollection.methods.totalSupply().call();
+  return result;
+};
 
-  if (!isValid) {
-    return {
-      success: false,
-      status: "Invalid Merkle Proof - You are not on the whitelist",
-    };
-  }
+export const checkApproval = async (account) => {
+  const result = await contractCollection.methods
+    .isApprovedForAll(account, c_addressStaking)
+    .call();
+  return result;
+};
 
-  await nftContract.methods
-    .whitelistMint(amount, proof)
+export const setApproval = async (account) => {
+  await contractCollection.methods
+    .setApprovalForAll(c_addressStaking, true)
     .send({
       from: account,
-      to: contractAddress,
-      value: String(costWEI * amount),
+      to: c_addressCollection,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "✅ Successfully Minted " + amount + " nft";
+      response.status = "Approved successfully";
     })
     .catch(function (error) {
       console.log("error: ", error);
       response.success = false;
-      response.status = "😥" + error.message;
+      response.status = "Something went wrong";
     });
 
   return response;
 };
 
-export const mint = async (amount, account) => {
-  if (!window.ethereum.selectedAddress) {
-    return {
-      success: false,
-      status: (
-        <p>
-          🦊 Connect to Metamask using{" "}
-          <span className="px-2 text-purple-600">Connect Wallet</span> button.
-        </p>
-      ),
-    };
-  }
+//staking system interaction
 
-  const costEther = await getNftPrice();
-  const costWEI = web3.utils.toWei(costEther, "ether");
+export const getNoStakedNFT = async () => {
+  const result = await contractStaking.methods
+    .balanceOf(window.ethereum.selectedAddress)
+    .call();
+  return result;
+};
 
-  await nftContract.methods
-    .mint(amount)
+export const getTokenStacked = async () => {
+  const result = await contractStaking.methods
+    .tokensOfOwner(window.ethereum.selectedAddress)
+    .call();
+  return result;
+};
+
+export const getClaimableStatus = async () => {
+  const result = await contractStaking.methods.tokensClaimable().call();
+  return result;
+};
+
+export const getEarningOnStacked = async (tokenids) => {
+  const result = await contractStaking.methods.earningInfo(tokenids).call();
+  const resultEther = web3.utils.fromWei(result, "ether");
+  return resultEther;
+};
+
+//reward token interaction
+
+export const getTokenBalance = async () => {
+  const result = await contractToken.methods
+    .balanceOf(window.ethereum.selectedAddress)
+    .call();
+  const resultEther = web3.utils.fromWei(result, "ether");
+  return resultEther;
+};
+
+export const stakeNFT = async (account, tokens) => {
+  await contractStaking.methods
+    .stake(tokens)
     .send({
       from: account,
-      to: contractAddress,
-      value: String(costWEI * amount),
+      to: c_addressStaking,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "✅ Successfully Minted " + amount + " nft";
+      response.status = "Staked successfully";
     })
     .catch(function (error) {
       console.log("error: ", error);
       response.success = false;
-      response.status = "😥" + error.message;
+      response.status = "Something went wrong";
     });
 
   return response;
 };
 
-export const mintParent = async (amount, account) => {
-  if (!window.ethereum.selectedAddress) {
-    return {
-      success: false,
-      status: (
-        <p>
-          🦊 Connect to Metamask using{" "}
-          <span className="px-2 text-purple-600">Connect Wallet</span> button.
-        </p>
-      ),
-    };
-  }
-
-  await nftContract.methods
-    .claimFromParentNFT(amount)
+export const unStakeNFT = async (account, tokens) => {
+  await contractStaking.methods
+    .unstake(tokens)
     .send({
       from: account,
-      to: contractAddress,
+      to: c_addressStaking,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "✅ Successfully Minted " + amount + " nft";
+      response.status = "Unstacked successfully";
     })
     .catch(function (error) {
       console.log("error: ", error);
       response.success = false;
-      response.status = "😥" + error.message;
+      response.status = "Something went wrong";
     });
 
   return response;
 };
 
-export { getNoPaidNFT, checkIfValidWl, getNftPrice };
+export const claimReward = async (account, tokens) => {
+  await contractStaking.methods
+    .claim(tokens)
+    .send({
+      from: account,
+      to: c_addressStaking,
+    })
+    .then(function (receipt) {
+      console.log("receipt: ", receipt);
+      response.success = true;
+      response.status = "Rewards claimed";
+    })
+    .catch(function (error) {
+      console.log("error: ", error);
+      response.success = false;
+      response.status = "Something went wrong";
+    });
+
+  return response;
+};

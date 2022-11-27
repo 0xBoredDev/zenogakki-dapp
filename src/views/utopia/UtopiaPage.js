@@ -2,8 +2,8 @@ import React, { Suspense, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
-import Header from "../../components/Header";
-import Menu from "../../components/Menu";
+// import Header from "../../components/Header";
+// import Menu from "../../components/Menu";
 import utopia from "../../images/utopia.png";
 //earth
 import earth1 from "../../images/earth1.png";
@@ -152,7 +152,7 @@ function UtopiaPage() {
       >
         <img src={item.img} className="d-block w-100" alt="..." />
         <div className="carousel-caption d-none d-md-block">
-          <h5>Mecha</h5>
+          <h5 className="primary-font">Mecha</h5>
           {/* <p>{modalText}</p> */}
         </div>
       </div>
@@ -178,8 +178,8 @@ function UtopiaPage() {
 
   return (
     <>
-      <Menu />
-      <Header />
+      {/* <Menu /> */}
+      {/* <Header /> */}
 
       <main>
         <div className="relative lg:block h-screen w-full overflow-hidden">
@@ -483,7 +483,7 @@ function UtopiaPage() {
         </div>
         <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
           <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
-            <span className=" lg:ml-2">Utopia</span>
+            <span className=" lg:ml-2 primary-font">Utopia</span>
           </h3>
         </div>
         <div

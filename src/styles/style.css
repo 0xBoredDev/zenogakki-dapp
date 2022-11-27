@@ -201,6 +201,15 @@ body,
   align-items: flex-end;
 }
 
+.primary-font {
+  font-family: "CitypopMain-Regular";
+  letter-spacing: 0.1rem;
+}
+
+.secondary-font {
+  font-family: "Inter-Regular";
+}
+
 #track-title {
   font-family: "CitypopMain-Regular";
   line-height: 1.5rem;
@@ -574,22 +583,24 @@ a:hover {
 }
 
 .lab-perspective {
-  transform: perspective(950px) rotatey(-58deg) rotateX(12deg) skewX(-5deg);
-  rotate: -14deg;
+  transform: perspective(1150px) rotatey(-56deg) rotateX(11deg) skewX(-5deg);
+  rotate: -15deg;
   width: 570px;
   text-align: justify;
+  /* line-height: 2.3em; */
 }
 
 #computertext {
-  font-size: 22px;
+  font-size: 26px;
   color: rgb(6, 235, 6);
   /* transform: rotate(-4deg); */
   /* transform: rotate(2deg) skewY(-18deg); */
   /* text-align: justify; */
 }
+
 .blinking-cursor {
   font-weight: 900;
-  font-size: 22px;
+  font-size: 26px;
   color: rgb(6, 235, 6);
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
