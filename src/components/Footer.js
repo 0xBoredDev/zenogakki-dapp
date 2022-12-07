@@ -16,7 +16,6 @@ import cyberpunkAudio from "../music/Cyberpunk.wav";
 import futuristicAudio from "../music/Futuristic.mp3";
 import introcyberpunkAudio from "../music/Into_Cyberpunk.mp3";
 // import MediaPlayer from "./MediaPlayer";
-// import resolve from "path-browserify";
 
 const Footer = () => {
   const { changeTheme } = useContext(themeContext);
