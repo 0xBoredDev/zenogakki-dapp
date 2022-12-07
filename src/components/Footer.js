@@ -10,14 +10,13 @@ import { themeContext } from "../App";
 import themes from "../helpers/themes";
 import { FaTwitter, FaDiscord } from "react-icons/fa";
 import { GiSailboat } from "react-icons/gi";
-// import mediaiconimg from "../images/media_icon.png";
 import music_icon_light from "../images/music_icon_light.png";
 import music_icon_dark from "../images/music_icon_dark.png";
 import cyberpunkAudio from "../music/Cyberpunk.wav";
 import futuristicAudio from "../music/Futuristic.mp3";
 import introcyberpunkAudio from "../music/Into_Cyberpunk.mp3";
 // import MediaPlayer from "./MediaPlayer";
-import resolve from "path-browserify";
+// import resolve from "path-browserify";
 
 const Footer = () => {
   const { changeTheme } = useContext(themeContext);
@@ -61,9 +60,7 @@ const Footer = () => {
 
   function toggleMediaPlayer() {
     console.log("toggle media player");
-
     var mediaLogo = document.getElementById("mediaLogo").classList;
-    // console.log(mediaLogo);
 
     if (mediaLogo.contains("zoomed")) {
       mediaLogo.remove("zoomed");
@@ -72,7 +69,6 @@ const Footer = () => {
     }
 
     var media = document.getElementById("controls").classList;
-    // console.log(media);
 
     if (media.contains("d-none")) {
       media.remove("d-none");
@@ -84,7 +80,7 @@ const Footer = () => {
   }
 
   function togglePlay(e) {
-    // console.log("togglePlay()");
+    console.log("togglePlay()");
     // console.log(
     //   `${trackIsPlaying ? "track is playing" : "track is not playing"}`
     // );
@@ -102,36 +98,6 @@ const Footer = () => {
     }
   }
 
-  function skipBack() {
-    return new Promise((resolve) => {
-      const trackWasPlaying = trackIsPlaying;
-      if (trackIsPlaying) {
-        togglePlay();
-      }
-      resolve(trackWasPlaying);
-    })
-      .then((wasPlaying) => {
-        console.log("then");
-        const numTracks = songs.length;
-        var nextTrackNum = curTrackNum - 1;
-        if (nextTrackNum < 0) {
-          nextTrackNum = numTracks - 1;
-        }
-        console.log(`next song ${songs[nextTrackNum].title}`);
-        setCurTrackNum(nextTrackNum);
-        setCurTrack(songs[nextTrackNum]);
-        if (wasPlaying) {
-          songs[nextTrackNum].src.currentTime = 0;
-          songs[nextTrackNum].src.play();
-          setTrackIsPlaying(true);
-        }
-        return resolve("success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function skipForward() {
     return new Promise((resolve) => {
       const trackWasPlaying = trackIsPlaying;
@@ -147,15 +113,49 @@ const Footer = () => {
         if (nextTrackNum >= numTracks) {
           nextTrackNum = 0;
         }
-        console.log(`next song ${songs[nextTrackNum].title}`);
+        console.log(`next song ${songs[nextTrackNum].name}`);
+        setCurTrackNum(nextTrackNum);
+        setCurTrack(songs[nextTrackNum]);
+        console.log(wasPlaying);
+        if (wasPlaying) {
+          songs[nextTrackNum].src.currentTime = 0;
+          songs[nextTrackNum].src.play();
+          togglePlay();
+          setTrackIsPlaying(true);
+        }
+        return wasPlaying;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  }
+
+  function skipBack() {
+    return new Promise((resolve) => {
+      const trackWasPlaying = trackIsPlaying;
+      if (trackIsPlaying) {
+        togglePlay();
+      }
+      resolve(trackWasPlaying);
+    })
+      .then((wasPlaying) => {
+        console.log("then");
+        const numTracks = songs.length;
+        var nextTrackNum = curTrackNum - 1;
+        if (nextTrackNum < 0) {
+          nextTrackNum = numTracks - 1;
+        }
+        console.log(`next song ${songs[nextTrackNum].name}`);
         setCurTrackNum(nextTrackNum);
         setCurTrack(songs[nextTrackNum]);
         if (wasPlaying) {
           songs[nextTrackNum].src.currentTime = 0;
           songs[nextTrackNum].src.play();
+          togglePlay();
           setTrackIsPlaying(true);
         }
-        return resolve("success");
+        return wasPlaying;
       })
       .catch((err) => {
         console.log(err);
@@ -260,7 +260,7 @@ const Footer = () => {
                   />
                 </div>
                 <div className="col media-info">
-                  <h3 id="track-title" className="text-truncate">
+                  <h3 id="track-name" className="text-truncate">
                     {curTrack.name}
                   </h3>
                   <h4 id="track-artist" className="text-truncate">

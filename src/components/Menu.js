@@ -85,13 +85,6 @@ const Menu = () => {
             </a>
           </li>
           <li>
-            <a href="/prophecy" className="menu-link">
-              <span className="primary">Prophecy</span>
-              <span className="secondary">Roadmap</span>
-              <img src={menu_line} className="menu-line" alt="menu-line" />
-            </a>
-          </li>
-          <li>
             <a href="/staking" className="menu-link">
               <span className="primary">Staking</span>
               <span className="secondary">Staking</span>

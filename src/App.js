@@ -6,7 +6,6 @@ import Menu from "./components/Menu";
 import LoadingPage from "./views/loading/LoadingPage";
 import HomePage from "./views/home/HomePage";
 import UtopiaPage from "./views/utopia/UtopiaPage";
-import ProphecyPage from "./views/prophecy/ProphecyPage";
 import StakingPage from "./views/staking/StakingPage";
 import RafflePage from "./views/raffle/RafflePage";
 import StoryPage from "./views/story/StoryPage";
@@ -34,7 +33,6 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/utopia" element={<UtopiaPage />} />
           <Route path="/story" element={<StoryPage />} />
-          <Route path="/prophecy" element={<ProphecyPage />} />
           <Route path="/staking" element={<StakingPage />} />
           <Route path="/raffle" element={<RafflePage />} />
           <Route path="/raffle/dashboard" element={<RaffleDashboardPage />} />
@@ -59,7 +57,6 @@ export default App;
 //         <Route exact path="/" element={<LoadingPage />} />
 //         <Route path="/home" element={<HomePage />} />
 //         <Route path="/utopia" element={<UtopiaPage />} />
-//         <Route path="/prophecy" element={<ProphecyPage />} />
 //         <Route path="/raffle" element={<RafflePage />} />
 //         <Route path="/raffle/dashboard" element={<RaffleDashboardPage />} />
 //         <Route element={<ToastContainer autoClose={3000} hideProgressBar />} />

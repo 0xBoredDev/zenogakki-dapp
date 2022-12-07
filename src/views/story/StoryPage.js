@@ -173,7 +173,7 @@ function StoryPage() {
         </div>
         <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
           <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
-            <span className="lg:ml-2 primary-font">Story</span>
+            <span className="lg:ml-2 primary-font drop-shadow-lg">Story</span>
           </h3>
         </div>
       </main>
