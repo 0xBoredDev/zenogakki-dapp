@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { StatusProvider } from "./contexts/statusContext";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
@@ -12,6 +12,7 @@ import StoryPage from "./views/story/StoryPage";
 import RaffleDashboardPage from "./views/raffle/RaffleDashboardPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import Spinner from "./components/Spinner";
 import themes from "./helpers/themes";
 const themeContext = createContext("light");
 
@@ -21,15 +22,15 @@ function App() {
     []
   );
   const [theme, setTheme] = useState({ current: themes.LIGHT, changeTheme });
+  let location = useLocation();
+
   return (
     <themeContext.Provider value={theme}>
       <StatusProvider>
+        {location.pathname !== "/" ? <Header /> : ""}
+        {location.pathname !== "/" ? <Menu /> : ""}
         <Routes>
           <Route exact path="/" element={<LoadingPage />} />
-        </Routes>
-        <Header />
-        <Menu />
-        <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/utopia" element={<UtopiaPage />} />
           <Route path="/story" element={<StoryPage />} />
