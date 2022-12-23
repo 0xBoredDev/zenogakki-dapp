@@ -4,6 +4,7 @@ import App from "./App";
 import "./styles/style.css";
 import "./styles/inter.css";
 import "./styles/citypopmain.css";
+import "./styles/citypopdigital.css";
 // import "./styles/custom.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";

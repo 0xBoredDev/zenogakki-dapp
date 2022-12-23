@@ -17,18 +17,19 @@ import themes from "./helpers/themes";
 const themeContext = createContext("light");
 
 function App() {
-  const changeTheme = useCallback(
-    (themeTo) => setTheme({ current: themeTo, changeTheme }),
-    []
-  );
+  const changeTheme = useCallback((themeTo) => {
+    setTheme({ current: themeTo, changeTheme });
+    const element = document.getElementById("mode");
+    element.className = themeTo;
+  }, []);
   const [theme, setTheme] = useState({ current: themes.LIGHT, changeTheme });
   let location = useLocation();
 
   return (
     <themeContext.Provider value={theme}>
       <StatusProvider>
-        {location.pathname !== "/" ? <Header /> : ""}
         {location.pathname !== "/" ? <Menu /> : ""}
+        {location.pathname !== "/" ? <Header /> : ""}
         <Routes>
           <Route exact path="/" element={<LoadingPage />} />
           <Route path="/home" element={<HomePage />} />

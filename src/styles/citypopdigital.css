@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "citypop_digitalregular";
+  src: url("../fonts/citypopdigital-regular-webfont.woff2") format("woff2"),
+    url("../fonts/citypopdigital-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

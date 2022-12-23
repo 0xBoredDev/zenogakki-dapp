@@ -6,10 +6,9 @@ import { Modal } from "bootstrap";
 // import Header from "../../components/Header";
 // import Menu from "../../components/Menu";
 import backgroundSrc from "../../images/lab.png";
+import text1 from "../../images/lab/labtext1.mp4";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
-
-var utopiaModal;
 
 function StoryPage() {
   gsap.registerPlugin(SplitText);
@@ -26,17 +25,17 @@ function StoryPage() {
   // }
   // console.log(chars);
   useEffect(() => {
-    var tl = gsap.timeline(),
-      mySplitText = new SplitText("#computertext", { type: "words,chars" }),
-      chars = mySplitText.chars;
-    gsap.set("#computertext", {});
-    tl.from(chars, {
-      duration: 0.01,
-      opacity: 0,
-      scale: 0,
-      ease: "linear",
-      stagger: 0.07,
-    });
+    // var tl = gsap.timeline(),
+    //   mySplitText = new SplitText("#computertext", { type: "words,chars" }),
+    //   chars = mySplitText.chars;
+    // gsap.set("#computertext", {});
+    // tl.from(chars, {
+    //   duration: 0.01,
+    //   opacity: 0,
+    //   scale: 0,
+    //   ease: "linear",
+    //   stagger: 0.07,
+    // });
     // utopiaModal = new Modal("#utopiaModal", {
     //   backdrop: true,
     // });
@@ -58,40 +57,36 @@ function StoryPage() {
   }
 
   return (
-    // <>
-    //   <div className="parallax">
-    //     <img
-    //       src={backgroundSrc}
-    //       id="story"
-    //       className="parallax-layer home-bg"
-    //       height="100%"
-    //       ></img>
-    //     <ToastContainer />
-    //   </div>
-    //       </>
-    <>
-      {/* <Menu /> */}
-      {/* <Header /> */}
-
-      <main>
-        <div className="relative lg:block h-screen w-full overflow-hidden">
-          <div
-            className="overflow-hidden bg-black story-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
-            id="mouse-parallax-container"
-            style={{
-              overflow: "hidden",
-              position: "relative",
-              top: "50%",
-              left: "50%",
-            }}
+    <main>
+      <div className="relative lg:block h-screen w-full overflow-hidden">
+        <div
+          className="overflow-hidden bg-black story-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
+          id="mouse-parallax-container"
+          style={{
+            overflow: "hidden",
+            position: "relative",
+            top: "50%",
+            left: "50%",
+          }}
+        >
+          <video
+            width="100%"
+            height="100%"
+            className="absolute"
+            autoPlay={true}
+            muted={true}
+            preload="auto"
           >
-            <div style={{ willChange: "transform" }}>
-              <img height="100%" className="absolute" src={backgroundSrc} />
-            </div>
+            <source src={text1}></source>
+          </video>
+          <div style={{ willChange: "transform" }}>
+            {/* <img height="100%" className="absolute" src={backgroundSrc} /> */}
+            {/* <img height="100%" className="absolute" src={text1} /> */}
           </div>
-          <div className="overflow-hidden pointer-events-none story-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-full h-full relative">
-              <div
+        </div>
+        <div className="overflow-hidden pointer-events-none story-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-full h-full relative">
+            {/* <div
                 className="absolute pointer-events-auto"
                 style={{ top: "35.2%", left: "13%" }}
               >
@@ -112,119 +107,71 @@ function StoryPage() {
                     </button>
                   </div>
                 </div>
-              </div>
-              <div
-                className="absolute pointer-events-auto"
-                style={{ top: "61.5%", left: "35%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="storytext"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="lab-perspective absolute">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              next();
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute pointer-events-auto"
-                style={{ top: "61.5%", left: "31.5%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="storytext"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="lab-perspective absolute">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              back();
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
+              </div> */}
+            <div
+              className="absolute pointer-events-auto"
+              style={{ top: "61.5%", left: "35%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="storytext"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="lab-perspective absolute">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            next();
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-          <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
-            <span className="lg:ml-2 primary-font drop-shadow-lg">Story</span>
-          </h3>
-        </div>
-      </main>
-    </>
 
-    /* <div className="container-fluid" style={{ padding: 0 }}>
-        <div className="computer">
-          <img src={computer} id="utopia" />
-          <div className="item bottom" style={{ top: "28%", left: "50.5%" }}>
-    
-            <p className="computer-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit
-              amet consectetur adipiscing elit pellentesque habitant morbi
-              tristique. Velit euismod in pellentesque massa placerat duis
-              ultricies lacus. Convallis aenean et tortor at risus viverra
-              adipiscing at. Vel orci porta non pulvinar neque. Sollicitudin
-              tempor id eu nisl nunc mi. Vel pretium lectus quam id. Phasellus
-              vestibulum lorem sed risus ultricies. Mauris pharetra et ultrices
-              neque. Dui accumsan sit amet nulla facilisi morbi tempus iaculis.
-              Justo nec ultrices dui sapien eget mi. Sed arcu non odio euismod
-              lacinia. Arcu dictum varius duis at consectetur lorem donec.
-              Faucibus pulvinar elementum integer enim neque volutpat ac.
-              Vestibulum lorem sed risus ultricies. Massa eget egestas purus
-              viverra accumsan in nisl nisi. Augue lacus viverra vitae congue
-              eu.
-            </p>
-          </div>
-          <div
-            className="item top"
-            style={{ top: "76%", left: "55%" }}
-            onClick={(e) => {}}
-          >
-            <div className="icon"></div>
-            <div className="tt">
-              <h3>Next</h3>
-            </div>
-          </div>
-          <div
-            className="item top"
-            style={{ top: "76%", left: "45%" }}
-            onClick={(e) => {}}
-          >
-            <div className="icon"></div>
-            <div className="tt">
-              <h3>Back</h3>
+            <div
+              className="absolute pointer-events-auto"
+              style={{ top: "61.5%", left: "31.5%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="storytext"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="lab-perspective absolute">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            back();
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <ToastContainer />
-      </div> */
+      </div>
+      <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+        <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
+          <span className="lg:ml-2 primary-font drop-shadow-lg">Story</span>
+        </h3>
+      </div>
+    </main>
   );
 }
 

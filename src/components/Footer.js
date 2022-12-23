@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import orb from "../images/orb_icon.png";
+import orb from "../images/orb_icon2.png";
 import {
   TbPlayerPlay,
   TbPlayerPause,
@@ -164,8 +164,8 @@ const Footer = () => {
   return (
     <nav className="navbar fixed-bottom footer">
       <div className="container-fluid no-pad">
-        <div className="row footer-section">
-          <div className="col-2 social">
+        <div className="flex flex-row footer-section">
+          <div className="grow-0 social">
             <div>
               {showIcons && (
                 <div className="social-icons">
@@ -175,7 +175,7 @@ const Footer = () => {
                     rel="noreferrer"
                     href=""
                   >
-                    <FaTwitter />
+                    <FaTwitter className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                   </a>
                   <a
                     className="social-icon"
@@ -183,7 +183,7 @@ const Footer = () => {
                     rel="noreferrer"
                     href=""
                   >
-                    <FaDiscord />
+                    <FaDiscord className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                   </a>
                   <a
                     className="social-icon"
@@ -191,7 +191,7 @@ const Footer = () => {
                     rel="noreferrer"
                     href=""
                   >
-                    <GiSailboat />
+                    <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                   </a>
                 </div>
               )}
@@ -200,19 +200,25 @@ const Footer = () => {
                   setShowIcons(!showIcons);
                 }}
               >
-                <img id="orbicon" src={orb}></img>
+                <img
+                  id="orbicon"
+                  className=""
+                  width="145px"
+                  height="140px"
+                  src={orb}
+                ></img>
               </a>
             </div>
             {showIcons && (
               <div id="nightmode" className="form-check form-switch">
                 <label
-                  className="form-check-label"
+                  className="form-check-label dark:text-black secondary-font drop-shadow-lg bg-white/[.3] rounded p-1"
                   htmlFor="flexSwitchCheckDefault"
                 >
                   Dark Mode
                 </label>
                 <input
-                  className="form-check-input"
+                  className="form-check-input drop-shadow-lg bg-white/[.3] rounded p-1"
                   type="checkbox"
                   role="switch"
                   id="flexSwitchCheckDefault"
@@ -225,53 +231,51 @@ const Footer = () => {
               </div>
             )}
           </div>
-          <div className="col-10 media-player">
-            <div className="row media-section justify-content-end">
-              {/* <div id="controls" className="col-xl-11 col-sm-10 d-none">
-                <div id="media" className="col media-controls">
-                <MediaPlayer musicTracks={trackData} />
-                </div>
-              </div> */}
+          <div className="grow media-player">
+            <div className="row media-section justify-content-end dark:bg-black">
               <div id="controls" className="col d-none">
                 <div id="media" className="col media-controls">
                   <TbPlayerSkipBack
                     fill="solid"
-                    className="media-control"
+                    className="media-control dark:text-white"
                     onClick={skipBack}
                   />
                   {!trackIsPlaying ? (
                     <TbPlayerPlay
                       fill="solid"
-                      className="media-control"
+                      className="media-control dark:text-white"
                       onClick={togglePlay}
                     />
                   ) : (
                     <TbPlayerPause
                       fill="solid"
-                      className="media-control"
+                      className="media-control dark:text-white"
                       onClick={togglePlay}
                     />
                   )}
                   <TbPlayerSkipForward
                     fill="solid"
-                    className="media-control"
+                    className="media-control dark:text-white"
                     onClick={skipForward}
                   />
                 </div>
                 <div className="col media-info">
-                  <h3 id="track-name" className="text-truncate">
+                  <h3 id="track-name" className="text-truncate dark:text-white">
                     {curTrack.name}
                   </h3>
-                  <h4 id="track-artist" className="text-truncate">
+                  <h4
+                    id="track-artist"
+                    className="text-truncate dark:text-white"
+                  >
                     {curTrack.artist}
                   </h4>
                 </div>
               </div>
               <div className="col bounce">
                 <div id="bounceIcon" className="bounce-icon paused-icon">
-                  <span className="bg-black"></span>
-                  <span className="bg-black"></span>
-                  <span className="bg-black"></span>
+                  <span className="bg-black dark:bg-white"></span>
+                  <span className="bg-black dark:bg-white"></span>
+                  <span className="bg-black dark:bg-white"></span>
                 </div>
               </div>
               <div className="col media-img">

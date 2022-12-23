@@ -15,7 +15,7 @@ body,
   display: block;
   height: var(--app-height) !important;
   height: 100vh;
-  background-color: rgb(148, 192, 250) !important;
+  background-color: rgb(253 242 248) !important;
 }
 
 .parallax {
@@ -112,26 +112,35 @@ body,
 
 #menu {
   cursor: pointer;
-  width: calc(var(--app-height) * 0.075);
-  height: calc(var(--app-height) * 0.05);
-  margin-top: 10px;
+  /* width: calc(var(--app-height) * 0.12);
+  height: calc(var(--app-height) * 0.12); */
+  width: 110px;
+  height: 100px;
+  margin-top: -10px;
   z-index: 9;
   transition: all 1s ease;
+  box-shadow: rgb(255, 255, 255);
 }
 
 #menu:hover {
   scale: 1.1;
 }
+
 .absolute {
   position: absolute;
 }
+
+.v-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
 #orbicon {
   cursor: pointer;
   /* width: calc(var(--app-height) * 0.08); */
   /* height: calc(var(--app-height) * 0.08); */
-  width: 65px;
-  height: 60px;
-  margin-left: 10px;
+  /* margin-bottom: -40px; */
+  margin-bottom: -45px;
   transition: all 1s ease;
   border-radius: 40px;
   box-shadow: 5px 5px 6px -1px rgb(0 0 0 / 10%), 0 2px 8px -1px rgb(0 0 0 / 6%);
@@ -159,8 +168,21 @@ body,
 
 .social-icon {
   font-size: 2rem;
-  margin: 0 10px 10px 15px;
+  margin: 10px 5px;
   color: white;
+}
+
+.form-check-input:checked {
+  background-color: black !important;
+  border-color: black !important;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white !important;
+}
+
+.connect {
+  z-index: 10001;
 }
 
 #nightmode {
@@ -207,7 +229,7 @@ body,
 }
 
 .secondary-font {
-  font-family: "Inter-Regular";
+  font-family: "Inter";
 }
 
 #track-name {
@@ -223,7 +245,7 @@ body,
   font-family: "CitypopMain-Regular";
   font-size: 0.7rem;
   line-height: 1rem;
-  opacity: 0.5;
+  opacity: 0.7;
   margin-bottom: 0 !important;
 }
 
@@ -354,7 +376,7 @@ body,
   flex-direction: column;
   height: inherit;
   margin: 0 1rem;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .offcanvas {
@@ -362,16 +384,23 @@ body,
   margin: 0 auto 0 auto;
   position: relative;
   background-color: transparent !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.offcanvas-start {
+  width: 100vw !important;
 }
 
 .offcanvas-body {
-  padding: 1rem 0 !important;
+  padding: 0 !important;
 }
 
 .menu-bg {
   position: absolute;
   height: 100vh;
-  width: inherit;
+  width: 100vw;
+  /* width: inherit; */
   object-fit: cover;
   object-position: center;
 }
@@ -433,15 +462,15 @@ body,
 .menu-link {
   position: relative;
   font-family: "CitypopMain-Regular" !important;
-  font-size: 2.5rem;
+  /* font-size: 6vw; */
   text-decoration: none;
-  color: purple;
+  color: black;
   font-weight: 900;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .menu-line {
@@ -480,7 +509,7 @@ a:hover {
 
 .modal-dialog {
   max-width: none !important;
-  margin: 1.75em !important;
+  margin: 0 !important;
 }
 
 #utopia-modal-img {
@@ -560,16 +589,16 @@ a:hover {
 
 .computer img {
   max-width: 100%;
-  box-shadow: 0 0 14px 0 rgb(0, 0, 0, 50%);
 }
 
 .btn-close {
-  font-size: 24px;
+  font-size: 18px;
   top: 10px !important;
   right: 10px !important;
   position: absolute !important;
-  box-shadow: 0 0 14px 0 rgb(255, 255, 255);
+  /* box-shadow: 0 0 14px 0 rgb(255, 255, 255); */
   z-index: 1000;
+  padding: 0;
   /* background: transparent !important; */
   /* background-color: transparent !important; */
 }
@@ -592,8 +621,14 @@ a:hover {
 }
 
 #computertext {
-  font-size: 26px;
+  /* transform: perspective(1150px) rotatey(-56deg) rotateX(11deg) skewX(-5deg);
+  rotate: -15deg; */
+  font-size: 1.5rem;
   color: rgb(6, 235, 6);
+  text-align: justify;
+
+  /* width: calc(var(--app-height) * 0.7); */
+  /* height: calc(var(--app-height) * 0.14); */
   /* transform: rotate(-4deg); */
   /* transform: rotate(2deg) skewY(-18deg); */
   /* text-align: justify; */
@@ -681,6 +716,7 @@ a:hover {
 
 .story-ratio {
   aspect-ratio: 3500/2500;
+  /* aspect-ratio: 4000/2490; */
 }
 
 .item {
@@ -795,10 +831,22 @@ a:hover {
 @media screen and (max-width: 575.98px) {
 }
 
+@media screen and (min-width: 576px) {
+}
+
 @media screen and (min-width: 576px) and (max-width: 767.98px) {
+  .btn-close {
+    font-size: 24px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991.98px) {
+}
+
+@media screen and (min-width: 768px) {
+  .btn-close {
+    font-size: 30px;
+  }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
@@ -808,6 +856,14 @@ a:hover {
 }
 
 @media screen and (min-width: 1400px) {
+}
+
+@media screen and (max-height: 735px) and (min-width: 1567px) {
+  #gem {
+    width: 81px;
+    height: 110px;
+    transform: translate(-120px, -265px);
+  }
 }
 
 @keyframes bounce {

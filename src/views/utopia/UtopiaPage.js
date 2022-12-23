@@ -151,8 +151,10 @@ function UtopiaPage() {
         key={item.id}
       >
         <img src={item.img} className="d-block w-100" alt="..." />
-        <div className="carousel-caption d-none d-md-block">
-          <h5 className="primary-font">Mecha</h5>
+        <div className="carousel-caption">
+          <p className="primary-font text-xl">
+            <span className="bg-white/[.3] rounded py-0 px-1">Mecha</span>
+          </p>
           {/* <p>{modalText}</p> */}
         </div>
       </div>
@@ -177,349 +179,346 @@ function UtopiaPage() {
   }
 
   return (
-    <>
-      {/* <Menu /> */}
-      {/* <Header /> */}
-
-      <main>
-        <div className="relative lg:block h-screen w-full overflow-hidden">
-          <div
-            className="overflow-hidden bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
-            id="mouse-parallax-container"
-            style={{
-              overflow: "hidden",
-              position: "relative",
-              top: "50%",
-              left: "50%",
-            }}
-          >
-            <div style={{ willChange: "transform" }}>
-              <img height="100%" className="absolute" src={utopia} />
-            </div>
-          </div>
-          <div className="overflow-hidden pointer-events-none utopia-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-full h-full relative">
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "20%", left: "25%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("lostcity");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "12%", left: "54%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("mecha");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "30%", left: "65%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("water");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "23%", left: "90%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("wind");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "44%", left: "92%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("light");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "88%", left: "78%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("theunknown");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "53%", left: "65%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("earth");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "53%", left: "50%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("fire");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "74%", left: "49%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("mystical");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute w-20 h-20 pointer-events-auto"
-                style={{ top: "83%", left: "10%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="headlessui-popover-button-82"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="w-8 h-8">
-                        <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                          <span
-                            className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                            onClick={(e) => {
-                              showItem("shadow");
-                            }}
-                          ></span>
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-          <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
-            <span className=" lg:ml-2 primary-font drop-shadow-lg">Utopia</span>
-          </h3>
-        </div>
+    <main>
+      <div className="relative lg:block h-screen w-full overflow-hidden">
         <div
-          className="modal fade fixed transform z-100 lg:w-full w-11/12 max-w-7xl text-black"
-          id="utopiaModal"
-          tabIndex="-1"
-          aria-labelledby="utopiaModalLabel"
-          aria-hidden="true"
+          className="overflow-hidden bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
+          id="mouse-parallax-container"
           style={{
-            transform: "translate3d(-50%, -50%, 0px) scale(1)",
-            left: "50%",
+            overflow: "hidden",
+            position: "relative",
             top: "50%",
+            left: "50%",
           }}
         >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-              <div
-                id="carouselCaptions"
-                className="carousel slide carousel-fade"
-                data-bs-ride="carousel"
-                data-bs-pause="false"
-              >
-                <div className="carousel-indicators">{carouselBtns()}</div>
-                <div className="carousel-inner">{carouselItems()}</div>
+          <div style={{ willChange: "transform" }}>
+            <img height="100%" className="absolute" src={utopia} />
+          </div>
+        </div>
+        <div className="overflow-hidden pointer-events-none utopia-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-full h-full relative">
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "20%", left: "25%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("lostcity");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "12%", left: "54%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("mecha");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "30%", left: "65%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("water");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "23%", left: "90%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("wind");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "44%", left: "92%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("light");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "88%", left: "78%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("theunknown");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "53%", left: "65%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("earth");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "53%", left: "50%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("fire");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "74%", left: "49%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("mystical");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute w-20 h-20 pointer-events-auto"
+              style={{ top: "83%", left: "10%" }}
+            >
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("shadow");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+      <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+        <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
+          <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
+            Utopia
+          </span>
+        </h3>
+      </div>
+      <div
+        className="modal fade fixed transform z-100 w-full h-full"
+        id="utopiaModal"
+        tabIndex="-1"
+        aria-labelledby="utopiaModalLabel"
+        aria-hidden="true"
+        style={{
+          transform: "translate3d(-50%, -50%, 0px) scale(1)",
+          left: "50%",
+          top: "50%",
+        }}
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div
+              id="carouselCaptions"
+              className="carousel slide carousel-fade"
+              data-bs-ride="carousel"
+              data-bs-pause="false"
+            >
+              <div className="carousel-indicators">{carouselBtns()}</div>
+              <div className="carousel-inner">{carouselItems()}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
   // <>
   //   <Menu />
