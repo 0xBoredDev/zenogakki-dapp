@@ -2,6 +2,7 @@ import { useContext } from "react";
 // import gem from "../images/gem.png";
 import menu_light from "../images/menu_light.png";
 import menu_dark from "../images/menu_dark.png";
+import gem from "../images/gem3.png";
 // import menu_line from "../images/menu_line.png";
 // import menu_spinner1 from "../images/menu_spinner1.png";
 // import menu_spinner2 from "../images/menu_spinner2.png";
@@ -62,7 +63,7 @@ const Menu = () => {
           </div>
           <div className="basis-3/4 px-1 lg:mt-10">
             <ul className="menu-links h-3/4 flex flex-col justify-evenly xl:space-y-10">
-              <li className="flex justify-center">
+              <li className="flex">
                 {/* <a href="/home" className={`menu-link ${theme.current}`}> */}
                 <a
                   href="/home"
@@ -73,7 +74,7 @@ const Menu = () => {
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
                 </a>
               </li>
-              <li className="flex justify-center">
+              <li className="flex">
                 <a
                   href="/utopia"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
@@ -83,7 +84,7 @@ const Menu = () => {
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
                 </a>
               </li>
-              <li className="flex justify-center">
+              <li className="flex">
                 <a
                   href="/story"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
@@ -93,17 +94,17 @@ const Menu = () => {
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
                 </a>
               </li>
-              <li className="flex justify-center">
+              <li className="flex">
                 <a
                   href="/staking"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
-                  <span className="primary uppercase ">Staking</span>
+                  <span className="primary uppercase">Staking</span>
                   <span className="secondary uppercase">Staking</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
                 </a>
               </li>
-              <li className="flex justify-center">
+              <li className="flex">
                 <a
                   href="/raffle"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
@@ -115,25 +116,28 @@ const Menu = () => {
               </li>
             </ul>
           </div>
-
           <div className="basis-1/6 grow bg-fuchsia-900 z-10 overflow-hidden">
             <div className="flex flex-col h-full">
               <div className="basis-1/2">
-                <img
+                {/* <img
                   className="mt-12"
                   src={theme.current == themes.LIGHT ? logo_light : logo_dark}
-                />
+                /> */}
                 {/* <p className="dark:text-black mt-14 sm:mt-20 text-3xl lg:text-4xl v-text secondary-font uppercase pl-2 tracking-widest">
                   Zenogakki
                 </p> */}
-                <button
+                {/* <button
                   type="button"
                   className="btn-close"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
-                ></button>
+                > */}
+                {/* </button> */}
+                <a data-bs-dismiss="offcanvas">
+                  <img src={gem} className="menu-open"></img>
+                </a>
               </div>
-              <div className="basis-1/2 flex flex-col justify-end pl-2">
+              <div className="basis-1/2 flex flex-col justify-end lg:flex-row lg:justify-center lg:items-end pl-2">
                 <a
                   className="social-icon"
                   target="_blank"

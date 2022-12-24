@@ -140,7 +140,8 @@ body,
   /* width: calc(var(--app-height) * 0.08); */
   /* height: calc(var(--app-height) * 0.08); */
   /* margin-bottom: -40px; */
-  margin-bottom: -45px;
+  margin-bottom: -30px;
+  margin-left: -15px;
   transition: all 1s ease;
   border-radius: 40px;
   box-shadow: 5px 5px 6px -1px rgb(0 0 0 / 10%), 0 2px 8px -1px rgb(0 0 0 / 6%);
@@ -210,9 +211,10 @@ body,
 .media-section {
   width: auto;
   background-color: white;
-  height: 60px;
-  border-radius: 6px 50px 50px 6px;
-  margin-right: 0 !important;
+  /* height: 60px; */
+  border-radius: 6px;
+  margin-right: 25px !important;
+  margin-bottom: 10px !important;
   box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 8px -1px rgba(0, 0, 0, 0.06);
 }
@@ -253,9 +255,9 @@ body,
   cursor: pointer;
   /* width: calc(var(--app-height) * 0.14); */
   /* height: calc(var(--app-height) * 0.14); */
-  width: 85px;
+  width: 95px;
   height: 85px;
-  margin-right: -17px;
+  margin-right: -5px;
   /* transform: translate(0, -30px); */
   transition: all 1s ease;
 }
@@ -829,9 +831,22 @@ a:hover {
 }
 
 @media screen and (max-width: 575.98px) {
+  .media-control {
+    cursor: pointer;
+    height: 2em !important;
+    width: 2em !important;
+    margin: 0 2px;
+  }
+
+  .media-controls {
+    margin-right: 0;
+  }
 }
 
 @media screen and (min-width: 576px) {
+  .media-section {
+    height: 60px;
+  }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767.98px) {

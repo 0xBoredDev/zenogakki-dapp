@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import orb from "../images/orb_icon2.png";
+import orb_light from "../images/orb_light.png";
+import orb_dark from "../images/orb_dark.png";
 import {
   TbPlayerPlay,
   TbPlayerPause,
@@ -196,16 +197,19 @@ const Footer = () => {
                 </div>
               )}
               <a
+                className="relative"
                 onClick={(e) => {
-                  setShowIcons(!showIcons);
+                  // setShowIcons(!showIcons);
+                  setNightModeOn(!nightModeOn);
+                  changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
                 }}
               >
                 <img
                   id="orbicon"
-                  className=""
-                  width="145px"
-                  height="140px"
-                  src={orb}
+                  className="flex"
+                  width="155px"
+                  height="155px"
+                  src={!nightModeOn ? orb_dark : orb_light}
                 ></img>
               </a>
             </div>
