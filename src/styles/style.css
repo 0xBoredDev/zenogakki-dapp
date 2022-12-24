@@ -117,7 +117,7 @@ body,
   width: 110px;
   height: 100px;
   margin-top: -10px;
-  z-index: 9;
+  z-index: 1003;
   transition: all 1s ease;
   box-shadow: rgb(255, 255, 255);
 }
@@ -151,6 +151,11 @@ body,
   scale: 1.1;
 }
 
+#mouse-parallax-container {
+  /* cursor: grab; */
+  overflow: auto;
+}
+
 .header-end {
   justify-content: flex-end;
   margin-left: auto;
@@ -180,10 +185,6 @@ body,
 
 .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white !important;
-}
-
-.connect {
-  z-index: 10001;
 }
 
 #nightmode {
@@ -554,11 +555,11 @@ a:hover {
 }
 
 #arrow {
-  position: absolute;
-  bottom: -50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
   cursor: pointer;
+}
+
+#arrow:hover {
+  scale: 1.1;
 }
 
 .move {
@@ -712,6 +713,10 @@ a:hover {
   }
 }
 
+.throne-ratio {
+  aspect-ratio: 4250/2490;
+}
+
 .utopia-ratio {
   aspect-ratio: 4250/2490;
 }
@@ -840,6 +845,10 @@ a:hover {
 
   .media-controls {
     margin-right: 0;
+  }
+
+  .story-ratio {
+    left: 95% !important;
   }
 }
 

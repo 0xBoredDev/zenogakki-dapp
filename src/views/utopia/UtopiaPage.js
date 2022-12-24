@@ -4,47 +4,47 @@ import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
 // import Header from "../../components/Header";
 // import Menu from "../../components/Menu";
-import utopia from "../../images/utopia.png";
+import utopia from "../../images/utopia/utopia.png";
 //earth
-import earth1 from "../../images/earth1.png";
-import earth2 from "../../images/earth2.png";
-import earth3 from "../../images/earth3.png";
+import earth1 from "../../images/utopia/earth/earth1.png";
+import earth2 from "../../images/utopia/earth/earth2.png";
+import earth3 from "../../images/utopia/earth/earth3.png";
 //fire
-import fire1 from "../../images/fire1.png";
-import fire2 from "../../images/fire2.png";
-import fire3 from "../../images/fire3.png";
+import fire1 from "../../images/utopia/fire/fire1.png";
+import fire2 from "../../images/utopia/fire/fire2.png";
+import fire3 from "../../images/utopia/fire/fire3.png";
 //light
-import light1 from "../../images/light1.png";
-import light2 from "../../images/light2.png";
-import light3 from "../../images/light3.png";
+import light1 from "../../images/utopia/light/light1.png";
+import light2 from "../../images/utopia/light/light2.png";
+import light3 from "../../images/utopia/light/light3.png";
 //mecha
-import mecha1 from "../../images/mecha1.png";
-import mecha2 from "../../images/mecha2.png";
-import mecha3 from "../../images/mecha3.png";
+import mecha1 from "../../images/utopia/mecha/mecha1.png";
+import mecha2 from "../../images/utopia/mecha/mecha2.png";
+import mecha3 from "../../images/utopia/mecha/mecha3.png";
 //lostcity
-import lostcity1 from "../../images/lostcity1.png";
-import lostcity2 from "../../images/lostcity2.png";
-import lostcity3 from "../../images/lostcity3.png";
+import lostcity1 from "../../images/utopia/lostcity/lostcity1.png";
+import lostcity2 from "../../images/utopia/lostcity/lostcity2.png";
+import lostcity3 from "../../images/utopia/lostcity/lostcity3.png";
 //wind
-import wind1 from "../../images/wind1.png";
-import wind2 from "../../images/wind2.png";
-import wind3 from "../../images/wind3.png";
-import wind4 from "../../images/wind4.png";
+import wind1 from "../../images/utopia/wind/wind1.png";
+import wind2 from "../../images/utopia/wind/wind2.png";
+import wind3 from "../../images/utopia/wind/wind3.png";
+import wind4 from "../../images/utopia/wind/wind4.png";
 //water
-import water1 from "../../images/water1.png";
-import water2 from "../../images/water2.png";
-import water3 from "../../images/water3.png";
+import water1 from "../../images/utopia/water/water1.png";
+import water2 from "../../images/utopia/water/water2.png";
+import water3 from "../../images/utopia/water/water3.png";
 //mystical
-import mystical1 from "../../images/mystical1.png";
-import mystical2 from "../../images/mystical2.png";
-import mystical3 from "../../images/mystical3.png";
+import mystical1 from "../../images/utopia/mystical/mystical1.png";
+import mystical2 from "../../images/utopia/mystical/mystical2.png";
+import mystical3 from "../../images/utopia/mystical/mystical3.png";
 //theunknown
-import theunknown1 from "../../images/theunknown1.png";
+import theunknown1 from "../../images/utopia/theunknown/theunknown1.png";
 //shadow
-import shadow1 from "../../images/shadow1.png";
-import shadow2 from "../../images/shadow2.png";
-import shadow3 from "../../images/shadow3.png";
-import shadow4 from "../../images/shadow4.png";
+import shadow1 from "../../images/utopia/shadow/shadow1.png";
+import shadow2 from "../../images/utopia/shadow/shadow2.png";
+import shadow3 from "../../images/utopia/shadow/shadow3.png";
+import shadow4 from "../../images/utopia/shadow/shadow4.png";
 import { render } from "@testing-library/react";
 import Spinner from "../../components/Spinner";
 
@@ -129,19 +129,55 @@ function UtopiaPage() {
       backdrop: true,
     });
   });
+
+  useEffect(() => {
+    const ele = document.getElementById("mouse-parallax-container");
+    ele.style.cursor = "grab";
+    // ele.scrollTop = 100;
+    // ele.scrollLeft = 150;
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+    const mouseDownHandler = function (e) {
+      ele.style.cursor = "grabbing";
+      ele.style.userSelect = "none";
+      pos = {
+        // The current scroll
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+      };
+      document.addEventListener("mousemove", mouseMoveHandler);
+      document.addEventListener("mouseup", mouseUpHandler);
+    };
+
+    const mouseMoveHandler = function (e) {
+      // How far the mouse has been moved
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+
+      // Scroll the element
+      ele.scrollTop = pos.top - dy;
+      ele.scrollLeft = pos.left - dx;
+    };
+
+    const mouseUpHandler = function () {
+      ele.style.cursor = "grab";
+      ele.style.removeProperty("user-select");
+
+      document.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mouseup", mouseUpHandler);
+    };
+
+    ele.addEventListener("mousedown", mouseDownHandler);
+  }, []);
+
   function showItem(element) {
     console.log("showItem()");
     setModalImgs(elemImages[element]);
     setModalText(elemText[element]);
     utopiaModal.show();
-  }
-
-  function next() {
-    console.log("next()");
-  }
-
-  function back() {
-    console.log("back()");
   }
 
   function carouselItems() {
@@ -180,10 +216,12 @@ function UtopiaPage() {
 
   return (
     <main>
-      <div className="relative lg:block h-screen w-full overflow-hidden">
+      <div
+        className="relative lg:block h-screen w-full"
+        id="mouse-parallax-container"
+      >
         <div
-          className="overflow-hidden bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
-          id="mouse-parallax-container"
+          className="bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
           style={{
             overflow: "hidden",
             position: "relative",
@@ -479,8 +517,8 @@ function UtopiaPage() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
+      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
             Utopia
           </span>

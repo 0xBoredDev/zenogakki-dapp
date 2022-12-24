@@ -559,8 +559,8 @@ const StakingPage = () => {
         </div>
         <ToastContainer />
       </div>
-      <div className="absolute bottom-14 left-10 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-4xl uppercase font-black text-white">
+      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
             Staking
           </span>

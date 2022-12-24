@@ -19,6 +19,8 @@ function RafflePage() {
   }
 
   function toDashboard() {
+    var arrow = document.getElementById("arrow");
+    arrow.classList.add("flash");
     swordsSound.play();
     setTimeout(() => {
       navigate("/raffle/dashboard");
@@ -26,19 +28,52 @@ function RafflePage() {
   }
 
   return (
-    <div className="container-fluid" style={{ padding: 0 }}>
-      <div className="throne">
-        <img src={throne} />
-        <img
-          id="arrow"
-          className={arrowClass}
-          src={arrow}
-          // onClick={arrowClicked}
-          // onAnimationEnd={toDashboard}
-          onClick={toDashboard}
-        />
+    <main>
+      <div className="relative lg:block h-screen w-full overflow-hidden">
+        <div
+          className="overflow-hidden bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
+          id="mouse-parallax-container"
+          style={{
+            overflow: "hidden",
+            position: "relative",
+            top: "50%",
+            left: "50%",
+          }}
+        >
+          <div style={{ willChange: "transform" }}>
+            <img height="100%" className="absolute throne-ratio" src={throne} />
+            <img
+              height="100%"
+              className="absolute"
+              id="arrow"
+              src={arrow}
+              onClick={toDashboard}
+            />
+            {/* <img
+              id="arrow"
+              className={arrowClass}
+              src={arrow}
+              // onClick={arrowClicked}
+              // onAnimationEnd={toDashboard}
+              onClick={toDashboard}
+            /> */}
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
+    // <div className="container-fluid" style={{ padding: 0 }}>
+    //   <div className="throne">
+    //     <img src={throne} />
+    //     <img
+    //       id="arrow"
+    //       className={arrowClass}
+    //       src={arrow}
+    //       // onClick={arrowClicked}
+    //       // onAnimationEnd={toDashboard}
+    //       onClick={toDashboard}
+    //     />
+    //   </div>
+    // </div>
   );
 }
 

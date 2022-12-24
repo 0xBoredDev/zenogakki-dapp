@@ -233,9 +233,9 @@ export default function RaffleDashboardPage() {
   };
 
   return (
-    <div className="items-center justify-center w-full h-screen">
+    <main className="mt-20">
       <ToastContainer />
-      <main className="mt-20">
+      <div className="items-center justify-center w-full h-screen">
         <div className="flex flex-wrap justify-center items-center mx-auto max-w-screen-xl">
           <div className="flex items-center lg:order-2 connect">
             {walletAddress.length > 0 ? (
@@ -566,7 +566,14 @@ export default function RaffleDashboardPage() {
             )}
           </>
         )}
-      </main>
-    </div>
+      </div>
+      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
+          <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
+            raffle
+          </span>
+        </h3>
+      </div>
+    </main>
   );
 }
