@@ -233,10 +233,10 @@ export default function RaffleDashboardPage() {
   };
 
   return (
-    <main className="mt-20">
+    <main className="mt-3">
       <ToastContainer />
       <div className="items-center justify-center w-full h-screen">
-        <div className="flex flex-wrap justify-center items-center mx-auto max-w-screen-xl">
+        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl">
           <div className="flex items-center lg:order-2 connect">
             {walletAddress.length > 0 ? (
               <button
@@ -248,7 +248,7 @@ export default function RaffleDashboardPage() {
             ) : (
               <button
                 onClick={connectWalletPressed}
-                className="border-solid border-2 border-gray-700 font-semibold rounded-lg p-2 px-4 text-gray"
+                className="border-solid border-2 border-gray-700 font-semibold rounded-lg p-1 px-2 sm:p-2 sm:px-4 text-gray"
               >
                 Connect Wallet
               </button>
@@ -258,7 +258,7 @@ export default function RaffleDashboardPage() {
         {stage === 0 ? (
           <>
             {loadingPage.dashboard ? (
-              <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+              <div className="px-2 pt-10 pb-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                 {[1, 2, 3].map((item, i) => {
                   return (
                     <div
@@ -310,7 +310,7 @@ export default function RaffleDashboardPage() {
                 })}
               </div>
             ) : raffles.length > 0 ? (
-              <div className="p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+              <div className="px-2 pt-10 pb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {raffles.map((item, i) => {
                   return (
                     <div
@@ -405,13 +405,13 @@ export default function RaffleDashboardPage() {
         ) : (
           <>
             {!loadingPage.raffle ? (
-              <div className="p-10">
-                <div className="float-right space-x-1.5">
+              <div className="px-2 pt-10 pb-20">
+                <div className="float-left space-x-1.5">
                   <button
                     onClick={enterDashboard}
-                    className="border-2 border-gray-700 text-gray font-semibold p-2 px-4 rounded-md mb-2"
+                    className="border-2 border-gray-700 text-gray font-semibold p-2 px-4 rounded-md"
                   >
-                    Dashboard
+                    Back
                   </button>
                   {buttonBuy ||
                   Number(raffleSelected.status) == 2 ||

@@ -5,98 +5,126 @@ import { Modal } from "bootstrap";
 // import Header from "../../components/Header";
 // import Menu from "../../components/Menu";
 import utopia from "../../images/utopia/utopia.png";
+import utopia_sm from "../../images/utopia/utopia_vertical.png";
 //earth
 import earth1 from "../../images/utopia/earth/earth1.png";
 import earth2 from "../../images/utopia/earth/earth2.png";
 import earth3 from "../../images/utopia/earth/earth3.png";
+import earthv1 from "../../images/utopia/earth/earthv1.png";
+import earthv2 from "../../images/utopia/earth/earthv2.png";
+import earthv3 from "../../images/utopia/earth/earthv3.png";
 //fire
 import fire1 from "../../images/utopia/fire/fire1.png";
 import fire2 from "../../images/utopia/fire/fire2.png";
 import fire3 from "../../images/utopia/fire/fire3.png";
+import firev1 from "../../images/utopia/fire/firev1.png";
+import firev2 from "../../images/utopia/fire/firev2.png";
+import firev3 from "../../images/utopia/fire/firev3.png";
 //light
 import light1 from "../../images/utopia/light/light1.png";
 import light2 from "../../images/utopia/light/light2.png";
 import light3 from "../../images/utopia/light/light3.png";
+import lightv1 from "../../images/utopia/light/lightv1.png";
+import lightv2 from "../../images/utopia/light/lightv2.png";
+import lightv3 from "../../images/utopia/light/lightv3.png";
 //mecha
 import mecha1 from "../../images/utopia/mecha/mecha1.png";
 import mecha2 from "../../images/utopia/mecha/mecha2.png";
 import mecha3 from "../../images/utopia/mecha/mecha3.png";
+import mechav1 from "../../images/utopia/mecha/mechav1.png";
+import mechav2 from "../../images/utopia/mecha/mechav2.png";
+import mechav3 from "../../images/utopia/mecha/mechav3.png";
 //lostcity
 import lostcity1 from "../../images/utopia/lostcity/lostcity1.png";
 import lostcity2 from "../../images/utopia/lostcity/lostcity2.png";
 import lostcity3 from "../../images/utopia/lostcity/lostcity3.png";
+import lostcityv1 from "../../images/utopia/lostcity/lostcityv1.png";
+import lostcityv2 from "../../images/utopia/lostcity/lostcityv2.png";
+import lostcityv3 from "../../images/utopia/lostcity/lostcityv3.png";
 //wind
 import wind1 from "../../images/utopia/wind/wind1.png";
 import wind2 from "../../images/utopia/wind/wind2.png";
 import wind3 from "../../images/utopia/wind/wind3.png";
-import wind4 from "../../images/utopia/wind/wind4.png";
+import windv1 from "../../images/utopia/wind/windv1.png";
+import windv2 from "../../images/utopia/wind/windv2.png";
+import windv3 from "../../images/utopia/wind/windv3.png";
 //water
 import water1 from "../../images/utopia/water/water1.png";
 import water2 from "../../images/utopia/water/water2.png";
 import water3 from "../../images/utopia/water/water3.png";
+import waterv1 from "../../images/utopia/water/waterv1.png";
+import waterv2 from "../../images/utopia/water/waterv2.png";
+import waterv3 from "../../images/utopia/water/waterv3.png";
 //mystical
 import mystical1 from "../../images/utopia/mystical/mystical1.png";
 import mystical2 from "../../images/utopia/mystical/mystical2.png";
 import mystical3 from "../../images/utopia/mystical/mystical3.png";
+import mysticalv1 from "../../images/utopia/mystical/mysticalv1.png";
+import mysticalv2 from "../../images/utopia/mystical/mysticalv2.png";
+import mysticalv3 from "../../images/utopia/mystical/mysticalv3.png";
 //theunknown
 import theunknown1 from "../../images/utopia/theunknown/theunknown1.png";
+import theunknownv1 from "../../images/utopia/theunknown/theunknownv1.png";
 //shadow
 import shadow1 from "../../images/utopia/shadow/shadow1.png";
 import shadow2 from "../../images/utopia/shadow/shadow2.png";
 import shadow3 from "../../images/utopia/shadow/shadow3.png";
 import shadow4 from "../../images/utopia/shadow/shadow4.png";
+import shadowv1 from "../../images/utopia/shadow/shadowv1.png";
+import shadowv2 from "../../images/utopia/shadow/shadowv2.png";
+import shadowv3 from "../../images/utopia/shadow/shadowv3.png";
+import shadowv4 from "../../images/utopia/shadow/shadowv4.png";
 import { render } from "@testing-library/react";
 import Spinner from "../../components/Spinner";
 
 var utopiaModal;
 const elemImages = {
   lostcity: [
-    { id: 0, img: lostcity1 },
-    { id: 1, img: lostcity2 },
-    { id: 2, img: lostcity3 },
+    { id: 0, img: lostcity1, imgv: lostcityv1 },
+    { id: 1, img: lostcity2, imgv: lostcityv2 },
+    { id: 2, img: lostcity3, imgv: lostcityv3 },
   ],
   mecha: [
-    { id: 0, img: mecha1 },
-    { id: 1, img: mecha2 },
-    { id: 2, img: mecha3 },
+    { id: 0, img: mecha1, imgv: mechav1 },
+    { id: 1, img: mecha2, imgv: mechav2 },
+    { id: 2, img: mecha3, imgv: mechav3 },
   ],
   water: [
-    { id: 0, img: water1 },
-    { id: 1, img: water2 },
-    { id: 2, img: water3 },
+    { id: 0, img: water1, imgv: waterv1 },
+    { id: 1, img: water2, imgv: waterv2 },
+    { id: 2, img: water3, imgv: waterv3 },
   ],
   wind: [
-    { id: 0, img: wind1 },
-    { id: 1, img: wind2 },
-    { id: 2, img: wind3 },
-    { id: 3, img: wind4 },
+    { id: 0, img: wind1, imgv: windv1 },
+    { id: 1, img: wind2, imgv: windv2 },
+    { id: 2, img: wind3, imgv: windv3 },
   ],
   light: [
-    { id: 0, img: light1 },
-    { id: 1, img: light2 },
-    { id: 2, img: light3 },
+    { id: 0, img: light1, imgv: lightv1 },
+    { id: 1, img: light2, imgv: lightv2 },
+    { id: 2, img: light3, imgv: lightv3 },
   ],
-  theunknown: [{ id: 0, img: theunknown1 }],
+  theunknown: [{ id: 0, img: theunknown1, imgv: theunknownv1 }],
   earth: [
-    { id: 0, img: earth1 },
-    { id: 1, img: earth2 },
-    { id: 2, img: earth3 },
+    { id: 0, img: earth1, imgv: earthv1 },
+    { id: 1, img: earth2, imgv: earthv2 },
+    { id: 2, img: earth3, imgv: earthv3 },
   ],
   fire: [
-    { id: 0, img: fire1 },
-    { id: 1, img: fire2 },
-    { id: 2, img: fire3 },
+    { id: 0, img: fire1, imgv: firev1 },
+    { id: 1, img: fire2, imgv: firev2 },
+    { id: 2, img: fire3, imgv: firev3 },
   ],
   mystical: [
-    { id: 0, img: mystical1 },
-    { id: 1, img: mystical2 },
-    { id: 2, img: mystical3 },
+    { id: 0, img: mystical1, imgv: mysticalv1 },
+    { id: 1, img: mystical2, imgv: mysticalv2 },
+    { id: 2, img: mystical3, imgv: mysticalv3 },
   ],
   shadow: [
-    { id: 0, img: shadow1 },
-    { id: 1, img: shadow2 },
-    { id: 2, img: shadow3 },
-    { id: 3, img: shadow4 },
+    { id: 0, img: shadow1, imgv: shadowv1 },
+    { id: 1, img: shadow2, imgv: shadowv2 },
+    { id: 2, img: shadow3, imgv: shadowv3 },
+    { id: 3, img: shadow4, imgv: shadowv4 },
   ],
 };
 
@@ -130,53 +158,21 @@ function UtopiaPage() {
     });
   });
 
+  const [smallView, setSmallView] = useState(window.innerWidth <= 1023.98);
+  function updateSize() {
+    setSmallView(window.innerWidth <= 1023.98);
+  }
+
   useEffect(() => {
-    const ele = document.getElementById("mouse-parallax-container");
-    ele.style.cursor = "grab";
-    // ele.scrollTop = 100;
-    // ele.scrollLeft = 150;
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-
-    const mouseDownHandler = function (e) {
-      ele.style.cursor = "grabbing";
-      ele.style.userSelect = "none";
-      pos = {
-        // The current scroll
-        left: ele.scrollLeft,
-        top: ele.scrollTop,
-        // Get the current mouse position
-        x: e.clientX,
-        y: e.clientY,
-      };
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler);
-    };
-
-    const mouseMoveHandler = function (e) {
-      // How far the mouse has been moved
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
-
-      // Scroll the element
-      ele.scrollTop = pos.top - dy;
-      ele.scrollLeft = pos.left - dx;
-    };
-
-    const mouseUpHandler = function () {
-      ele.style.cursor = "grab";
-      ele.style.removeProperty("user-select");
-
-      document.removeEventListener("mousemove", mouseMoveHandler);
-      document.removeEventListener("mouseup", mouseUpHandler);
-    };
-
-    ele.addEventListener("mousedown", mouseDownHandler);
+    window.addEventListener("resize", (e) => {
+      updateSize();
+    });
   }, []);
 
-  function showItem(element) {
+  function showItem(element = "") {
     console.log("showItem()");
-    setModalImgs(elemImages[element]);
-    setModalText(elemText[element]);
+    setModalText(element);
+    setModalImgs(elemImages[element.replace(" ", "")]);
     utopiaModal.show();
   }
 
@@ -186,10 +182,16 @@ function UtopiaPage() {
         className={item.id == 0 ? "carousel-item active" : "carousel-item"}
         key={item.id}
       >
-        <img src={item.img} className="d-block w-100" alt="..." />
+        <img
+          src={smallView ? item.imgv : item.img}
+          className="d-block w-100 h-screen aspect-[4250/2490]"
+          alt="..."
+        />
         <div className="carousel-caption">
-          <p className="primary-font text-xl">
-            <span className="bg-white/[.3] rounded py-0 px-1">Mecha</span>
+          <p className="primary-font text-xl lg:text-4xl">
+            <span className="bg-white/[.3] rounded py-0 px-1 uppercase">
+              {modalText}
+            </span>
           </p>
           {/* <p>{modalText}</p> */}
         </div>
@@ -216,12 +218,9 @@ function UtopiaPage() {
 
   return (
     <main>
-      <div
-        className="relative lg:block h-screen w-full"
-        id="mouse-parallax-container"
-      >
+      <div className="relative lg:block h-screen w-full overflow-hidden">
         <div
-          className="bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
+          className="bg-black aspect-[1/1] lg:aspect-[4250/2490] min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
           style={{
             overflow: "hidden",
             position: "relative",
@@ -230,15 +229,16 @@ function UtopiaPage() {
           }}
         >
           <div style={{ willChange: "transform" }}>
-            <img height="100%" className="absolute" src={utopia} />
+            <img
+              height="100%"
+              className="absolute"
+              src={smallView ? utopia_sm : utopia}
+            />
           </div>
         </div>
-        <div className="overflow-hidden pointer-events-none utopia-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="overflow-hidden pointer-events-none aspect-[1/1] lg:aspect-[4250/2490] min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-full h-full relative">
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "20%", left: "25%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[20%] left-[25%]">
               <div className="relative">
                 <div>
                   <button
@@ -253,7 +253,7 @@ function UtopiaPage() {
                         <span
                           className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
                           onClick={(e) => {
-                            showItem("lostcity");
+                            showItem("lost city");
                           }}
                         ></span>
                       </span>
@@ -263,10 +263,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "12%", left: "54%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[12%] left-[54%]">
               <div className="relative">
                 <div>
                   <button
@@ -291,10 +288,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "30%", left: "65%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[45%] left-[30%] lg:top-[30%] lg:left-[65%]">
               <div className="relative">
                 <div>
                   <button
@@ -319,10 +313,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "23%", left: "90%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[36%] left-[70%] lg:top-[23%] lg:left-[90%]">
               <div className="relative">
                 <div>
                   <button
@@ -347,10 +338,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "44%", left: "92%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[10%] left-[36%] lg:top-[21%] lg:left-[85%]">
               <div className="relative">
                 <div>
                   <button
@@ -363,7 +351,7 @@ function UtopiaPage() {
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
                         <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
                         <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white z-100"
                           onClick={(e) => {
                             showItem("light");
                           }}
@@ -374,39 +362,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "88%", left: "78%" }}
-            >
-              <div className="relative">
-                <div>
-                  <button
-                    className="outline-none"
-                    id="headlessui-popover-button-82"
-                    type="button"
-                    aria-expanded="false"
-                  >
-                    <div className="w-8 h-8">
-                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                          onClick={(e) => {
-                            showItem("theunknown");
-                          }}
-                        ></span>
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "53%", left: "65%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[35%] left-[53%] lg:top-[53%] lg:left-[65%]">
               <div className="relative">
                 <div>
                   <button
@@ -431,10 +387,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "53%", left: "50%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[57%] left-[64%] lg:top-[53%] lg:left-[50%]">
               <div className="relative">
                 <div>
                   <button
@@ -459,10 +412,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "74%", left: "49%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[74%] left-[54%]">
               <div className="relative">
                 <div>
                   <button
@@ -486,11 +436,31 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-
-            <div
-              className="absolute w-20 h-20 pointer-events-auto"
-              style={{ top: "83%", left: "10%" }}
-            >
+            <div className="absolute w-20 h-20 pointer-events-auto top-[90%] left-[60%] lg:top-[88%] lg:left-[78%]">
+              <div className="relative">
+                <div>
+                  <button
+                    className="outline-none"
+                    id="headlessui-popover-button-82"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <div className="w-8 h-8">
+                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
+                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
+                        <span
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                          onClick={(e) => {
+                            showItem("the unknown");
+                          }}
+                        ></span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="absolute w-20 h-20 pointer-events-auto top-[87%] left-[25%] lg:top-[83%] lg:left-[10%]">
               <div className="relative">
                 <div>
                   <button
@@ -518,7 +488,7 @@ function UtopiaPage() {
         </div>
       </div>
       <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
+        <h3 className="font-800 cursor-default uppercase text-2xl sm:text-4xl uppercase font-black text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
             Utopia
           </span>
@@ -537,7 +507,7 @@ function UtopiaPage() {
         }}
       >
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content rounded-none border-0">
             <button
               type="button"
               className="btn-close"
@@ -558,170 +528,6 @@ function UtopiaPage() {
       </div>
     </main>
   );
-  // <>
-  //   <Menu />
-  //   <Header />
-  //   <div className="container-fluid" style={{ padding: 0 }}>
-  //     <div className="hotspot">
-  //       <img src={utopia} id="utopia" />
-  //       <div
-  //         className="item bottom"
-  //         style={{ top: "20%", left: "25%" }}
-  //         onClick={(e) => {
-  //           showItem("lostcity");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Lost City</h3>
-  //         </div>
-  //       </div>
-  //       <div
-  //         className="item bottom"
-  //         style={{ top: "12%", left: "54%" }}
-  //         onClick={(e) => {
-  //           showItem("mecha");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Mecha</h3>
-  //         </div>
-  //       </div>
-  //       <div
-  //         className="item bottom"
-  //         style={{ top: "30%", left: "65%" }}
-  //         onClick={(e) => {
-  //           showItem("water");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Water</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item left"
-  //         style={{ top: "23%", left: "90%" }}
-  //         onClick={(e) => {
-  //           showItem("wind");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Wind</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item left"
-  //         style={{ top: "44%", left: "92%" }}
-  //         onClick={(e) => {
-  //           showItem("light");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Light</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item top"
-  //         style={{ top: "88%", left: "78%" }}
-  //         onClick={(e) => {
-  //           showItem("theunknown");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>The Unknown</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item top"
-  //         style={{ top: "53%", left: "65%" }}
-  //         onClick={(e) => {
-  //           showItem("earth");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Earth</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item top"
-  //         style={{ top: "53%", left: "50%" }}
-  //         onClick={(e) => {
-  //           showItem("fire");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Fire</h3>
-  //         </div>
-  //       </div>
-
-  //       <div
-  //         className="item top"
-  //         style={{ top: "74%", left: "49%" }}
-  //         onClick={(e) => {
-  //           showItem("mystical");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Mystical</h3>
-  //         </div>
-  //       </div>
-  //       <div
-  //         className="item right"
-  //         style={{ top: "83%", left: "10%" }}
-  //         onClick={(e) => {
-  //           showItem("shadow");
-  //         }}
-  //       >
-  //         <div className="icon"></div>
-  //         <div className="tt">
-  //           <h3>Shadow</h3>
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <div
-  //       className="modal fade"
-  //       id="utopiaModal"
-  //       tabIndex="-1"
-  //       aria-labelledby="utopiaModalLabel"
-  //       aria-hidden="true"
-  //     >
-  //       <div className="modal-dialog">
-  //         <div className="modal-content">
-  //           <button
-  //             type="button"
-  //             className="btn-close"
-  //             data-bs-dismiss="modal"
-  //             aria-label="Close"
-  //           ></button>
-  //           <div
-  //             id="carouselCaptions"
-  //             className="carousel slide carousel-fade"
-  //             data-bs-ride="carousel"
-  //             data-bs-pause="false"
-  //           >
-  //             <div className="carousel-indicators">{carouselBtns()}</div>
-  //             <div className="carousel-inner">{carouselItems()}</div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <ToastContainer />
-  //   </div>
-  // </>
-  // );
 }
 
 export default UtopiaPage;

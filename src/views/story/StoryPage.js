@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import "../../components/Spinner.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Modal } from "bootstrap";
-// import Header from "../../components/Header";
-// import Menu from "../../components/Menu";
-import backgroundSrc from "../../images/lab.png";
-import text1 from "../../images/lab/labtext1.mp4";
+import labbg from "../../images/lab/labbg.gif";
+import labbgv from "../../images/lab/labbgv.gif";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
+var storyModal;
 
 function StoryPage() {
   gsap.registerPlugin(SplitText);
@@ -19,6 +16,17 @@ function StoryPage() {
   ];
   const [computerText, setComputerText] = useState(stories[0]);
   const [storyNum, setStoryNum] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [smallView, setSmallView] = useState(window.innerWidth <= 1023.98);
+  function updateSize() {
+    setSmallView(window.innerWidth <= 1023.98);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", (e) => {
+      updateSize();
+    });
+  }, []);
 
   // function animateText() {
 
@@ -60,16 +68,20 @@ function StoryPage() {
     <main>
       <div className="relative lg:block h-screen w-full overflow-hidden">
         <div
-          className="overflow-hidden bg-black story-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
-          id="mouse-parallax-container"
+          className="bg-black aspect-[1/1] lg:aspect-[5000/4000] top-[50%] left-[50%]  min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
           style={{
             overflow: "hidden",
             position: "relative",
-            top: "50%",
-            left: "50%",
           }}
         >
-          <video
+          <div style={{ willChange: "transform" }}>
+            <img
+              height="100%"
+              className="absolute"
+              src={smallView ? labbgv : labbg}
+            />
+          </div>
+          {/* <video
             width="100%"
             height="100%"
             className="absolute"
@@ -78,101 +90,92 @@ function StoryPage() {
             preload="auto"
           >
             <source src={text1}></source>
-          </video>
-          <div style={{ willChange: "transform" }}>
-            {/* <img height="100%" className="absolute" src={backgroundSrc} /> */}
-            {/* <img height="100%" className="absolute" src={text1} /> */}
-          </div>
+          </video> */}
         </div>
-        <div className="overflow-hidden pointer-events-none story-ratio min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="overflow-hidden pointer-events-none aspect-[1/1] lg:aspect-[5000/4000] min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-full h-full relative">
-            {/* <div
-                className="absolute pointer-events-auto"
-                style={{ top: "35.2%", left: "13%" }}
-              >
-                <div className="relative">
-                  <div>
-                    <button
-                      className="outline-none"
-                      id="storytext"
-                      type="button"
-                      aria-expanded="false"
-                    >
-                      <div className="lab-perspective absolute">
-                        <div id="computertext">
-                          {computerText}
-                          <span className="blinking-cursor">|</span>
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div> */}
             <div
-              className="absolute pointer-events-auto"
-              style={{ top: "61.5%", left: "35%" }}
-            >
-              <div className="relative">
-                <div>
-                  <button
-                    className="outline-none"
-                    id="storytext"
-                    type="button"
-                    aria-expanded="false"
-                  >
-                    <div className="lab-perspective absolute">
-                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                          onClick={(e) => {
-                            next();
-                          }}
-                        ></span>
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="absolute pointer-events-auto"
-              style={{ top: "61.5%", left: "31.5%" }}
-            >
-              <div className="relative">
-                <div>
-                  <button
-                    className="outline-none"
-                    id="storytext"
-                    type="button"
-                    aria-expanded="false"
-                  >
-                    <div className="lab-perspective absolute">
-                      <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
-                          onClick={(e) => {
-                            back();
-                          }}
-                        ></span>
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
+              className="absolute w-[48vw] sm:w-[40vw] lg:w-[16vw] h-[16vh] pointer-events-auto top-[46%] left-[25%] lg:top-[38%] lg:left-[22%] cursor-pointer -rotate-6"
+              onClick={(e) => {
+                setOpen(!open);
+              }}
+            ></div>
           </div>
         </div>
       </div>
       <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
+        <h3 className="font-800 cursor-default uppercase text-2xl sm:text-4xl uppercase font-black text-white scale-y-125 sm:scale-y-100">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
             Story
           </span>
         </h3>
       </div>
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div className="sm:flex sm:items-start">
+                      <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
+                      <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <Dialog.Title
+                          as="h3"
+                          className="text-lg font-medium leading-6 text-gray-900"
+                        >
+                          Archived Story 1
+                        </Dialog.Title>
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-500 text-justify">
+                            {stories[0]}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button
+                      type="button"
+                      className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      onClick={() => setOpen(false)}
+                    >
+                      Next
+                    </button>
+                    <button
+                      type="button"
+                      className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      onClick={() => setOpen(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
     </main>
   );
 }

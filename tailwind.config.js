@@ -14,10 +14,8 @@ module.exports = {
         comfortaa: ["'Comfortaa', cursive"],
       },
       colors: {
-        sky: colors.sky,
-        cyan: colors.cyan,
-        primary: "#0f1033",
-        secondary: "#7d08ff",
+        purple: "#3F0D40",
+        pink: "#8C0375",
       },
     },
   },

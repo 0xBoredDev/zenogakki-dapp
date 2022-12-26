@@ -116,7 +116,7 @@ const Menu = () => {
               </li>
             </ul>
           </div>
-          <div className="basis-1/6 grow bg-fuchsia-900 z-10 overflow-hidden">
+          <div className="basis-1/6 grow bg-purple z-10 overflow-hidden">
             <div className="flex flex-col h-full">
               <div className="basis-1/2">
                 {/* <img
@@ -134,7 +134,7 @@ const Menu = () => {
                 > */}
                 {/* </button> */}
                 <a data-bs-dismiss="offcanvas">
-                  <img src={gem} className="menu-open"></img>
+                  <img src={gem} className="menu-open cursor-pointer"></img>
                 </a>
               </div>
               <div className="basis-1/2 flex flex-col justify-end lg:flex-row lg:justify-center lg:items-end pl-2">

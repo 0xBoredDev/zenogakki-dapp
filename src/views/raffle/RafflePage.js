@@ -31,7 +31,7 @@ function RafflePage() {
     <main>
       <div className="relative lg:block h-screen w-full overflow-hidden">
         <div
-          className="overflow-hidden bg-black utopia-ratio min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
+          className="overflow-hidden bg-black aspect-[4250/2490] min-h-screen min-w-[100vw] absolute transform -translate-x-1/2 -translate-y-1/2"
           id="mouse-parallax-container"
           style={{
             overflow: "hidden",

@@ -5,6 +5,7 @@
   "dependencies": {
     "@alch/alchemy-web3": "^1.4.2",
     "@babel/core": "^7.16.0",
+    "@headlessui/react": "^1.7.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@popperjs/core": "^2.11.4",
     "@svgr/webpack": "^6.2.1",
