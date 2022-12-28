@@ -568,8 +568,8 @@ export default function RaffleDashboardPage() {
         )}
       </div>
       <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
-          <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
+        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white dark:text-white">
+          <span className="lg:ml-2 primary-font drop-shadow-lg bg-black/[.3] dark:bg-white/[.3] rounded py-0 px-1">
             raffle
           </span>
         </h3>

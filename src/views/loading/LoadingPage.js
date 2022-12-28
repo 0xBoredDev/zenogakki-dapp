@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
 import karth from "../../images/karth.png";
 // import gem from "../../images/gem.png";
 import orb from "../../images/orb.png";
@@ -11,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loadingAudio from "../../sounds/loading.mp3";
 import gemAudio from "../../sounds/gem.wav";
-// import HomePage from "../home/HomePage";
 
 function LoadingPage() {
   gsap.registerPlugin(MotionPathPlugin);

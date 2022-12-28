@@ -459,7 +459,7 @@ body,
 
 .menu-links {
   list-style-type: none;
-  margin-top: 10px;
+  margin-top: 2vw;
 }
 
 .menu-link {
@@ -557,8 +557,8 @@ a:hover {
   cursor: pointer;
 }
 
-#arrow:hover {
-  scale: 1.1;
+#arrow.flash {
+  scale: 0.8 !important;
 }
 
 .move {
@@ -820,6 +820,14 @@ a:hover {
 
 #staking {
   background-color: #0f1033;
+}
+
+#stakingbgl {
+  transform: translate(-1250px, 500px);
+}
+
+#stakingbgr {
+  transform: translate(1250px, 500px);
 }
 
 .footer-section {

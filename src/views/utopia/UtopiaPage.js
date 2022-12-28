@@ -2,8 +2,6 @@ import React, { Suspense, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
-// import Header from "../../components/Header";
-// import Menu from "../../components/Menu";
 import utopia from "../../images/utopia/utopia.png";
 import utopia_sm from "../../images/utopia/utopia_vertical.png";
 //earth
@@ -74,8 +72,6 @@ import shadowv1 from "../../images/utopia/shadow/shadowv1.png";
 import shadowv2 from "../../images/utopia/shadow/shadowv2.png";
 import shadowv3 from "../../images/utopia/shadow/shadowv3.png";
 import shadowv4 from "../../images/utopia/shadow/shadowv4.png";
-import { render } from "@testing-library/react";
-import Spinner from "../../components/Spinner";
 
 var utopiaModal;
 const elemImages = {
@@ -238,7 +234,7 @@ function UtopiaPage() {
         </div>
         <div className="overflow-hidden pointer-events-none aspect-[1/1] lg:aspect-[4250/2490] min-h-screen min-w-[100vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-full h-full relative">
-            <div className="absolute w-20 h-20 pointer-events-auto top-[20%] left-[25%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[20%] left-[25%] lg:top-[36%] lg:left-[17%]">
               <div className="relative">
                 <div>
                   <button
@@ -263,7 +259,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[12%] left-[54%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[22%] left-[57%] lg:top-[26%] lg:left-[40%]">
               <div className="relative">
                 <div>
                   <button
@@ -288,7 +284,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[45%] left-[30%] lg:top-[30%] lg:left-[65%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[47%] left-[30%] lg:top-[61%] lg:left-[19%]">
               <div className="relative">
                 <div>
                   <button
@@ -313,7 +309,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[36%] left-[70%] lg:top-[23%] lg:left-[90%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[36%] left-[70%] lg:top-[23%] lg:left-[75%]">
               <div className="relative">
                 <div>
                   <button
@@ -338,7 +334,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[10%] left-[36%] lg:top-[21%] lg:left-[85%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[10%] left-[36%] lg:top-[12%] lg:left-[30%]">
               <div className="relative">
                 <div>
                   <button
@@ -362,7 +358,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-            <div className="absolute w-20 h-20 pointer-events-auto top-[35%] left-[53%] lg:top-[53%] lg:left-[65%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[35%] left-[50%] lg:top-[53%] lg:left-[65%]">
               <div className="relative">
                 <div>
                   <button
@@ -387,7 +383,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[57%] left-[64%] lg:top-[53%] lg:left-[50%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[57%] left-[64%] lg:top-[51%] lg:left-[50%]">
               <div className="relative">
                 <div>
                   <button
@@ -412,7 +408,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[74%] left-[54%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[74%] left-[50%]">
               <div className="relative">
                 <div>
                   <button
@@ -436,7 +432,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-            <div className="absolute w-20 h-20 pointer-events-auto top-[90%] left-[60%] lg:top-[88%] lg:left-[78%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[90%] left-[60%] lg:top-[80%] lg:left-[75%]">
               <div className="relative">
                 <div>
                   <button
@@ -460,7 +456,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-            <div className="absolute w-20 h-20 pointer-events-auto top-[87%] left-[25%] lg:top-[83%] lg:left-[10%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[80%] left-[25%] lg:top-[77%] lg:left-[20%]">
               <div className="relative">
                 <div>
                   <button

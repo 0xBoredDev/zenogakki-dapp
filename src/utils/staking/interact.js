@@ -1,25 +1,30 @@
+import axios from "axios";
+import { Network, Alchemy } from "alchemy-sdk";
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const API_URL =
-  "https://eth-goerli.g.alchemy.com/v2/CH1V81ZMzVXNjIFWnRNNTTgY0nD_Twh6";
-const web3 = createAlchemyWeb3(API_URL);
-
-//collection config
-const collectionABI = require("./abi/collectionABI.json");
-const c_addressCollection = "0x924D4Ed3090B44600b5577F19Bb02C53D5C5A9e1";
-const contractCollection = new web3.eth.Contract(
-  collectionABI,
-  c_addressCollection
+const web3 = createAlchemyWeb3(
+  "https://eth-goerli.g.alchemy.com/v2/r4KAf-wVLQ7-4pqQ15PSz7CVKHMQnMzD"
 );
 
+const alchemy = new Alchemy({
+  apiKey: "r4KAf-wVLQ7-4pqQ15PSz7CVKHMQnMzD",
+  network: Network.ETH_GOERLI,
+});
+
+//collection config
+const nftAbi = require("./abi/erc721.json");
+
 //reward config
-const tokenABI = require("./abi/tokenABI.json");
-const c_addressToken = "0xB5160972eeD85c7795c27f66b00118b051033425";
-const contractToken = new web3.eth.Contract(tokenABI, c_addressToken);
+const tokenABI = require("./abi/token.json");
+const tokenContractAddress = "0xD453404DF6FFAeeEC52F6F9DbB0e93101412cF4d";
+const tokenContract = new web3.eth.Contract(tokenABI, tokenContractAddress);
 
 //staking config
-const stakingABI = require("./abi/stakingABI.json");
-const c_addressStaking = "0x5BF9E606B55E548054Dd10456B57E267c7Cf3163";
-const contractStaking = new web3.eth.Contract(stakingABI, c_addressStaking);
+const stakingABI = require("./abi/staking.json");
+const stakingContractAddress = "0x83A9967Be134410F2648A0147636634eC87f0754";
+const stakingContract = new web3.eth.Contract(
+  stakingABI,
+  stakingContractAddress
+);
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -28,20 +33,30 @@ export const connectWallet = async () => {
         method: "eth_requestAccounts",
       });
 
-      const obj = {
-        status: "",
+      const chainId = await window.ethereum.request({ method: "eth_chainId" });
+
+      if (chainId != "0x5") {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x5" }],
+        });
+      }
+
+      return {
+        success: true,
+        status: "Connected",
         address: addressArray[0],
       };
-
-      return obj;
     } catch (err) {
       return {
+        success: false,
         address: "",
         status: err.message,
       };
     }
   } else {
     return {
+      success: false,
       address: "",
       status:
         "You must install MetaMask, a virtual Ethereum wallet, in your browser.",
@@ -59,18 +74,21 @@ export const getCurrentWalletConnected = async () => {
       if (addressArray.length > 0) {
         return {
           address: addressArray[0],
-          status: "",
+          status: "connected",
+          success: true,
         };
       } else {
         return {
           address: "",
-          status: "",
+          status: "Connect your wallet",
+          success: false,
         };
       }
     } catch (err) {
       return {
         address: "",
         status: err.message,
+        success: false,
       };
     }
   } else {
@@ -78,6 +96,7 @@ export const getCurrentWalletConnected = async () => {
       address: "",
       status:
         "You must install MetaMask, a virtual Ethereum wallet, in your browser.",
+      success: false,
     };
   }
 };
@@ -87,26 +106,116 @@ let response = {
   status: "",
 };
 
-// Contract Methods
+//start erc721
 
-export const getTotalSupply = async () => {
-  const result = await contractCollection.methods.totalSupply().call();
-  return result;
+export const getCollectionInstance = async (contractAddress) => {
+  const nftContract = new web3.eth.Contract(nftAbi, contractAddress);
+  return nftContract;
 };
 
-export const checkApproval = async (account) => {
-  const result = await contractCollection.methods
-    .isApprovedForAll(account, c_addressStaking)
+export const getCollectionName = async (contractAddress) => {
+  const result = (await getCollectionInstance(contractAddress)).methods
+    .name()
     .call();
   return result;
 };
 
-export const setApproval = async (account) => {
-  await contractCollection.methods
-    .setApprovalForAll(c_addressStaking, true)
+export const getNftBalance = async (contractAddress, wallectAddress) => {
+  const result = (await getCollectionInstance(contractAddress)).methods
+    .balanceOf(wallectAddress)
+    .call();
+  return result;
+};
+
+export const checkApproval = async (contractAddress, wallectAddress) => {
+  const result = (await getCollectionInstance(contractAddress)).methods
+    .isApprovedForAll(wallectAddress, stakingContractAddress)
+    .call();
+  return result;
+};
+
+function secondsToTime(secs) {
+  var hours = Math.floor(secs / (60 * 60));
+
+  var divisor_for_minutes = secs % (60 * 60);
+  var minutes = Math.floor(divisor_for_minutes / 60);
+
+  var divisor_for_seconds = divisor_for_minutes % 60;
+  var seconds = Math.ceil(divisor_for_seconds);
+
+  let duration = "";
+  if (hours > 0) duration = hours + " hour(s)";
+  if (minutes > 0) duration = minutes + " minute(s)";
+  // if(hours > 24) duration = hours+ " day(s)"
+
+  return duration;
+}
+
+export const getTokenInformation = async (wallectAddress) => {
+  const collectionArr = await getCollectionVault();
+  const stakedIdsArr = await getTokenIdsStaked(wallectAddress);
+  let itemArray = [];
+
+  for (let j = 0; j < collectionArr.length; j++) {
+    const result = await alchemy.nft.getNftsForOwner(wallectAddress, {
+      contractAddresses: [collectionArr[j].contractAddress],
+    });
+
+    for (let index = 0; index < result.totalCount; index++) {
+      // let justRefresh = await axios.get(`https://eth-goerli.g.alchemy.com/nft/v2/CH1V81ZMzVXNjIFWnRNNTTgY0nD_Twh6/getNFTMetadata?contractAddress=0x7F5683E7d88FEFaad727D38408b863811e128B1b&tokenId=${result.ownedNfts[index].tokenId}&tokenType=ERC721&refreshCache=true`).catch(function (error) {
+      //     console.log(error.toJSON());
+      // });
+      let tokenId = result.ownedNfts[index].tokenId;
+      let rawImg = result.ownedNfts[index].rawMetadata.image;
+      var name = result.ownedNfts[index].rawMetadata.name;
+      let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+      itemArray.push({
+        name: name,
+        img: image,
+        tokenId: tokenId,
+        staked: false,
+        cid: j,
+      });
+    }
+  }
+
+  //owned nft token from staking contract
+  for (let index = 0; index < stakedIdsArr.length; index++) {
+    const rawUriS = await (
+      await getCollectionInstance(
+        collectionArr[stakedIdsArr[index].cid].contractAddress
+      )
+    ).methods
+      .tokenURI(stakedIdsArr[index].tokenId)
+      .call();
+    console.log("uri", rawUriS);
+    let cleanUriS = rawUriS.replace("ipfs://", "https://ipfs.io/ipfs/");
+    let metadataS = await axios.get(`${cleanUriS}`).catch(function (error) {
+      console.log(error.toJSON());
+    });
+    let rawImgS = metadataS.data.image;
+    var nameS = metadataS.data.name;
+    let imageS = rawImgS.replace("ipfs://", "https://ipfs.io/ipfs/");
+    itemArray.push({
+      name: nameS,
+      img: imageS,
+      tokenId: stakedIdsArr[index].tokenId,
+      staked: true,
+      cid: stakedIdsArr[index].cid,
+    });
+  }
+  itemArray.sort((a, b) => parseFloat(a.tokenId) - parseFloat(b.tokenId));
+  return itemArray;
+};
+
+export const setApproval = async (contractAddress, wallectAddress) => {
+  await (
+    await getCollectionInstance(contractAddress)
+  ).methods
+    .setApprovalForAll(stakingContractAddress, true)
     .send({
-      from: account,
-      to: c_addressCollection,
+      from: wallectAddress,
+      to: contractAddress,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
@@ -122,54 +231,19 @@ export const setApproval = async (account) => {
   return response;
 };
 
-//staking system interaction
-
-export const getNoStakedNFT = async () => {
-  const result = await contractStaking.methods
-    .balanceOf(window.ethereum.selectedAddress)
-    .call();
-  return result;
-};
-
-export const getTokenStacked = async () => {
-  const result = await contractStaking.methods
-    .tokensOfOwner(window.ethereum.selectedAddress)
-    .call();
-  return result;
-};
-
-export const getClaimableStatus = async () => {
-  const result = await contractStaking.methods.tokensClaimable().call();
-  return result;
-};
-
-export const getEarningOnStacked = async (tokenids) => {
-  const result = await contractStaking.methods.earningInfo(tokenids).call();
-  const resultEther = web3.utils.fromWei(result, "ether");
-  return resultEther;
-};
-
-//reward token interaction
-
-export const getTokenBalance = async () => {
-  const result = await contractToken.methods
-    .balanceOf(window.ethereum.selectedAddress)
-    .call();
-  const resultEther = web3.utils.fromWei(result, "ether");
-  return resultEther;
-};
-
-export const stakeNFT = async (account, tokens) => {
-  await contractStaking.methods
-    .stake(tokens)
+export const mintNFT = async (contractAddress, wallectAddress) => {
+  await (
+    await getCollectionInstance(contractAddress)
+  ).methods
+    .publicMint(5)
     .send({
-      from: account,
-      to: c_addressStaking,
+      from: wallectAddress,
+      to: contractAddress,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "Staked successfully";
+      response.status = "Mint successfully";
     })
     .catch(function (error) {
       console.log("error: ", error);
@@ -180,33 +254,73 @@ export const stakeNFT = async (account, tokens) => {
   return response;
 };
 
-export const unStakeNFT = async (account, tokens) => {
-  await contractStaking.methods
-    .unstake(tokens)
-    .send({
-      from: account,
-      to: c_addressStaking,
-    })
-    .then(function (receipt) {
-      console.log("receipt: ", receipt);
-      response.success = true;
-      response.status = "Unstacked successfully";
-    })
-    .catch(function (error) {
-      console.log("error: ", error);
-      response.success = false;
-      response.status = "Something went wrong";
-    });
+//end erc721
 
-  return response;
+//start erc20
+
+export const getTokenBalance = async (wallectAddress) => {
+  const result = await tokenContract.methods.balanceOf(wallectAddress).call();
+  const resultEther = web3.utils.fromWei(result, "ether");
+  return resultEther;
 };
 
-export const claimReward = async (account, tokens) => {
-  await contractStaking.methods
-    .claim(tokens)
+//enderc20
+
+//start staking
+
+export const getEarnings = async (wallectAddress) => {
+  const result = await stakingContract.methods.earnings(wallectAddress).call();
+  const resultEther = web3.utils.fromWei(result, "ether");
+  return resultEther;
+};
+
+const getTokenStakedBalance = async (wallectAddress) => {
+  const result = await stakingContract.methods.balanceOf(wallectAddress).call();
+  return result;
+};
+
+const getTokenIdsStaked = async (wallectAddress) => {
+  const bal = await getTokenStakedBalance(wallectAddress);
+  const resultArr = await stakingContract.methods
+    .tokenOfOwnerStaked(wallectAddress)
+    .call();
+  let tokens = [];
+  for (let index = 0; index < bal; index++) {
+    tokens.push({
+      tokenId: resultArr[index].tokenId,
+      cid: resultArr[index].cid,
+    });
+  }
+  return tokens;
+};
+
+export const getCollectionVault = async () => {
+  const totalCollection = await stakingContract.methods
+    .totalCollection()
+    .call();
+  let allCollection = [];
+  for (let index = 0; index < totalCollection; index++) {
+    let collectionInfo = await stakingContract.methods
+      .collections(index)
+      .call();
+    let name = await getCollectionName(collectionInfo.nftCollection);
+    allCollection.push({
+      name: name,
+      stakers: Number(collectionInfo.amountOfStakers),
+      contractAddress: collectionInfo.nftCollection,
+      reward: Number(web3.utils.fromWei(collectionInfo.rewards, "ether")),
+      duration: secondsToTime(collectionInfo.stakeDuration),
+    });
+  }
+  return allCollection;
+};
+
+export const claimReward = async (wallectAddress) => {
+  await stakingContract.methods
+    .claimRewards()
     .send({
-      from: account,
-      to: c_addressStaking,
+      from: wallectAddress,
+      to: stakingContractAddress,
     })
     .then(function (receipt) {
       console.log("receipt: ", receipt);
@@ -218,6 +332,49 @@ export const claimReward = async (account, tokens) => {
       response.success = false;
       response.status = "Something went wrong";
     });
-
   return response;
 };
+
+export const stakeNFT = async (index, tokens, wallectAddress) => {
+  await stakingContract.methods
+    .batchStake(index, tokens)
+    .send({
+      from: wallectAddress,
+      to: stakingContractAddress,
+    })
+    .then(function (receipt) {
+      console.log("receipt: ", receipt);
+      response.success = true;
+      response.status = "Staked successfully";
+    })
+    .catch(function (error) {
+      console.log("error: ", error);
+      response.success = false;
+      response.status = "Something went wrong";
+    });
+  return response;
+};
+
+export const unStakeNFT = async (index, tokens, wallectAddress) => {
+  await stakingContract.methods
+    .batchUnstake(index, tokens)
+    .send({
+      from: wallectAddress,
+      to: stakingContractAddress,
+    })
+    .then(function (receipt) {
+      console.log("receipt: ", receipt);
+      response.success = true;
+      response.status = "Unstacked successfully";
+    })
+    .catch(function (error) {
+      console.log("error: ", error);
+      response.success = false;
+      response.status = "Something went wrong";
+    });
+  return response;
+};
+
+//end staking
+
+export { getTokenIdsStaked, getTokenStakedBalance };
