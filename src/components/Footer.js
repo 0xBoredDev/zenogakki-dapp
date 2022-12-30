@@ -65,6 +65,7 @@ const Footer = () => {
   const [nightModeOn, setNightModeOn] = useState(false);
   const [songs, setSongs] = useState(trackData);
   const [showIcons, setShowIcons] = useState(false);
+  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
   const [curTrackNum, setCurTrackNum] = useState(0);
   const [trackIsPlaying, setTrackIsPlaying] = useState(false);
   const [curTrack, setCurTrack] = useState(songs[0]);
@@ -88,6 +89,8 @@ const Footer = () => {
       media.remove("d-flex");
       media.add("d-none");
     }
+
+    setShowMusicPlayer(!showMusicPlayer);
   }
 
   function togglePlay(e) {
@@ -177,7 +180,7 @@ const Footer = () => {
     <nav className="navbar fixed-bottom footer">
       <div className="container-fluid no-pad">
         <div className="flex flex-row footer-section">
-          {smallView && !showIcons ? (
+          {!smallView || (smallView && !showMusicPlayer) ? (
             <div className="grow-0 social" id="social">
               <div>
                 {showIcons && (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import backgroundSrc from "../../images/staking.png";
@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { connectWallet } from "../../utils/staking/interact";
 
+import { themeContext } from "../../App";
+import themes from "../../helpers/themes";
+
 const StakingPage = () => {
+  const theme = useContext(themeContext);
+  console.log(theme);
   const navigate = useNavigate();
   const [walletAddress, setWalletAddress] = useState("");
   const stakingSound = new Audio(stakingAudio);

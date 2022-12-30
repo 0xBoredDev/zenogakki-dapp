@@ -6,6 +6,7 @@ import bg_light from "../../images/home_light.mp4";
 import bg_dark from "../../images/home_dark.mp4";
 import { themeContext } from "../../App";
 import themes from "../../helpers/themes";
+import Spinner from "../../components/Spinner";
 
 function HomePage() {
   const theme = useContext(themeContext);
@@ -13,11 +14,20 @@ function HomePage() {
 
   useEffect(() => {
     if (theme.current == themes.LIGHT) {
-      setBackgroundSrc(bg_light);
+      changeBG(bg_light);
     } else {
-      setBackgroundSrc(bg_dark);
+      changeBG(bg_dark);
     }
   });
+
+  function changeBG(bg) {
+    var video = document.getElementById("video");
+    var videosrc = document.getElementById("videosrc");
+    videosrc.setAttribute("src", bg);
+    video.load();
+    setBackgroundSrc(bg);
+  }
+
   return (
     <>
       <div className="parallax">
@@ -26,18 +36,21 @@ function HomePage() {
           id="home"
           className="parallax-layer home-bg"
         ></img> */}
+        <div className="flex flew-row justify-center items-center h-screen">
+          <Spinner className="-z-10" />
+        </div>
         <video
           width="100%"
           height="100%"
+          id="video"
           className="parallax-layer max-w-full"
           autoPlay={true}
           muted={true}
           preload="auto"
           loop={true}
         >
-          <source src={backgroundSrc}></source>
+          <source id="videosrc" src={backgroundSrc}></source>
         </video>
-        {/* <div id="home" className="parallax-layer home-bg"></div> */}
       </div>
       <Footer />
     </>

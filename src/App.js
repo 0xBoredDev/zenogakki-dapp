@@ -11,8 +11,6 @@ import StakingDashboardPage from "./views/staking/StakingDashboardPage";
 import RafflePage from "./views/raffle/RafflePage";
 import StoryPage from "./views/story/StoryPage";
 import RaffleDashboardPage from "./views/raffle/RaffleDashboardPage";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 // import Spinner from "./components/Spinner";
 import themes from "./helpers/themes";
 const themeContext = createContext("light");
@@ -47,23 +45,3 @@ function App() {
 }
 export { themeContext };
 export default App;
-
-// import { ThemeContext } from "./contexts/theme-context";
-// const [theme, setTheme] = useState("light");
-
-// function App() {
-//   return (
-//     <themeContext.Provider value={{theme, setTheme}}>
-//       <Routes>
-//         <Route exact path="/" element={<LoadingPage />} />
-//         <Route path="/home" element={<HomePage />} />
-//         <Route path="/utopia" element={<UtopiaPage />} />
-//         <Route path="/raffle" element={<RafflePage />} />
-//         <Route path="/raffle/dashboard" element={<RaffleDashboardPage />} />
-//         <Route element={<ToastContainer autoClose={3000} hideProgressBar />} />
-//       </Routes>
-//     </themeContext.Provider>
-//   );
-// }
-// export { themeContext };
-// export default App;
