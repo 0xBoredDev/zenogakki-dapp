@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import orb_light from "../images/orb_light.png";
 import orb_dark from "../images/orb_dark.png";
 import {
@@ -30,6 +30,17 @@ const Footer = () => {
       setMediaIconSrc(music_icon_dark);
     }
   });
+
+  const [smallView, setSmallView] = useState(window.innerWidth <= 639.98);
+  function updateSize() {
+    setSmallView(window.innerWidth <= 639.98);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", (e) => {
+      updateSize();
+    });
+  }, []);
 
   const trackData = [
     {
@@ -166,75 +177,79 @@ const Footer = () => {
     <nav className="navbar fixed-bottom footer">
       <div className="container-fluid no-pad">
         <div className="flex flex-row footer-section">
-          <div className="grow-0 social">
-            <div>
-              {showIcons && (
-                <div className="social-icons">
-                  <a
-                    className="social-icon"
-                    target="_blank"
-                    rel="noreferrer"
-                    href=""
-                  >
-                    <FaTwitter className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                  </a>
-                  <a
-                    className="social-icon"
-                    target="_blank"
-                    rel="noreferrer"
-                    href=""
-                  >
-                    <FaDiscord className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                  </a>
-                  <a
-                    className="social-icon"
-                    target="_blank"
-                    rel="noreferrer"
-                    href=""
-                  >
-                    <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                  </a>
-                </div>
-              )}
-              <a
-                className="relative"
-                onClick={(e) => {
-                  // setShowIcons(!showIcons);
-                  setNightModeOn(!nightModeOn);
-                  changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
-                }}
-              >
-                <img
-                  id="orbicon"
-                  className="flex"
-                  width="155px"
-                  height="155px"
-                  src={!nightModeOn ? orb_dark : orb_light}
-                ></img>
-              </a>
-            </div>
-            {showIcons && (
-              <div id="nightmode" className="form-check form-switch">
-                <label
-                  className="form-check-label dark:text-black secondary-font drop-shadow-lg bg-white/[.3] rounded p-1"
-                  htmlFor="flexSwitchCheckDefault"
-                >
-                  Dark Mode
-                </label>
-                <input
-                  className="form-check-input drop-shadow-lg bg-white/[.3] rounded p-1"
-                  type="checkbox"
-                  role="switch"
-                  id="flexSwitchCheckDefault"
-                  checked={nightModeOn}
-                  onChange={(e) => {
+          {smallView && !showIcons ? (
+            <div className="grow-0 social" id="social">
+              <div>
+                {showIcons && (
+                  <div className="social-icons">
+                    <a
+                      className="social-icon"
+                      target="_blank"
+                      rel="noreferrer"
+                      href=""
+                    >
+                      <FaTwitter className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
+                    </a>
+                    <a
+                      className="social-icon"
+                      target="_blank"
+                      rel="noreferrer"
+                      href=""
+                    >
+                      <FaDiscord className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
+                    </a>
+                    <a
+                      className="social-icon"
+                      target="_blank"
+                      rel="noreferrer"
+                      href=""
+                    >
+                      <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
+                    </a>
+                  </div>
+                )}
+                <a
+                  className="relative"
+                  onClick={(e) => {
+                    // setShowIcons(!showIcons);
                     setNightModeOn(!nightModeOn);
                     changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
                   }}
-                />
+                >
+                  <img
+                    id="orbicon"
+                    className="flex"
+                    width="155px"
+                    height="155px"
+                    src={!nightModeOn ? orb_dark : orb_light}
+                  ></img>
+                </a>
               </div>
-            )}
-          </div>
+              {showIcons && (
+                <div id="nightmode" className="form-check form-switch">
+                  <label
+                    className="form-check-label dark:text-black secondary-font drop-shadow-lg bg-white/[.3] rounded p-1"
+                    htmlFor="flexSwitchCheckDefault"
+                  >
+                    Dark Mode
+                  </label>
+                  <input
+                    className="form-check-input drop-shadow-lg bg-white/[.3] rounded p-1"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                    checked={nightModeOn}
+                    onChange={(e) => {
+                      setNightModeOn(!nightModeOn);
+                      changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="grow media-player">
             <div className="row media-section justify-content-end dark:bg-black">
               <div id="controls" className="col d-none">
@@ -275,7 +290,7 @@ const Footer = () => {
                   </h4>
                 </div>
               </div>
-              <div className="col bounce">
+              <div className="col bounce p-0">
                 <div id="bounceIcon" className="bounce-icon paused-icon">
                   <span className="bg-black dark:bg-white"></span>
                   <span className="bg-black dark:bg-white"></span>

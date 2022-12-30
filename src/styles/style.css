@@ -140,8 +140,8 @@ body,
   /* width: calc(var(--app-height) * 0.08); */
   /* height: calc(var(--app-height) * 0.08); */
   /* margin-bottom: -40px; */
-  margin-bottom: -30px;
-  margin-left: -15px;
+  margin-bottom: -25px;
+  margin-left: -20px;
   transition: all 1s ease;
   border-radius: 40px;
   box-shadow: 5px 5px 6px -1px rgb(0 0 0 / 10%), 0 2px 8px -1px rgb(0 0 0 / 6%);
@@ -214,7 +214,8 @@ body,
   background-color: white;
   /* height: 60px; */
   border-radius: 6px;
-  margin-right: 25px !important;
+  margin-right: 16px !important;
+  margin-right: 10px !important;
   margin-bottom: 10px !important;
   box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 8px -1px rgba(0, 0, 0, 0.06);
@@ -254,10 +255,8 @@ body,
 
 .media-logo {
   cursor: pointer;
-  /* width: calc(var(--app-height) * 0.14); */
-  /* height: calc(var(--app-height) * 0.14); */
-  width: 95px;
-  height: 85px;
+  width: 115px;
+  height: 115px;
   margin-right: -5px;
   /* transform: translate(0, -30px); */
   transition: all 1s ease;
@@ -265,11 +264,14 @@ body,
 
 .media-logo:hover {
   scale: 1.1;
+  transition: all 1s ease;
+  transform: translate(-3px, -5px);
 }
 
 .zoomed {
   scale: 1.1;
   transition: all 1s ease;
+  transform: translate(-3px, -5px);
 }
 
 .audio-player {
@@ -307,6 +309,7 @@ body,
   height: inherit;
   align-items: flex-end;
   padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 .media-control {
@@ -378,7 +381,7 @@ body,
   display: flex;
   flex-direction: column;
   height: inherit;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   justify-content: space-evenly;
 }
 
@@ -841,8 +844,7 @@ a:hover {
 @media screen and (max-width: 575.98px) {
   .media-control {
     cursor: pointer;
-    height: 2em !important;
-    width: 2em !important;
+    width: 1.75em !important;
     margin: 0 2px;
   }
 
@@ -850,14 +852,29 @@ a:hover {
     margin-right: 0;
   }
 
+  .media-controls svg {
+    margin-right: 0;
+  }
+
   .story-ratio {
     left: 95% !important;
+  }
+
+  #track-name {
+    font-size: 1rem;
+  }
+
+  #track-artist {
+    font-size: 0.5rem;
+  }
+  .media-section {
+    height: 60px;
   }
 }
 
 @media screen and (min-width: 576px) {
   .media-section {
-    height: 60px;
+    height: 100px;
   }
 }
 

@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-// import "../components/Spinner.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-// import Header from "../../components/Header";
-// import Menu from "../../components/Menu";
 import Footer from "../../components/Footer";
-import bg_light from "../../images/home_light.png";
-import bg_dark from "../../images/home_dark.png";
+// import bg_light from "../../images/home_light.png";
+// import bg_dark from "../../images/home_dark.png";
+import bg_light from "../../images/home_light.mp4";
+import bg_dark from "../../images/home_dark.mp4";
 import { themeContext } from "../../App";
 import themes from "../../helpers/themes";
 
@@ -23,17 +20,24 @@ function HomePage() {
   });
   return (
     <>
-      {/* <Menu /> */}
-      {/* <MenuV2 /> */}
-      {/* <Header /> */}
       <div className="parallax">
-        <img
+        {/* <img
           src={backgroundSrc}
           id="home"
           className="parallax-layer home-bg"
-        ></img>
+        ></img> */}
+        <video
+          width="100%"
+          height="100%"
+          className="parallax-layer max-w-full"
+          autoPlay={true}
+          muted={true}
+          preload="auto"
+          loop={true}
+        >
+          <source src={backgroundSrc}></source>
+        </video>
         {/* <div id="home" className="parallax-layer home-bg"></div> */}
-        <ToastContainer />
       </div>
       <Footer />
     </>

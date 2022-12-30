@@ -66,7 +66,6 @@ function StoryPage() {
       stagger: 0.07,
     });
   }
-  // console.log(chars);
   useEffect(() => {
     // var tl = gsap.timeline(),
     //   mySplitText = new SplitText("#computertext", { type: "words,chars" }),

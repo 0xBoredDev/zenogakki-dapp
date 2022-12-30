@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useStatus } from "../../contexts/statusContext";
 import {
   connectWallet,
   getCurrentWalletConnected,
-  getCollectionVault,
-  getNftBalance,
   getTokenBalance,
   getEarnings,
   getTokenIdsStaked,
@@ -14,10 +11,11 @@ import {
   checkApproval,
   setApproval,
   stakeNFT,
+  batchStakeNFT,
   unStakeNFT,
+  batchUnStakeNFT,
   claimReward,
   mintNFT,
-  getAllCollection,
   getTokenStakedBalance,
 } from "../../utils/staking/interact";
 
@@ -40,7 +38,6 @@ export default function StakingDashboardPage() {
     nft: true,
   });
   const [walletAddress, setWalletAddress] = useState("");
-  const [collectionVault, setCollectionVault] = useState([]);
   const [claimingReward, setClaimingReward] = useState(false);
   const [nfts, setNfts] = useState([]);
   const [selectedToken, setSelectedToken] = useState([]);
@@ -79,8 +76,6 @@ export default function StakingDashboardPage() {
     const { success, status, address } = await getCurrentWalletConnected();
     setWalletAddress(address);
     if (!success) toast.error(status);
-
-    setCollectionVault(await getCollectionVault());
     setLoadingPage({ ...loadingPage, home: false });
   };
 
@@ -128,26 +123,17 @@ export default function StakingDashboardPage() {
 
   const stakeBtnPressed = async () => {
     setDisabledBtn(true);
-    let currentIndex = selectedToken[0].cid;
-    const collectionInfo = collectionVault[currentIndex];
-    const approved = await checkApproval(
-      collectionInfo.contractAddress,
-      walletAddress
-    );
-    console.log(collectionInfo, approved);
+    const approved = await checkApproval(walletAddress);
+    console.log("approved", approved);
     let tokensId = selectedToken.map(function (obj) {
       return Number(obj.tokenId);
     });
     // console.log("staking", tokensId);
+
     let procced = false;
     if (!approved) {
-      const toastOne = toast.loading(
-        `Requesting for approval of ${collectionInfo.name}...`
-      );
-      const { success, status } = await setApproval(
-        collectionInfo.contractAddress,
-        walletAddress
-      );
+      const toastOne = toast.loading(`Requesting for approval for nfts...`);
+      const { success, status } = await setApproval(walletAddress);
       procced = success;
       toast.dismiss(toastOne);
       if (success) {
@@ -158,12 +144,10 @@ export default function StakingDashboardPage() {
     }
 
     if (approved || procced) {
-      const toastTwo = toast.loading(`Staking your ${collectionInfo.name}...`);
-      const { success, status } = await stakeNFT(
-        currentIndex,
-        tokensId,
-        walletAddress
-      );
+      const toastTwo = toast.loading(`Staking your nfts...`);
+      const { success, status } = await (tokensId.length > 1
+        ? batchStakeNFT(tokensId, walletAddress)
+        : stakeNFT(Number(tokensId), walletAddress));
       toast.dismiss(toastTwo);
       if (success) {
         await clearSelectedPressed();
@@ -180,18 +164,14 @@ export default function StakingDashboardPage() {
 
   const unStakeBtnPressed = async () => {
     setDisabledBtn(true);
-    let currentIndex = selectedToken[0].cid;
-    const collectionInfo = collectionVault[currentIndex];
     let tokensId = selectedToken.map(function (obj) {
       return Number(obj.tokenId);
     });
     // console.log("unstake", tokensId);
-    const toastTwo = toast.loading(`Unstaking your ${collectionInfo.name}...`);
-    const { success, status } = await unStakeNFT(
-      currentIndex,
-      tokensId,
-      walletAddress
-    );
+    const toastTwo = toast.loading(`Unstaking your nfts...`);
+    const { success, status } = await (tokensId.length > 1
+      ? batchUnStakeNFT(tokensId, walletAddress)
+      : unStakeNFT(Number(tokensId), walletAddress));
     toast.dismiss(toastTwo);
     if (success) {
       await clearSelectedPressed();
@@ -236,15 +216,10 @@ export default function StakingDashboardPage() {
     }
   };
 
-  const aCardPressed = async (tokenId, staked, cid) => {
+  const aCardPressed = async (tokenId, staked) => {
     // console.log(tokenId, staked, noStaked, noUnstaked);
     if (disabledBtn) return;
-    if (
-      (staked && noStaked > 0) ||
-      (!staked && noUnstaked > 0) ||
-      selectedToken.some((data) => data.cid != cid)
-    )
-      return;
+    if ((staked && noStaked > 0) || (!staked && noUnstaked > 0)) return;
 
     if (selectedToken.map((x) => x.tokenId).includes(tokenId)) {
       if (staked) setNoUnstaked(noUnstaked - 1);
@@ -257,23 +232,9 @@ export default function StakingDashboardPage() {
       if (!staked) setNoStaked(noStaked + 1);
       setSelectedToken([
         ...selectedToken,
-        { tokenId: tokenId, staked: staked, cid: cid },
+        { tokenId: tokenId, staked: staked },
       ]);
     }
-  };
-
-  const checkToken = (tokenId, cid) => {
-    let found = false;
-    for (let index = 0; index < selectedToken.length; index++) {
-      if (
-        selectedToken[index].tokenId == tokenId &&
-        selectedToken[index].cid == cid
-      ) {
-        found = true;
-        break;
-      }
-    }
-    return found;
   };
 
   return (
@@ -307,38 +268,15 @@ export default function StakingDashboardPage() {
                 ) : (
                   <div className="flex items-center justify-center ">
                     <section className="text-center mx-6 lg:w-2/3">
-                      {/* <h1 className="font-bold text-2xl text-black dark:text-white secondary-font mb-5 mt-5">
-                        Stake your NFT and earn $ORB
-                      </h1> */}
-                      <div>
-                        {collectionVault.length > 0 ? (
-                          <>
-                            {/* {collectionVault.map((item, i) => {
-                              return (
-                                <p className="text-black dark:text-white secondary-font font-thin" key={i}>
-                                  Each staked {item.name} yields {item.reward}{" "}
-                                  $ORB every {item.duration}.
-                                </p>
-                              );
-                            })} */}
-                            <p className="mt-20 text-black dark:text-white secondary-font font-bold">
-                              CONNECT YOUR WALLET TO GET STATRED
-                            </p>
-                            <button
-                              onClick={connectWalletPressed}
-                              className="mt-2 border-solid border-2 border-gray-700 font-semibold rounded-lg p-2 px-4 text-black dark:text-white secondary-font"
-                            >
-                              Connect Wallet
-                            </button>
-                          </>
-                        ) : (
-                          <div className="mt-2">
-                            <p className="text-center text-black dark:text-white secondary-font uppercase font-semibold">
-                              no available staking, check back later.
-                            </p>
-                          </div>
-                        )}
-                      </div>
+                      <p className="mt-20 text-black dark:text-white secondary-font font-bold">
+                        CONNECT YOUR WALLET TO GET STATRED
+                      </p>
+                      <button
+                        onClick={connectWalletPressed}
+                        className="mt-2 border-solid border-2 border-gray-700 font-semibold rounded-lg p-2 px-4 text-black dark:text-white secondary-font"
+                      >
+                        Connect Wallet
+                      </button>
                     </section>
                   </div>
                 )}
@@ -463,8 +401,6 @@ export default function StakingDashboardPage() {
                       <h1 className="text-2xl font-semibold text-black dark:text-white secondary-font mb-1">
                         NFTS
                       </h1>
-                      {/* <span className="text-sm text-gray-300">Each staked {collectionVault[currentIndex].name} yields {collectionVault[currentIndex].reward} ORB every {collectionVault[currentIndex].duration}.</span> */}
-
                       {!loadingPage.nft ? (
                         <div className="mt-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 gap-5">
                           {nfts.map((item, i) => {
@@ -472,23 +408,18 @@ export default function StakingDashboardPage() {
                               <div
                                 key={i}
                                 onClick={() =>
-                                  aCardPressed(
-                                    item.tokenId,
-                                    item.staked,
-                                    item.cid
-                                  )
+                                  aCardPressed(item.tokenId, item.staked)
                                 }
                                 className={`${
                                   (item.staked && noStaked > 0) ||
-                                  (!item.staked && noUnstaked > 0) ||
-                                  selectedToken.some(
-                                    (data) => data.cid != item.cid
-                                  )
+                                  (!item.staked && noUnstaked > 0)
                                     ? "cursor-not-allowed"
                                     : "cursor-pointer"
                                 } ${
-                                  checkToken(item.tokenId, item.cid)
-                                    ? "ring-2 ring-purple"
+                                  selectedToken.some(
+                                    (data) => data.tokenId == item.tokenId
+                                  )
+                                    ? "ring-2 ring-white"
                                     : ""
                                 } p-4 rounded-xl border-2 border-gray-700 overflow-hidden shadow-2xl`}
                               >
@@ -498,7 +429,7 @@ export default function StakingDashboardPage() {
                                   alt="pfp"
                                 ></img>
                                 <div className="mt-5 text-center">
-                                  <span className="text-black dark:text-white secondary-font font-semibold">
+                                  <span className="text-gray-100 font-thin">
                                     {item.name}
                                   </span>
                                 </div>
@@ -528,7 +459,7 @@ export default function StakingDashboardPage() {
                         <div className="text-center mt-40">
                           <div role="status">
                             <svg
-                              className="inline mr-2 w-10 h-10 text-black dark:text-white secondary-font animate-spin fill-gray-600"
+                              className="inline mr-2 w-10 h-10 text-white-200 animate-spin dark:text-white-600 fill-gray-600"
                               viewBox="0 0 100 101"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
