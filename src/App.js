@@ -17,11 +17,8 @@ import themes from "./helpers/themes";
 const themeContext = createContext("light");
 
 function App() {
-  console.log("App load");
   const [theme, setTheme] = useState("light");
   const changeTheme = useCallback((themeTo) => {
-    console.log("changetheme");
-    console.log(themeTo);
     setTheme(themeTo);
     const element = document.getElementById("mode");
     element.className = themeTo;

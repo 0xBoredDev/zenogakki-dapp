@@ -13,7 +13,6 @@ import themes from "../helpers/themes";
 
 const Menu = () => {
   const theme = useContext(themeContext).theme;
-  console.log(theme);
   return (
     <div
       className={`offcanvas offcanvas-start`}

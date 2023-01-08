@@ -461,72 +461,84 @@ export default function RaffleDashboardPage() {
                         alt="River"
                       ></img>
                     </div>
-                    {raffleSelected ? (
-                      <div class="flex">
-                        <div class="mr-2 lg:mr-6 w-[100px] lg:w-[150px]">
-                          <input
-                            class="border-2 w-full bg-transparent text-center border-white dark:border-primary focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none p-3 bg-offbase rounded-2xl text-white font-bold text-2xl"
-                            type="number"
-                            name="qty"
-                            id="qty"
-                            placeholder="Qty"
-                            min="0"
-                            max="50"
-                            value={ticketQuantity}
-                          />
-                        </div>
-                        <div class="flex w-full">
-                          <button
-                            class="w-full bg-gradient-to-t from-lime-600 to-lime-400 justify-center items-center opacity-90 hover:opacity-100 rounded-xl text-white text-xl font-bold transition"
-                            onClick={() => buyTicket(ticketQuantity)}
-                          >
-                            Buy Raffle Ticket
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-center border-4 border-yellow-500 py-5 rounded-xl"></div>
+                    {Number(raffleSelected.status) != 0 && (
+                      <>
+                        {Number(raffleSelected.status) == 1 &&
+                        diffDays(raffleSelected.endIn) != 0 ? (
+                          <div className="flex">
+                            <div className="mr-2 lg:mr-6 w-[100px] lg:w-[150px]">
+                              <input
+                                className="border-2 w-full bg-transparent text-center border-white dark:border-primary focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none p-3 bg-offbase rounded-2xl text-white font-bold text-2xl"
+                                type="number"
+                                name="qty"
+                                id="qty"
+                                placeholder="Qty"
+                                min="0"
+                                max="50"
+                                value={ticketQuantity}
+                              />
+                            </div>
+                            <div className="flex w-full">
+                              <button
+                                className="w-full bg-gradient-to-t from-lime-600 to-lime-400 justify-center items-center opacity-90 hover:opacity-100 rounded-xl text-white text-xl font-bold transition"
+                                onClick={() => buyTicket(ticketQuantity)}
+                              >
+                                Buy Raffle Ticket
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="text-center border-4 border-pink py-2 rounded-xl">
+                            <div className="font-bold text-xl text-black mt-4 secondary-font">
+                              Winner
+                            </div>
+                            <p className="text-purple font-bold secondary-font">
+                              {truncate(raffleSelected.winner)}
+                            </p>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                   <div className="md:w-2/3 bg-white dark:bg-offbase w-full md:rounded-2xl p-4 md:pt-0 mt-4 md:mt-0 flex flex-col justify-between transition">
                     <div className="w-full">
-                      <div class="flex flex-col md:flex-row flex-between">
-                        <div class="w-full">
+                      <div className="flex flex-col md:flex-row flex-between">
+                        <div className="w-full">
                           <div>
-                            <strong class="text-4xl pb-1 text-black">
+                            <strong className="text-4xl pb-1 text-black">
                               {raffleSelected.name}
                             </strong>
                           </div>
-                          {/* <div class="flex mt-3 md:mt-1 text-sm">
-                            <div class="text-center md:text-left ml-8 text-slate-400">
+                          {/* <div className="flex mt-3 md:mt-1 text-sm">
+                            <div className="text-center md:text-left ml-8 text-slate-400">
                               <span>
                                 Total Ticket Value:{" "}
-                                <strong class="block md:inline text-purple-600">
+                                <strong className="block md:inline text-purple-600">
                                   
                                 </strong>
                               </span>
                             </div>
                           </div> */}
                         </div>
-                        <div class="flex justify-between md:justify-start md:flex-col mt-4 md:mt-0 gap-x-8 md:gap-x-0 text-sm">
+                        <div className="flex justify-between md:justify-start md:flex-col mt-4 md:mt-0 gap-x-8 md:gap-x-0 text-sm">
                           <button
-                            class="flex items-center text-purple-600 hover:opacity-80 font-bold ml-1"
+                            className="flex items-center text-purple-600 hover:opacity-80 font-bold ml-1"
                             onClick={enterDashboard}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 192 512"
-                              class="w-2 mr-1 fill-current"
+                              className="w-2 mr-1 fill-current"
                             >
                               <path d="M4.2 247.5L151 99.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17L69.3 256l118.5 119.7c4.7 4.7 4.7 12.3 0 17L168 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 264.5c-4.7-4.7-4.7-12.3 0-17z"></path>
                             </svg>
-                            <span class="ml-1">Back</span>
+                            <span className="ml-1">Back</span>
                           </button>
-                          {/* <button class="flex items-center text-purple-600 hover:opacity-80 font-bold my-2">
+                          {/* <button className="flex items-center text-purple-600 hover:opacity-80 font-bold my-2">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 512 512"
-                              class="w-4 mr-1 fill-current"
+                              className="w-4 mr-1 fill-current"
                             >
                               <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path>
                             </svg>{" "}
@@ -534,82 +546,154 @@ export default function RaffleDashboardPage() {
                           </button> */}
                         </div>
                       </div>
-                      <div className="flex justify-between items-center pt-3 mb-3 mt-3">
-                        <div>
-                          <button class="bg-purple text-white font-bold px-4 py-2 rounded-full transition">
+
+                      <ul
+                        className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none pl-0 mb-0 mt-4 border-0"
+                        id="tabs-tab"
+                        role="tablist"
+                      >
+                        <li className="nav-item" role="presentation">
+                          <button
+                            className="text-purple [&.active]:text-white [&.active]:bg-purple font-bold px-4 py-2 rounded-full transition active"
+                            href="#tabs-home"
+                            id="tabs-home-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#tabs-home"
+                            role="tab"
+                            aria-controls="tabs-home"
+                            aria-selected="true"
+                          >
                             Details
                           </button>
-                          <button class="text-purple hover:text-purple-400 font-bold px-4 py-2 rounded-full transition">
+                        </li>
+                        <li className="nav-item" role="presentation">
+                          <button
+                            className="text-purple font-bold px-4 py-2 rounded-full transition [&.active]:text-white [&.active]:bg-purple"
+                            href="#tabs-profile"
+                            id="tabs-profile-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#tabs-profile"
+                            role="tab"
+                            aria-controls="tabs-profile"
+                            aria-selected="false"
+                          >
                             Participants
                           </button>
-                        </div>
-                      </div>
-                      <div className="py-4 border-t border-b border-gray-200 dark:border-primary">
-                        <div className="grid grid-cols-1 md:grid-cols-2 font-bold gap-3 gap-y-6">
-                          <div>
-                            <strong class="block text-sm text-gray-500 dark:text-purple-400/70">
-                              Raffle Status:
-                            </strong>
-                            <div class="text-xl text-purple">
-                              {Number(raffleSelected.status) == 0
-                                ? "Not Started"
-                                : Number(raffleSelected.status) == 1 &&
-                                  diffDays(raffleSelected.endIn) != 0
-                                ? `Ends in ${diffDays(raffleSelected.endIn)}`
-                                : Number(raffleSelected.status) == 2
-                                ? "Completed"
-                                : "Ended"}
-                            </div>
-                          </div>
-                          <div class="flex">
-                            <div class="w-1/2">
-                              <strong class="block text-sm text-gray-500 dark:text-purple-400/70">
-                                Ticket Cost:
-                              </strong>
-                              <div class="text-xl text-pruple">
-                                {raffleSelected.cost / 10 ** 18} ORB
+                        </li>
+                      </ul>
+                      <div className="flex justify-between items-center pt-3 mb-3">
+                        <div
+                          className="tab-content w-full"
+                          id="tabs-tabContent"
+                        >
+                          <div
+                            className="tab-pane fade show active"
+                            id="tabs-home"
+                            role="tabpanel"
+                            aria-labelledby="tabs-home-tab"
+                          >
+                            <div className="py-4 border-t border-b border-gray-200 dark:border-primary">
+                              <div className="grid grid-cols-1 md:grid-cols-2 font-bold gap-3 gap-y-6">
+                                <div>
+                                  <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                    Raffle Status:
+                                  </strong>
+                                  <div className="text-xl text-purple">
+                                    {Number(raffleSelected.status) == 0
+                                      ? "Not Started"
+                                      : Number(raffleSelected.status) == 1 &&
+                                        diffDays(raffleSelected.endIn) != 0
+                                      ? `Ends in ${diffDays(
+                                          raffleSelected.endIn
+                                        )}`
+                                      : Number(raffleSelected.status) == 2
+                                      ? "Completed"
+                                      : "Ended"}
+                                  </div>
+                                </div>
+                                <div className="flex">
+                                  <div className="w-1/2">
+                                    <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                      Ticket Cost:
+                                    </strong>
+                                    <div className="text-xl text-pruple">
+                                      {raffleSelected.cost / 10 ** 18} ORB
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="">
+                                  <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                    Raffle Start Date:
+                                  </strong>
+                                  <div className="text-xl text-pruple">
+                                    Jan 6, 2023
+                                  </div>
+                                </div>
+                                <div className="">
+                                  <strong className="block text-sm text-gray-500">
+                                    Tickets Sold:
+                                  </strong>
+                                  <div className="text-purple text-xl">
+                                    {raffleSelected.totalTickets -
+                                      raffleSelected.participants.length}{" "}
+                                    / {raffleSelected.totalTickets}
+                                    {/* <span className="block text-black dark:text-white font-normal text-sm">
+                                (Unique Ticket Holders)
+                              </span> */}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          <div class="">
-                            <strong class="block text-sm text-gray-500 dark:text-purple-400/70">
-                              Raffle Start Date:
-                            </strong>
-                            <div class="text-xl text-pruple">Jan 6, 2023</div>
-                          </div>
-                          <div class="">
-                            <strong class="block text-sm text-gray-500">
-                              Tickets Sold:
-                            </strong>
-                            <div class="text-purple text-xl">
-                              {raffleSelected.totalTickets -
-                                raffleSelected.participants.length}{" "}
-                              / {raffleSelected.totalTickets}
-                              {/* <span class="block text-black dark:text-white font-normal text-sm">
-                                (Unique Ticket Holders)
-                              </span> */}
+                          <div
+                            className="tab-pane fade"
+                            id="tabs-profile"
+                            role="tabpanel"
+                            aria-labelledby="tabs-profile-tab"
+                          >
+                            <div className="py-4 border-t border-b border-gray-200 dark:border-primary">
+                              <p className="font-semibold text-black">
+                                Participants
+                              </p>
+                              <div className="overflow-y-scroll">
+                                {participants(raffleSelected.participants).map(
+                                  (item, i) => {
+                                    return (
+                                      <p
+                                        key={i}
+                                        className="text-black font-extralight secondary-font"
+                                      >
+                                        {truncate(item.address)} -{" "}
+                                        {item.quantity}
+                                      </p>
+                                    );
+                                  }
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="p-2 border border-purple-200 rounded-xl bg-pink/[.5] mt-4">
-                      <p class="font-bold text-lg text-purple">
-                        Terms &amp; Conditions
-                      </p>
-                      <ol class="list-decimal dark:text-white pl-5">
-                        <li>
-                          All NFT prizes are held by rafffle in escrow and can
-                          be claimed by the winner or creator once the draw is
-                          done.
-                        </li>
-                        <li>Raffle tickets cannot be refunded once bought.</li>
-                        <li>
-                          Raffle tickets will not be refunded if you did not win
-                          the raffle.
-                        </li>
-                        <li>You can only buy 20% of total tickets.</li>
-                      </ol>
+                      <div className="p-2 border border-purple-200 rounded-xl bg-pink/[.5] mt-4">
+                        <p className="font-bold text-lg text-purple">
+                          Terms &amp; Conditions
+                        </p>
+                        <ol className="list-decimal dark:text-white pl-5">
+                          <li>
+                            All NFT prizes are held by rafffle in escrow and can
+                            be claimed by the winner or creator once the draw is
+                            done.
+                          </li>
+                          <li>
+                            Raffle tickets cannot be refunded once bought.
+                          </li>
+                          <li>
+                            Raffle tickets will not be refunded if you did not
+                            win the raffle.
+                          </li>
+                          <li>You can only buy 20% of total tickets.</li>
+                        </ol>
+                      </div>
                     </div>
                   </div>
                 </div>

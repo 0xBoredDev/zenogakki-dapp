@@ -11,7 +11,6 @@ import Spinner from "../../components/Spinner";
 function HomePage() {
   const theme = useContext(themeContext).theme;
   const [backgroundSrc, setBackgroundSrc] = useState(bg_light);
-  console.log(theme);
   useEffect(() => {
     if (theme == themes.DARK) {
       changeBG(bg_dark);
