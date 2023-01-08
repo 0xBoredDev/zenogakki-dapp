@@ -15,7 +15,7 @@ body,
   display: block;
   height: var(--app-height) !important;
   height: 100vh;
-  background-color: rgb(253 242 248) !important;
+  /* background-color: #f1f0f2 !important; */
 }
 
 .parallax {
@@ -215,7 +215,7 @@ body,
   /* height: 60px; */
   border-radius: 6px;
   margin-left: 10px !important;
-  margin-right: 10px !important;
+  margin-right: 20px !important;
   margin-bottom: 10px !important;
   box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 8px -1px rgba(0, 0, 0, 0.06);
@@ -558,10 +558,6 @@ a:hover {
 
 #arrow {
   cursor: pointer;
-}
-
-#arrow.flash {
-  scale: 0.8 !important;
 }
 
 .move {

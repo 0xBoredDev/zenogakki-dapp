@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import gem from "../images/gem3.png";
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 const Header = () => {
   function toggleMenu() {

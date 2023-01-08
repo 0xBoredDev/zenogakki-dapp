@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 // import gem from "../images/gem.png";
 import menu_light from "../images/menu_light.png";
 import menu_dark from "../images/menu_dark.png";
@@ -11,8 +12,8 @@ import { themeContext } from "../App";
 import themes from "../helpers/themes";
 
 const Menu = () => {
-  const theme = useContext(themeContext);
-
+  const theme = useContext(themeContext).theme;
+  console.log(theme);
   return (
     <div
       className={`offcanvas offcanvas-start`}
@@ -21,7 +22,7 @@ const Menu = () => {
       aria-labelledby="sideMenuLabel"
     >
       <img
-        src={theme.current == themes.LIGHT ? menu_light : menu_dark}
+        src={theme == themes.DARK ? menu_dark : menu_light}
         className="menu-bg"
       />
       <div className="offcanvas-body">
@@ -59,54 +60,59 @@ const Menu = () => {
             <ul className="menu-links h-3/4 flex flex-col justify-evenly xl:space-y-10">
               <li className="flex">
                 {/* <a href="/home" className={`menu-link ${theme.current}`}> */}
-                <a
-                  href="/home"
+                <Link
+                  to="/home"
+                  data-bs-dismiss="offcanvas"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
                   <span className="primary uppercase">Home</span>
                   <span className="secondary uppercase">Home</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
-                  href="/utopia"
+                <Link
+                  to="/utopia"
+                  data-bs-dismiss="offcanvas"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
                   <span className="primary uppercase">Utopia</span>
                   <span className="secondary uppercase">Utopia</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
-                  href="/story"
+                <Link
+                  to="/story"
+                  data-bs-dismiss="offcanvas"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
                   <span className="primary uppercase">Story</span>
                   <span className="secondary uppercase">Story</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
-                  href="/staking"
+                <Link
+                  to="/staking"
+                  data-bs-dismiss="offcanvas"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
                   <span className="primary uppercase">Staking</span>
                   <span className="secondary uppercase">Staking</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
-                  href="/raffle"
+                <Link
+                  to="/raffle"
+                  data-bs-dismiss="offcanvas"
                   className="dark:text-white menu-link flex items-start text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl"
                 >
                   <span className="primary uppercase">Raffle</span>
                   <span className="secondary uppercase">Raffle</span>
                   {/* <img src={menu_line} className="menu-line" alt="menu-line" /> */}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -115,7 +121,7 @@ const Menu = () => {
               <div className="basis-1/2">
                 {/* <img
                   className="mt-12"
-                  src={theme.current == themes.LIGHT ? logo_light : logo_dark}
+                  src={theme == themes.LIGHT ? logo_light : logo_dark}
                 /> */}
                 {/* <p className="dark:text-black mt-14 sm:mt-20 text-3xl lg:text-4xl v-text secondary-font uppercase pl-2 tracking-widest">
                   Zenogakki

@@ -37,10 +37,10 @@ export const connectWallet = async () => {
 
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
 
-      if (chainId != "0x1") {
+      if (chainId != "0x5") {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x1" }],
+          params: [{ chainId: "0x5" }],
         });
       }
 
@@ -82,8 +82,8 @@ export const getCurrentWalletConnected = async () => {
       } else {
         return {
           address: "",
-          status: "Connect your wallet",
-          success: false,
+          status: "",
+          success: true,
         };
       }
     } catch (err) {

@@ -20,11 +20,11 @@ import introcyberpunkAudio from "../music/Into_Cyberpunk.mp3";
 
 const Footer = () => {
   const { changeTheme } = useContext(themeContext);
-  const theme = useContext(themeContext);
+  const theme = useContext(themeContext).theme;
   const [mediaIconSrc, setMediaIconSrc] = useState(music_icon_light);
 
   useEffect(() => {
-    if (theme.current == themes.LIGHT) {
+    if (theme == themes.LIGHT) {
       setMediaIconSrc(music_icon_light);
     } else {
       setMediaIconSrc(music_icon_dark);
@@ -62,7 +62,7 @@ const Footer = () => {
       artist: "Progressence",
     },
   ];
-  const [nightModeOn, setNightModeOn] = useState(false);
+  const [darkModeOn, setDarkModeOn] = useState(false);
   const [songs, setSongs] = useState(trackData);
   const [showIcons, setShowIcons] = useState(false);
   const [showMusicPlayer, setShowMusicPlayer] = useState(false);
@@ -215,8 +215,8 @@ const Footer = () => {
                   className="relative"
                   onClick={(e) => {
                     // setShowIcons(!showIcons);
-                    setNightModeOn(!nightModeOn);
-                    changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
+                    setDarkModeOn(!darkModeOn);
+                    changeTheme(!darkModeOn ? themes.DARK : themes.LIGHT);
                   }}
                 >
                   <img
@@ -224,7 +224,7 @@ const Footer = () => {
                     className="flex"
                     width="155px"
                     height="155px"
-                    src={!nightModeOn ? orb_dark : orb_light}
+                    src={!darkModeOn ? orb_dark : orb_light}
                   ></img>
                 </a>
               </div>
@@ -241,10 +241,10 @@ const Footer = () => {
                     type="checkbox"
                     role="switch"
                     id="flexSwitchCheckDefault"
-                    checked={nightModeOn}
+                    checked={darkModeOn}
                     onChange={(e) => {
-                      setNightModeOn(!nightModeOn);
-                      changeTheme(!nightModeOn ? themes.DARK : themes.LIGHT);
+                      setDarkModeOn(!darkModeOn);
+                      changeTheme(!darkModeOn ? themes.DARK : themes.LIGHT);
                     }}
                   />
                 </div>

@@ -9,14 +9,14 @@ import themes from "../../helpers/themes";
 import Spinner from "../../components/Spinner";
 
 function HomePage() {
-  const theme = useContext(themeContext);
+  const theme = useContext(themeContext).theme;
   const [backgroundSrc, setBackgroundSrc] = useState(bg_light);
-
+  console.log(theme);
   useEffect(() => {
-    if (theme.current == themes.LIGHT) {
-      changeBG(bg_light);
-    } else {
+    if (theme == themes.DARK) {
       changeBG(bg_dark);
+    } else {
+      changeBG(bg_light);
     }
   });
 
@@ -36,7 +36,7 @@ function HomePage() {
           id="home"
           className="parallax-layer home-bg"
         ></img> */}
-        <div className="flex flew-row justify-center items-center h-screen">
+        <div className="flex flew-row justify-center items-center h-screen w-full overflow-hidden">
           <Spinner className="-z-10" />
         </div>
         <video

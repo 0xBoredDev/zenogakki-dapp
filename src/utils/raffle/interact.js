@@ -59,8 +59,8 @@ export const getCurrentWalletConnected = async () => {
       } else {
         return {
           address: "",
-          status: "connect your wallet",
-          success: false,
+          status: "",
+          success: true,
         };
       }
     } catch (err) {
