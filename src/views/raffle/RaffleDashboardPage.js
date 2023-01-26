@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import { themeContext } from "../../App";
+import React, { useEffect, useState } from "react";
 import "../../components/Spinner.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Header from "../../components/Header";
-// import Menu from "../../components/Menu";
+import raffle_dashboard_text from "../../images/raffle_dashboard.svg";
+import divider from "../../images/divider.webp";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import {
   connectWallet,
@@ -17,8 +17,6 @@ import {
 } from "../../utils/raffle/interact";
 
 export default function RaffleDashboardPage() {
-  const theme = useContext(themeContext);
-  console.log(theme);
   const [stage, setStage] = useState(0);
   const [raffles, setRaffles] = useState([]);
   const [raffleSelected, setRaffleSelected] = useState({});
@@ -150,7 +148,7 @@ export default function RaffleDashboardPage() {
   };
 
   const buyTicket = async (quantity) => {
-    console.log("buy ticket", quantity);
+    // console.log("buy ticket", quantity);
 
     setButtonBuy(true);
 
@@ -236,27 +234,30 @@ export default function RaffleDashboardPage() {
   };
 
   return (
-    <main className="bg-purple/[.2] dark:bg-black">
+    <main>
       <ToastContainer />
-      <div className="items-center justify-center w-full h-screen">
-        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl">
-          <div className="flex items-center lg:order-2 connect mt-4">
-            {walletAddress.length > 0 ? (
-              <button
-                disabled
-                className="dark:bg-white/[.3] font-semibold rounded-lg p-1 px-2 sm:p-2 sm:px-4 text-black dark:text-white ml-1.5 secondary-font"
-              >
-                {truncate(walletAddress)}
-              </button>
-            ) : (
-              <button
-                onClick={connectWalletPressed}
-                className="bg-black/[.1] hover:bg-black/[.3] dark:bg-white/[.3] dark:hover:bg-slate-200/[.5] font-semibold rounded-lg p-1 px-2 sm:p-2 sm:px-4 text-black dark:text-white ml-1.5 secondary-font"
-              >
-                Connect Wallet
-              </button>
-            )}
+      <div className="items-center justify-center w-full h-screen bg-black">
+        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl lg:mt-2">
+          <div className="flex items-center mt-3">
+            <button
+              disabled={walletAddress.length > 0}
+              onClick={connectWalletPressed}
+              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_4px_73px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
+            >
+              {walletAddress.length > 0
+                ? truncate(walletAddress)
+                : `Connect Wallet`}
+            </button>
           </div>
+        </div>
+        <div className="flex w-full h-42 justify-center mt-4">
+          <img
+            height="100%"
+            width="100%"
+            id="stakingtext"
+            className="absolute h-18 w-64 sm:w-96 items-start"
+            src={raffle_dashboard_text}
+          />
         </div>
         {stage === 0 ? (
           <>
@@ -267,10 +268,10 @@ export default function RaffleDashboardPage() {
                     <div
                       key={i}
                       role="status"
-                      className="p-4 rounded-xl border-2 border-gray-700 shadow-2xl animate-pulse md:p-6 dark:border-gray-700"
+                      className="p-4 rounded-xl border-2 border-white/[.75] shadow-[0_4px_73px_rgba(255,0,245,0.72)] animate-pulse md:p-6"
                     >
                       <svg
-                        className="w-full h-60 text-black-200"
+                        className="w-full h-60 text-white-200"
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
                         fill="currentColor"
@@ -279,32 +280,32 @@ export default function RaffleDashboardPage() {
                         <path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006 486.1 .0006 456.1L0 456.1z" />
                       </svg>
                       <div className="px-6 py-4">
-                        <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                        <div className="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
                         <div className="flex  mt-10">
                           <div className="flex-1 w-64">
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            <div className="h-2.5 bg-gray-300 rounded-full"></div>
+                            <div className="w-32 h-2 bg-gray-200 rounded-full"></div>
                           </div>
                           <div className="flex-1 w-46">
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            <div className="h-2.5 bg-gray-300 rounded-full"></div>
+                            <div className="w-32 h-2 bg-gray-200 rounded-full"></div>
                           </div>
                         </div>
                         <div className="flex mt-7">
                           <div className="flex-1 w-64">
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            <div className="h-2.5 bg-gray-300 rounded-full"></div>
+                            <div className="w-32 h-2 bg-gray-200 rounded-full"></div>
                           </div>
                           <div className="flex-1 w-46">
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            <div className="h-2.5 bg-gray-300 rounded-full"></div>
+                            <div className="w-32 h-2 bg-gray-200 rounded-full"></div>
                           </div>
                         </div>
                       </div>
                       <div className="px-6 pt-4 pb-2">
                         <button
                           disabled
-                          className="border-2 border-gray-700 text-black font-semibold p-2 px-4 rounded-md w-32 h-10"
+                          className="border-2 border-gray-700 text-white font-semibold p-2 px-4 rounded-md w-32 h-10"
                         ></button>
                       </div>
                       <span className="sr-only secondary-font">Loading...</span>
@@ -313,41 +314,41 @@ export default function RaffleDashboardPage() {
                 })}
               </div>
             ) : raffles.length > 0 ? (
-              <div className="px-6 xl:px-0 sm:px-12 pt-10 pb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-screen-2xl mx-auto">
+              <div className="px-6 2xl:px-0 sm:px-12 pt-10 pb-20 mt-10 sm:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-screen-2xl mx-auto">
                 {raffles.map((item, i) => {
                   return (
                     <div
                       key={i}
-                      className="rounded-xl border-4 border-transparent hover:border-pink overflow-hidden shadow relative md:hover:scale-[1.03] transition bg-white"
+                      className="rounded-xl border-2 border-pink/[34%] p-4 overflow-hidden shadow-[0_4px_86px_rgba(255,0,245,0.34)] relative md:hover:scale-[1.03] transition bg-[#1C012D]"
                     >
                       <a
                         onClick={() => enterRaffle(i)}
                         className="cursor-pointer"
                       >
                         <img
-                          className="w-full h-7/12"
+                          className="w-full h-7/12 rounded-xl"
                           src={`https://ipfs.io/ipfs/${item.imgCid}`}
                           alt="raffle-img"
                         ></img>
                       </a>
                       <div className="p-4 mb-2 h-60">
-                        <div className="font-bold text-xl text-purple mb-3">
+                        <div className="font-normal text-xl text-center text-white mb-3">
                           {item.name}
                         </div>
                         <div className="flex">
                           <div className="flex flex-col basis-1/2 items-start">
-                            <p className="text-sm text-gray-500 font-semibold secondary-font m-0">
+                            <p className="text-sm text-white font-normal secondary-font m-0">
                               Price/Ticket
                             </p>
-                            <span className="text-purple dark:text-pink font-bold secondary-font">
+                            <span className="text-sm text-white font-normal secondary-font">
                               {item.cost / 10 ** 18} ORB
                             </span>
                           </div>
                           <div className="flex flex-col basis-1/2 items-end">
-                            <p className="text-sm text-gray-500 font-semibold secondary-font m-0">
+                            <p className="text-sm text-white font-normal secondary-font m-0">
                               Remaining
                             </p>
-                            <span className="text-purple dark:text-pink font-bold secondary-font">
+                            <span className="text-sm text-white font-normal secondary-font">
                               {item.totalTickets - item.participants.length} /{" "}
                               {item.totalTickets}
                             </span>
@@ -357,10 +358,10 @@ export default function RaffleDashboardPage() {
                       <div className="px-6 pt-4 pb-2 flex justify-center mb-2 absolute bottom-0 inset-x-0">
                         <button
                           onClick={() => enterRaffle(i)}
-                          className="flex flex-col bg-purple items-center border-2 border-gray-700 text-white font-semibold p-2 px-4 rounded-md w-full secondary-font"
+                          className="flex flex-col bg-pink/[22%] items-center  text-white font-normal p-2 px-4 rounded-md w-full secondary-font"
                         >
                           <span>View Raffle</span>
-                          <span className="text-white text-xs font-semibold secondary-font">
+                          <span className="text-white text-xs font-normal secondary-font">
                             {Number(item.status) == 0
                               ? "Not Started"
                               : Number(item.status) == 1 &&
@@ -379,8 +380,8 @@ export default function RaffleDashboardPage() {
             ) : (
               <>
                 <div className="mt-60">
-                  <p className="text-center text-black uppercase font-semibold secondary-font">
-                    no available raffle, check back later.
+                  <p className="text-center text-white uppercase font-normal secondary-font">
+                    no available raffles, check back later.
                   </p>
                 </div>
               </>
@@ -390,71 +391,9 @@ export default function RaffleDashboardPage() {
           <>
             {!loadingPage.raffle ? (
               <div className="">
-                {/* <div className="float-left space-x-1.5">
-                  <button
-                    onClick={enterDashboard}
-                    className="dark:bg-white/[.3] dark:hover:bg-slate-200/[.5] dark:text-white text-black font-semibold p-2 px-4 rounded-md secondary-font"
-                  >
-                    Back
-                  </button>
-                  {buttonBuy ||
-                  Number(raffleSelected.status) == 2 ||
-                  diffDays(raffleSelected.endIn) == 0 ||
-                  raffleSelected.participants.length >=
-                    raffleSelected.totalTickets ? (
-                    <>
-                      
-                    </>
-                  ) : Number(raffleSelected.ticketLimit) == 0 ? (
-                    <>
-                      <button
-                        onClick={() => buyTicket(1)}
-                        className="dark:bg-white/[.3] dark:hover:bg-slate-200/[.5] dark:text-white text-black font-semibold p-2 px-4 rounded-md secondary-font"
-                      >
-                        Buy Ticket: {raffleSelected.cost / 10 ** 18} ORB
-                      </button>
-                    </>
-                  ) : (
-                    <div
-                      className="inline-flex rounded-md shadow-sm"
-                      role="group"
-                    >
-                      <button
-                        onClick={() =>
-                          setTicketQuantity((prev) =>
-                            prev === 1 ? 1 : prev - 1
-                          )
-                        }
-                        type="button"
-                        className="font-black border-2 border-gray-700 text-black p-2 px-4 rounded-md"
-                      >
-                        -
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => buyTicket(ticketQuantity)}
-                        className="border-2 border-gray-700 text-black font-semibold p-2 px-4 rounded-md secondary-font"
-                      >
-                        Buy Ticket:{" "}
-                        {(raffleSelected.cost / 10 ** 18) * ticketQuantity} ORB
-                      </button>
-                      <button
-                        onClick={() =>
-                          setTicketQuantity((prev) =>
-                            prev === 10 ? 10 : prev + 1
-                          )
-                        }
-                        type="button"
-                        className="font-black border-2 border-gray-700 text-black p-2 px-4 rounded-md"
-                      >
-                        +
-                      </button>
-                    </div>
-                  )}
-                </div> */}
-                <div className="max-w-screen-xl mx-auto md:px-8 md:py-4 flex w-full flex-col md:flex-row">
+                <div className="max-w-screen-xl mx-auto md:px-8 md:py-4 flex w-full flex-col md:flex-row mt-10 sm:mt-20">
                   <div className="md:w-1/3 md:mr-4 px-4 pt-4 md:pt-0 md:px-0">
-                    <div className="relative rounded-2xl overflow-hidden mb-4">
+                    <div className="relative rounded-2xl overflow-hidden mb-4 shadow-[0_4px_86px_rgba(255,0,245,0.34)]">
                       <img
                         className="mx-auto"
                         src={`https://ipfs.io/ipfs/${raffleSelected.imgCid}`}
@@ -468,7 +407,7 @@ export default function RaffleDashboardPage() {
                           <div className="flex">
                             <div className="mr-2 lg:mr-6 w-[100px] lg:w-[150px]">
                               <input
-                                className="border-2 w-full bg-transparent text-center border-white dark:border-primary focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none p-3 bg-offbase rounded-2xl text-white font-bold text-2xl"
+                                className="w-full text-center p-3 bg-offbase rounded-xl border-2 border-pink/[34%] overflow-hidden bg-[#1C012D] text-white font-bold text-2xl"
                                 type="number"
                                 name="qty"
                                 id="qty"
@@ -480,7 +419,7 @@ export default function RaffleDashboardPage() {
                             </div>
                             <div className="flex w-full">
                               <button
-                                className="w-full bg-gradient-to-t from-lime-600 to-lime-400 justify-center items-center opacity-90 hover:opacity-100 rounded-xl text-white text-xl font-bold transition"
+                                className="w-full bg-gradient-to-b from-pink to-purple justify-center items-center opacity-90 hover:opacity-100 rounded-xl text-white text-xl font-bold transition"
                                 onClick={() => buyTicket(ticketQuantity)}
                               >
                                 Buy Raffle Ticket
@@ -488,11 +427,11 @@ export default function RaffleDashboardPage() {
                             </div>
                           </div>
                         ) : (
-                          <div className="text-center border-4 border-pink py-2 rounded-xl">
-                            <div className="font-bold text-xl text-black mt-4 secondary-font">
+                          <div className="text-center bg-[#FF00F538] py-2 rounded-xl">
+                            <div className="font-bold text-xl text-white mt-4 secondary-font">
                               Winner
                             </div>
-                            <p className="text-purple font-bold secondary-font">
+                            <p className="text-white font-bold secondary-font">
                               {truncate(raffleSelected.winner)}
                             </p>
                           </div>
@@ -500,61 +439,29 @@ export default function RaffleDashboardPage() {
                       </>
                     )}
                   </div>
-                  <div className="md:w-2/3 bg-white dark:bg-offbase w-full md:rounded-2xl p-4 md:pt-0 mt-4 md:mt-0 flex flex-col justify-between transition">
+                  <div className="flex flex-col justify-between md:w-2/3 w-full rounded-xl border-2 border-pink/[34%] overflow-hidden shadow-[0_4px_86px_rgba(255,0,245,0.34)] bg-[#1C012D] p-4 mt-4 md:mt-0 transition">
+                    <div className="flex items-end md:flex-col gap-x-8 md:gap-x-0 text-sm">
+                      <button
+                        className="flex items-center text-white hover:opacity-80 font-bold ml-1"
+                        onClick={enterDashboard}
+                      >
+                        <AiOutlineArrowLeft className="text-xl text-white/[.48]" />
+                      </button>
+                    </div>
                     <div className="w-full">
-                      <div className="flex flex-col md:flex-row flex-between">
-                        <div className="w-full">
-                          <div>
-                            <strong className="text-4xl pb-1 text-black">
-                              {raffleSelected.name}
-                            </strong>
-                          </div>
-                          {/* <div className="flex mt-3 md:mt-1 text-sm">
-                            <div className="text-center md:text-left ml-8 text-slate-400">
-                              <span>
-                                Total Ticket Value:{" "}
-                                <strong className="block md:inline text-purple-600">
-                                  
-                                </strong>
-                              </span>
-                            </div>
-                          </div> */}
-                        </div>
-                        <div className="flex justify-between md:justify-start md:flex-col mt-4 md:mt-0 gap-x-8 md:gap-x-0 text-sm">
-                          <button
-                            className="flex items-center text-purple-600 hover:opacity-80 font-bold ml-1"
-                            onClick={enterDashboard}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 192 512"
-                              className="w-2 mr-1 fill-current"
-                            >
-                              <path d="M4.2 247.5L151 99.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17L69.3 256l118.5 119.7c4.7 4.7 4.7 12.3 0 17L168 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 264.5c-4.7-4.7-4.7-12.3 0-17z"></path>
-                            </svg>
-                            <span className="ml-1">Back</span>
-                          </button>
-                          {/* <button className="flex items-center text-purple-600 hover:opacity-80 font-bold my-2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 512 512"
-                              className="w-4 mr-1 fill-current"
-                            >
-                              <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path>
-                            </svg>{" "}
-                            Share
-                          </button> */}
-                        </div>
-                      </div>
-
                       <ul
-                        className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none pl-0 mb-0 mt-4 border-0"
+                        className="nav nav-tabs flex items-center list-none pl-0 mb-0 mt-3 border-0"
                         id="tabs-tab"
                         role="tablist"
                       >
+                        <li>
+                          <span className="flex text-lg sm:text-2xl text-white mr-8 tracking-normal lg:tracking-widest pl-8">
+                            {raffleSelected.name}
+                          </span>
+                        </li>
                         <li className="nav-item" role="presentation">
                           <button
-                            className="text-purple [&.active]:text-white [&.active]:bg-purple font-bold px-4 py-2 rounded-full transition active"
+                            className="text-sm text-white/[.48] [&.active]:text-white [&.active]:bg-purple font-bold px-2 py-0 rounded-full transition active"
                             href="#tabs-home"
                             id="tabs-home-tab"
                             data-bs-toggle="pill"
@@ -568,7 +475,7 @@ export default function RaffleDashboardPage() {
                         </li>
                         <li className="nav-item" role="presentation">
                           <button
-                            className="text-purple font-bold px-4 py-2 rounded-full transition [&.active]:text-white [&.active]:bg-purple"
+                            className="text-sm text-white/[.48] font-bold ml-2 px-2 py-0 rounded-full transition [&.active]:text-white [&.active]:bg-purple"
                             href="#tabs-profile"
                             id="tabs-profile-tab"
                             data-bs-toggle="pill"
@@ -581,7 +488,16 @@ export default function RaffleDashboardPage() {
                           </button>
                         </li>
                       </ul>
-                      <div className="flex justify-between items-center pt-3 mb-3">
+                      <div className="flex flex-col w-full mt-4">
+                        <img
+                          height="100%"
+                          width="100%"
+                          id="stakingtext"
+                          className=""
+                          src={divider}
+                        />
+                      </div>
+                      <div className="flex justify-between items-center pt-3 mb-3 pl-8">
                         <div
                           className="tab-content w-full"
                           id="tabs-tabContent"
@@ -592,13 +508,13 @@ export default function RaffleDashboardPage() {
                             role="tabpanel"
                             aria-labelledby="tabs-home-tab"
                           >
-                            <div className="py-4 border-t border-b border-gray-200 dark:border-primary">
+                            <div className="py-4">
                               <div className="grid grid-cols-1 md:grid-cols-2 font-bold gap-3 gap-y-6">
                                 <div>
-                                  <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                  <span className="block text-white">
                                     Raffle Status:
-                                  </strong>
-                                  <div className="text-xl text-purple">
+                                  </span>
+                                  <div className="text-xl text-white/[.48]">
                                     {Number(raffleSelected.status) == 0
                                       ? "Not Started"
                                       : Number(raffleSelected.status) == 1 &&
@@ -613,31 +529,31 @@ export default function RaffleDashboardPage() {
                                 </div>
                                 <div className="flex">
                                   <div className="w-1/2">
-                                    <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                    <span className="block  text-white">
                                       Ticket Cost:
-                                    </strong>
-                                    <div className="text-xl text-pruple">
+                                    </span>
+                                    <div className="text-xl text-white/[.48]">
                                       {raffleSelected.cost / 10 ** 18} ORB
                                     </div>
                                   </div>
                                 </div>
                                 <div className="">
-                                  <strong className="block text-sm text-gray-500 dark:text-purple-400/70">
+                                  <span className="block text-white">
                                     Raffle Start Date:
-                                  </strong>
-                                  <div className="text-xl text-pruple">
+                                  </span>
+                                  <div className="text-xl text-white/[.48]">
                                     Jan 6, 2023
                                   </div>
                                 </div>
                                 <div className="">
-                                  <strong className="block text-sm text-gray-500">
-                                    Tickets Sold:
-                                  </strong>
-                                  <div className="text-purple text-xl">
+                                  <span className="block text-white">
+                                    Tickets Remaining:
+                                  </span>
+                                  <div className="text-white/[.48] text-xl">
                                     {raffleSelected.totalTickets -
                                       raffleSelected.participants.length}{" "}
                                     / {raffleSelected.totalTickets}
-                                    {/* <span className="block text-black dark:text-white font-normal text-sm">
+                                    {/* <span className="block text-white font-normal text-sm">
                                 (Unique Ticket Holders)
                               </span> */}
                                   </div>
@@ -651,48 +567,81 @@ export default function RaffleDashboardPage() {
                             role="tabpanel"
                             aria-labelledby="tabs-profile-tab"
                           >
-                            <div className="py-4 border-t border-b border-gray-200 dark:border-primary">
-                              <p className="font-semibold text-black">
-                                Participants
-                              </p>
-                              <div className="overflow-y-scroll">
-                                {participants(raffleSelected.participants).map(
-                                  (item, i) => {
+                            <div className="grid grid-cols-2">
+                              <div className="flex flex-col">
+                                <p className="text-white">Participants</p>
+                              </div>
+                              <div className="flex flex-col">
+                                <p className="text-white">Entries</p>
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-2 h-64 overflow-y-auto">
+                              <div className="flex flex-col">
+                                <div className="">
+                                  {participants(
+                                    raffleSelected.participants
+                                  ).map((item, i) => {
                                     return (
                                       <p
                                         key={i}
-                                        className="text-black font-extralight secondary-font"
+                                        className="text-white/[.48] font-extralight secondary-font"
                                       >
-                                        {truncate(item.address)} -{" "}
+                                        {truncate(item.address)}
+                                      </p>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                              <div className="flex flex-col">
+                                <div className="">
+                                  {participants(
+                                    raffleSelected.participants
+                                  ).map((item, i) => {
+                                    return (
+                                      <p
+                                        key={i}
+                                        className="text-white/[.48] font-extralight secondary-font"
+                                      >
                                         {item.quantity}
                                       </p>
                                     );
-                                  }
-                                )}
+                                  })}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="p-2 border border-purple-200 rounded-xl bg-pink/[.5] mt-4">
-                        <p className="font-bold text-lg text-purple">
-                          Terms &amp; Conditions
-                        </p>
-                        <ol className="list-decimal dark:text-white pl-5">
-                          <li>
-                            All NFT prizes are held by rafffle in escrow and can
-                            be claimed by the winner or creator once the draw is
-                            done.
-                          </li>
-                          <li>
-                            Raffle tickets cannot be refunded once bought.
-                          </li>
-                          <li>
-                            Raffle tickets will not be refunded if you did not
-                            win the raffle.
-                          </li>
-                          <li>You can only buy 20% of total tickets.</li>
-                        </ol>
+                      <div className="flex flex-col w-full mt-4">
+                        <img
+                          height="100%"
+                          width="100%"
+                          id="stakingtext"
+                          className=""
+                          src={divider}
+                        />
+                      </div>
+                      <div className="p-8">
+                        <div className="px-10 sm:px-20 py-5 sm:py-10 rounded-xl bg-[#FF00F538] mt-4">
+                          <p className="text-lg text-white/[.25]">
+                            Terms &amp; Conditions
+                          </p>
+                          <ol className="list-decimal text-white/[.25] pl-5">
+                            <li>
+                              All NFT prizes are held by rafffle in escrow and
+                              can be claimed by the winner or creator once the
+                              draw is done.
+                            </li>
+                            <li>
+                              Raffle tickets cannot be refunded once bought.
+                            </li>
+                            <li>
+                              Raffle tickets will not be refunded if you did not
+                              win the raffle.
+                            </li>
+                            <li>You can only buy 20% of total tickets.</li>
+                          </ol>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -707,13 +656,13 @@ export default function RaffleDashboardPage() {
                     ></img>
                   </div>
                   <div className="rounded-xl border-4 border-transparent hover:border-pink overflow-hidden shadow relative md:hover:scale-[1.03] transition bg-white">
-                    <div className="font-bold text-xl text-black mb-3 mt-5 secondary-font">
+                    <div className="font-bold text-xl text-white mb-3 mt-5 secondary-font">
                       {raffleSelected.name}
                     </div>
-                    <p className="text-black font-extralight secondary-font">
+                    <p className="text-white font-extralight secondary-font">
                       Status
                     </p>
-                    <span className="text-black font-semibold secondary-font">
+                    <span className="text-white font-semibold secondary-font">
                       {Number(raffleSelected.status) == 0
                         ? "Not Started"
                         : Number(raffleSelected.status) == 1 &&
@@ -724,10 +673,10 @@ export default function RaffleDashboardPage() {
                         : "Ended"}
                     </span>
                     <div className="flex-1 w-64 mt-4">
-                      <p className="text-black font-extralight secondary-font">
+                      <p className="text-white font-extralight secondary-font">
                         Tickets
                       </p>
-                      <span className="text-black font-semibold secondary-font">
+                      <span className="text-white font-semibold secondary-font">
                         {raffleSelected.totalTickets -
                           raffleSelected.participants.length}{" "}
                         / {raffleSelected.totalTickets} -{" "}
@@ -740,10 +689,10 @@ export default function RaffleDashboardPage() {
                       {Number(raffleSelected.status) == 1 &&
                         diffDays(raffleSelected.endIn) != 0 && (
                           <>
-                            <p className="text-black font-extralight secondary-font">
+                            <p className="text-white font-extralight secondary-font">
                               End In
                             </p>
-                            <span className="text-black font-semibold secondary-font">
+                            <span className="text-white font-semibold secondary-font">
                               {diffDays(raffleSelected.endIn)}
                             </span>
                           </>
@@ -751,7 +700,7 @@ export default function RaffleDashboardPage() {
                     </div>
                   </div>
                   <div className="rounded-xl border-2 border-gray-700 p-10 w-80 md:w-full lg:w-full">
-                    <div className="font-bold text-xl text-black mb-3 secondary-font">
+                    <div className="font-bold text-xl text-white mb-3 secondary-font">
                       Participants
                     </div>
                     <div
@@ -763,7 +712,7 @@ export default function RaffleDashboardPage() {
                           return (
                             <p
                               key={i}
-                              className="text-black font-extralight secondary-font"
+                              className="text-white font-extralight secondary-font"
                             >
                               {truncate(item.address)} - {item.quantity}
                             </p>
@@ -773,10 +722,10 @@ export default function RaffleDashboardPage() {
                     </div>
                     {!/^0x0+$/.test(raffleSelected.winner) && (
                       <>
-                        <div className="font-bold text-xl text-black mt-4 secondary-font">
+                        <div className="font-bold text-xl text-white mt-4 secondary-font">
                           Winner
                         </div>
-                        <p className="text-black font-extralight secondary-font">
+                        <p className="text-white font-extralight secondary-font">
                           {truncate(raffleSelected.winner)}
                         </p>
                       </>
@@ -788,7 +737,7 @@ export default function RaffleDashboardPage() {
               <div className="text-center mt-60">
                 <div role="status">
                   <svg
-                    className="inline mr-2 w-10 h-10 text-black-200 animate-spin dark:text-black-600 fill-gray-600"
+                    className="inline mr-2 w-10 h-10 text-white-200 animate-spin fill-gray-600"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -809,13 +758,13 @@ export default function RaffleDashboardPage() {
           </>
         )}
       </div>
-      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+      {/* <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
         <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white dark:text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-black/[.1] dark:bg-white/[.1] rounded py-0 px-1">
             raffle
           </span>
         </h3>
-      </div>
+      </div> */}
     </main>
   );
 }

@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import menu_light from "../images/menu_light.png";
 import menu_dark from "../images/menu_dark.png";
 import gem from "../images/gem3.png";
-import logo_light from "../images/menu_logo_white.png";
-import logo_dark from "../images/menu_logo_dark.png";
 import { FaTwitter, FaDiscord } from "react-icons/fa";
 import { GiSailboat } from "react-icons/gi";
 import { themeContext } from "../App";
@@ -141,7 +139,7 @@ const Menu = () => {
                   className="social-icon"
                   target="_blank"
                   rel="noreferrer"
-                  href=""
+                  href="https://twitter.com/zenogakki?s=11&t=0yRkX8FJTYUdvCdP1SzhHg"
                 >
                   <FaTwitter className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                 </a>
@@ -149,7 +147,7 @@ const Menu = () => {
                   className="social-icon"
                   target="_blank"
                   rel="noreferrer"
-                  href=""
+                  href="https://discord.com/invite/projectzenogakki"
                 >
                   <FaDiscord className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                 </a>
@@ -157,7 +155,7 @@ const Menu = () => {
                   className="social-icon"
                   target="_blank"
                   rel="noreferrer"
-                  href=""
+                  href="https://t.co/ruxXGaXmer"
                 >
                   <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                 </a>

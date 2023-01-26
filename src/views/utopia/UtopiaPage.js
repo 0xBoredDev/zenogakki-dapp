@@ -5,6 +5,7 @@ import { Modal } from "bootstrap";
 import utopia from "../../images/utopia/utopia.png";
 import utopia_sm from "../../images/utopia/utopia_vertical.png";
 //earth
+import earth from "../../images/utopia/earth/earth.svg";
 import earth1 from "../../images/utopia/earth/earth1.png";
 import earth2 from "../../images/utopia/earth/earth2.png";
 import earth3 from "../../images/utopia/earth/earth3.png";
@@ -12,6 +13,7 @@ import earthv1 from "../../images/utopia/earth/earthv1.png";
 import earthv2 from "../../images/utopia/earth/earthv2.png";
 import earthv3 from "../../images/utopia/earth/earthv3.png";
 //fire
+import fire from "../../images/utopia/fire/fire.svg";
 import fire1 from "../../images/utopia/fire/fire1.png";
 import fire2 from "../../images/utopia/fire/fire2.png";
 import fire3 from "../../images/utopia/fire/fire3.png";
@@ -19,6 +21,7 @@ import firev1 from "../../images/utopia/fire/firev1.png";
 import firev2 from "../../images/utopia/fire/firev2.png";
 import firev3 from "../../images/utopia/fire/firev3.png";
 //light
+import light from "../../images/utopia/light/light.svg";
 import light1 from "../../images/utopia/light/light1.png";
 import light2 from "../../images/utopia/light/light2.png";
 import light3 from "../../images/utopia/light/light3.png";
@@ -26,6 +29,7 @@ import lightv1 from "../../images/utopia/light/lightv1.png";
 import lightv2 from "../../images/utopia/light/lightv2.png";
 import lightv3 from "../../images/utopia/light/lightv3.png";
 //mecha
+import mecha from "../../images/utopia/mecha/mecha.svg";
 import mecha1 from "../../images/utopia/mecha/mecha1.png";
 import mecha2 from "../../images/utopia/mecha/mecha2.png";
 import mecha3 from "../../images/utopia/mecha/mecha3.png";
@@ -33,6 +37,7 @@ import mechav1 from "../../images/utopia/mecha/mechav1.png";
 import mechav2 from "../../images/utopia/mecha/mechav2.png";
 import mechav3 from "../../images/utopia/mecha/mechav3.png";
 //lostcity
+import lostcity from "../../images/utopia/lostcity/lostcity.svg";
 import lostcity1 from "../../images/utopia/lostcity/lostcity1.png";
 import lostcity2 from "../../images/utopia/lostcity/lostcity2.png";
 import lostcity3 from "../../images/utopia/lostcity/lostcity3.png";
@@ -40,6 +45,7 @@ import lostcityv1 from "../../images/utopia/lostcity/lostcityv1.png";
 import lostcityv2 from "../../images/utopia/lostcity/lostcityv2.png";
 import lostcityv3 from "../../images/utopia/lostcity/lostcityv3.png";
 //wind
+import wind from "../../images/utopia/wind/wind.svg";
 import wind1 from "../../images/utopia/wind/wind1.png";
 import wind2 from "../../images/utopia/wind/wind2.png";
 import wind3 from "../../images/utopia/wind/wind3.png";
@@ -47,6 +53,7 @@ import windv1 from "../../images/utopia/wind/windv1.png";
 import windv2 from "../../images/utopia/wind/windv2.png";
 import windv3 from "../../images/utopia/wind/windv3.png";
 //water
+import water from "../../images/utopia/water/water.svg";
 import water1 from "../../images/utopia/water/water1.png";
 import water2 from "../../images/utopia/water/water2.png";
 import water3 from "../../images/utopia/water/water3.png";
@@ -54,6 +61,7 @@ import waterv1 from "../../images/utopia/water/waterv1.png";
 import waterv2 from "../../images/utopia/water/waterv2.png";
 import waterv3 from "../../images/utopia/water/waterv3.png";
 //mystical
+import mystical from "../../images/utopia/mystical/mystical.svg";
 import mystical1 from "../../images/utopia/mystical/mystical1.png";
 import mystical2 from "../../images/utopia/mystical/mystical2.png";
 import mystical3 from "../../images/utopia/mystical/mystical3.png";
@@ -61,9 +69,11 @@ import mysticalv1 from "../../images/utopia/mystical/mysticalv1.png";
 import mysticalv2 from "../../images/utopia/mystical/mysticalv2.png";
 import mysticalv3 from "../../images/utopia/mystical/mysticalv3.png";
 //theunknown
+import theunknown from "../../images/utopia/theunknown/theunknown.svg";
 import theunknown1 from "../../images/utopia/theunknown/theunknown1.png";
 import theunknownv1 from "../../images/utopia/theunknown/theunknownv1.png";
 //shadow
+import shadow from "../../images/utopia/shadow/shadow.svg";
 import shadow1 from "../../images/utopia/shadow/shadow1.png";
 import shadow2 from "../../images/utopia/shadow/shadow2.png";
 import shadow3 from "../../images/utopia/shadow/shadow3.png";
@@ -166,7 +176,7 @@ function UtopiaPage() {
   }, []);
 
   function showItem(element = "") {
-    console.log("showItem()");
+    // console.log("showItem()");
     setModalText(element);
     setModalImgs(elemImages[element.replace(" ", "")]);
     utopiaModal.show();
@@ -229,6 +239,7 @@ function UtopiaPage() {
               height="100%"
               className="absolute"
               src={smallView ? utopia_sm : utopia}
+              alt="utopia"
             />
           </div>
         </div>
@@ -243,15 +254,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={lostcity}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("lost city");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -268,15 +281,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={mecha}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("mecha");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -293,15 +308,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={water}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("water");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -309,7 +326,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[36%] left-[70%] lg:top-[23%] lg:left-[75%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[36%] left-[70%] lg:top-[23%] lg:left-[77%]">
               <div className="relative">
                 <div>
                   <button
@@ -318,15 +335,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={wind}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("wind");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -334,7 +353,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[10%] left-[36%] lg:top-[12%] lg:left-[30%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[10%] left-[36%] lg:top-[10%] lg:left-[30%]">
               <div className="relative">
                 <div>
                   <button
@@ -343,15 +362,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white z-100"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={light}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("light");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -367,15 +388,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={earth}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("earth");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -392,15 +415,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={fire}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("fire");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -417,15 +442,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={mystical}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("mystical");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -441,15 +468,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={theunknown}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("the unknown");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>
@@ -465,15 +494,17 @@ function UtopiaPage() {
                     type="button"
                     aria-expanded="false"
                   >
-                    <div className="w-8 h-8">
+                    <div className="w-12 h-12">
                       <span className="flex h-full w-full transition-all duration-1000 hover:opacity-100">
-                        <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-gray-100/70"></span>
-                        <span
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-5 w-5 bg-white"
+                        <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
+                        <img
+                          src={shadow}
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          alt="utopia_icon"
                           onClick={(e) => {
                             showItem("shadow");
                           }}
-                        ></span>
+                        ></img>
                       </span>
                     </div>
                   </button>

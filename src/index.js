@@ -7,7 +7,7 @@ import "./styles/citypopmain.css";
 import "./styles/citypopdigital.css";
 // import "./styles/custom.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap";
+// import "bootstrap";
 import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 const container = document.getElementById("app");

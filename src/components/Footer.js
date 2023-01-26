@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import orb_light from "../images/orb_light.png";
-import orb_dark from "../images/orb_dark.png";
+import orb_light from "../images/orb_light.svg";
+import orb_dark from "../images/orb_dark.svg";
 import {
   TbPlayerPlay,
   TbPlayerPause,
@@ -16,7 +16,6 @@ import music_icon_dark from "../images/music_icon_dark.png";
 import cyberpunkAudio from "../music/Cyberpunk.wav";
 import futuristicAudio from "../music/Futuristic.mp3";
 import introcyberpunkAudio from "../music/Into_Cyberpunk.mp3";
-// import MediaPlayer from "./MediaPlayer";
 
 const Footer = () => {
   const { changeTheme } = useContext(themeContext);
@@ -24,7 +23,7 @@ const Footer = () => {
   const [mediaIconSrc, setMediaIconSrc] = useState(music_icon_light);
 
   useEffect(() => {
-    if (theme == themes.LIGHT) {
+    if (theme === themes.LIGHT) {
       setMediaIconSrc(music_icon_light);
     } else {
       setMediaIconSrc(music_icon_dark);
@@ -71,7 +70,7 @@ const Footer = () => {
   const [curTrack, setCurTrack] = useState(songs[0]);
 
   function toggleMediaPlayer() {
-    console.log("toggle media player");
+    // console.log("toggle media player");
     var mediaLogo = document.getElementById("mediaLogo").classList;
 
     if (mediaLogo.contains("zoomed")) {
@@ -94,7 +93,7 @@ const Footer = () => {
   }
 
   function togglePlay(e) {
-    console.log("togglePlay()");
+    // console.log("togglePlay()");
     // console.log(
     //   `${trackIsPlaying ? "track is playing" : "track is not playing"}`
     // );
@@ -121,16 +120,16 @@ const Footer = () => {
       resolve(trackWasPlaying);
     })
       .then((wasPlaying) => {
-        console.log("then");
+        // console.log("then");
         const numTracks = songs.length;
         var nextTrackNum = curTrackNum + 1;
         if (nextTrackNum >= numTracks) {
           nextTrackNum = 0;
         }
-        console.log(`next song ${songs[nextTrackNum].name}`);
+        // console.log(`next song ${songs[nextTrackNum].name}`);
         setCurTrackNum(nextTrackNum);
         setCurTrack(songs[nextTrackNum]);
-        console.log(wasPlaying);
+        // console.log(wasPlaying);
         if (wasPlaying) {
           songs[nextTrackNum].src.currentTime = 0;
           songs[nextTrackNum].src.play();
@@ -140,7 +139,7 @@ const Footer = () => {
         return wasPlaying;
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         return err;
       });
   }
@@ -154,13 +153,13 @@ const Footer = () => {
       resolve(trackWasPlaying);
     })
       .then((wasPlaying) => {
-        console.log("then");
+        // console.log("then");
         const numTracks = songs.length;
         var nextTrackNum = curTrackNum - 1;
         if (nextTrackNum < 0) {
           nextTrackNum = numTracks - 1;
         }
-        console.log(`next song ${songs[nextTrackNum].name}`);
+        // console.log(`next song ${songs[nextTrackNum].name}`);
         setCurTrackNum(nextTrackNum);
         setCurTrack(songs[nextTrackNum]);
         if (wasPlaying) {
@@ -172,7 +171,8 @@ const Footer = () => {
         return wasPlaying;
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        return err;
       });
   }
 
@@ -183,7 +183,7 @@ const Footer = () => {
           {!smallView || (smallView && !showMusicPlayer) ? (
             <div className="grow-0 social" id="social">
               <div>
-                {showIcons && (
+                {/* {showIcons && (
                   <div className="social-icons">
                     <a
                       className="social-icon"
@@ -210,7 +210,7 @@ const Footer = () => {
                       <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
                     </a>
                   </div>
-                )}
+                )} */}
                 <a
                   className="relative"
                   onClick={(e) => {
@@ -222,8 +222,8 @@ const Footer = () => {
                   <img
                     id="orbicon"
                     className="flex"
-                    width="155px"
-                    height="155px"
+                    width="100px"
+                    height="100px"
                     src={!darkModeOn ? orb_dark : orb_light}
                   ></img>
                 </a>

@@ -117,12 +117,12 @@ export const approveAllowance = async (address, amount) => {
       to: tokenContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt", receipt);
+      // console.log("receipt", receipt);
       response.success = true;
       response.status = "Allowance approved successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -138,12 +138,12 @@ export const purchaseTicket = async (address, tickeId, quantity) => {
       to: raffleContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt", receipt);
+      // console.log("receipt", receipt);
       response.success = true;
       response.status = "Ticket bought successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });

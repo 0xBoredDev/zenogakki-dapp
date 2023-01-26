@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import throne from "../../images/throne.png";
 import arrow from "../../images/arrow.png";
-import swordsAudio from "../../sounds/swords.mp3";
 
 function RafflePage() {
   const navigate = useNavigate();
-  const swordsSound = new Audio(swordsAudio);
 
   function toDashboard() {
     var arrow = document.getElementById("arrow");
     arrow.classList.add("flash");
-    swordsSound.play();
     setTimeout(() => {
       navigate("/raffle/dashboard");
     }, 2000);

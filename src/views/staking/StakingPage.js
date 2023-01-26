@@ -1,32 +1,25 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import backgroundSrc from "../../images/staking.png";
 import backgroundl from "../../images/staking_l.png";
 import backgroundr from "../../images/staking_r.png";
-import stakingAudio from "../../sounds/staking.mp3";
+import staking_text from "../../images/staking.svg";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { connectWallet } from "../../utils/staking/interact";
 
-import { themeContext } from "../../App";
-import themes from "../../helpers/themes";
-
 const StakingPage = () => {
-  const theme = useContext(themeContext);
-  console.log(theme);
   const navigate = useNavigate();
   const [walletAddress, setWalletAddress] = useState("");
-  const stakingSound = new Audio(stakingAudio);
 
   useEffect(() => {
     addWalletListener();
+    gsap.to("#stakingbgl", { duration: 1.5, x: 0, y: 0 });
+    gsap.to("#stakingbgr", { duration: 1.5, x: 0, y: 0 });
   }, []);
 
   function toDashboard() {
-    gsap.to("#stakingbgl", { duration: 1.5, x: 0, y: 0 });
-    gsap.to("#stakingbgr", { duration: 1.5, x: 0, y: 0 });
-    stakingSound.play();
     setTimeout(() => {
       navigate("/staking/dashboard");
     }, 2000);
@@ -74,52 +67,61 @@ const StakingPage = () => {
             left: "50%",
           }}
         >
-          <div style={{ willChange: "transform" }}>
-            <img
-              height="100%"
-              id="stakingbg"
-              className="absolute"
-              src={backgroundSrc}
-            />
-            <div className="flex flex-row justify-center h-full">
-              {walletAddress.length > 0 ? (
-                <button
-                  disabled
-                  className="relative mt-32 border-solid border-2 border-gray-700 font-semibold rounded-lg p-2 px-4 text-gray"
-                >
-                  {truncate(walletAddress)}
-                </button>
-              ) : (
-                <button
-                  onClick={connectWalletPressed}
-                  className="relative mt-32 border-solid border-2 border-gray-700 font-semibold text-lg sm:text-xl lg:text-3xl rounded-lg p-1 px-2 sm:p-2 sm:px-4 text-gray"
-                >
-                  Connect Wallet
-                </button>
-              )}
+          <img
+            height="100%"
+            id="stakingbg"
+            className="absolute"
+            src={backgroundSrc}
+          />
+          <div className="absolute flex justify-center items-center w-full h-full p-10 sm:p-2 transition">
+            <div className="flex flex-col rounded-2xl bg-[#383838]/[.59] items-center min-w-max min-h-max h-64 lg:h-72 2xl:h-96 w-2/6 py-2 px-8 top-[50%] mb-32 sm:mb-20">
+              <div className="flex w-full h-full justify-center px-8 py-4">
+                <img
+                  height="100%"
+                  width="100%"
+                  id="stakingtext"
+                  className="absolute h-18 w-64 items-start"
+                  src={staking_text}
+                />
+                {walletAddress.length > 0 ? (
+                  <button
+                    disabled
+                    className="self-end h-auto bg-gradient-to-r from-[#FF00F5]/[.75] to-[#6B61F3] border-2 border-t-white border-x-white/[.5] border-b-transparent font-semibold text-lg sm:text-xl lg:text-2xl rounded-2xl py-2 px-4 sm:px-4 text-white z-50"
+                  >
+                    {truncate(walletAddress)}
+                  </button>
+                ) : (
+                  <button
+                    onClick={connectWalletPressed}
+                    className="self-end h-auto bg-gradient-to-r from-[#FF00F5]/[.75] to-[#6B61F3] border-2 border-t-white border-x-white/[.5] border-b-transparent font-semibold text-lg sm:text-xl lg:text-2xl rounded-2xl py-2 px-4 sm:px-4 text-white z-50"
+                  >
+                    Connect Wallet
+                  </button>
+                )}
+              </div>
             </div>
-            <img
-              id="stakingbgr"
-              height="100%"
-              className="absolute"
-              src={backgroundr}
-            />
-            <img
-              id="stakingbgl"
-              height="100%"
-              className="absolute"
-              src={backgroundl}
-            />
           </div>
+          <img
+            id="stakingbgr"
+            height="100%"
+            className="absolute"
+            src={backgroundr}
+          />
+          <img
+            id="stakingbgl"
+            height="100%"
+            className="absolute"
+            src={backgroundl}
+          />
         </div>
       </div>
-      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+      {/* <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
         <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-white/[.3] rounded py-0 px-1">
             Staking
           </span>
         </h3>
-      </div>
+      </div> */}
     </main>
   );
 };

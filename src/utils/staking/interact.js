@@ -148,7 +148,7 @@ export const getTokenInformation = async (wallectAddress) => {
     // console.log("uri", rawUriS);
     let cleanUriS = rawUriS.replace("ipfs://", "https://ipfs.io/ipfs/");
     let metadataS = await axios.get(`${cleanUriS}`).catch(function (error) {
-      console.log(error.toJSON());
+      // console.log(error.toJSON());
     });
     let rawImgS = metadataS.data.image;
     var nameS = metadataS.data.name;
@@ -172,12 +172,12 @@ export const setApproval = async (wallectAddress) => {
       to: nftContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Approved successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -193,12 +193,12 @@ export const mintNFT = async (contractAddress, wallectAddress) => {
       to: contractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Mint successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -254,12 +254,12 @@ export const claimReward = async (wallectAddress) => {
       to: stakingContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Rewards claimed";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -274,12 +274,12 @@ export const stakeNFT = async (token, wallectAddress) => {
       to: stakingContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Staked successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -294,12 +294,12 @@ export const batchStakeNFT = async (tokens, wallectAddress) => {
       to: stakingContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Staked successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -314,12 +314,12 @@ export const unStakeNFT = async (token, wallectAddress) => {
       to: stakingContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Unstacked successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });
@@ -334,12 +334,12 @@ export const batchUnStakeNFT = async (tokens, wallectAddress) => {
       to: stakingContractAddress,
     })
     .then(function (receipt) {
-      console.log("receipt: ", receipt);
+      // console.log("receipt: ", receipt);
       response.success = true;
       response.status = "Unstacked successfully";
     })
     .catch(function (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
       response.success = false;
       response.status = "Something went wrong";
     });

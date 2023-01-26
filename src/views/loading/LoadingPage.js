@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import karth from "../../images/karth.png";
 // import gem from "../../images/gem.png";
@@ -16,6 +16,9 @@ function LoadingPage() {
   const gemSound = new Audio(gemAudio);
   const loadingSound = new Audio(loadingAudio);
   const navigate = useNavigate();
+  let tl = gsap.timeline({
+    repeat: 0,
+  });
 
   useEffect(() => {
     var gem = document.getElementById("gem");
@@ -26,7 +29,7 @@ function LoadingPage() {
     };
 
     gem.onclick = () => {
-      console.log("gem clicked");
+      // console.log("gem clicked");
       gemSound.play();
       var karth = document.getElementById("karth");
       karth.className = "parallax-layer loading-bg flash";
@@ -36,51 +39,56 @@ function LoadingPage() {
         ease: "none",
         immediateRender: true,
         motionPath: {
-          path: [{ scale: 1.5 }, { scale: 0.6 }],
+          path: [{ scale: 1.25 }],
           curviness: 0,
         },
       });
 
-      gsap.to("#gem", {
-        duration: 1,
-        ease: "back.out(.2)",
+      tl.to("#gem", {
+        duration: 3,
+        ease: "none",
         immediateRender: true,
         motionPath: {
-          path: "M 150,200 l -150 200",
+          path: "M 150 200 l -150 200",
           align: "#path",
           alignOrigin: [0.5, 0.5],
         },
       });
 
-      setTimeout(() => {
-        gsap.to("#gem", {
-          duration: 3,
-          ease: "back.out(.2)",
-          immediateRender: true,
-          motionPath: {
-            path: `M 0,400 l ${window.innerWidth * 0.6} ${-(
-              window.innerHeight * 0.4
-            )})`,
-            align: "#path",
-            alignOrigin: [0.5, 0.5],
-          },
-        });
-      }, 1000);
+      tl.call(navigateHome);
 
-      setTimeout(() => {
-        gsap.to("#gem", {
-          duration: 2,
-          ease: "back.out(.2)",
-          rotation: -75,
-        });
-      }, 1500);
+      // gsap.to("#gem", {
+      //   duration: 3,
+      //   ease: "back.out(.2)",
+      //   immediateRender: true,
+      //   motionPath: {
+      //     path: `M 0,400 l ${window.innerWidth * 0.6} ${-(
+      //       window.innerHeight * 0.4
+      //     )})`,
+      //     align: "#path",
+      //     alignOrigin: [0.5, 0.5],
+      //   },
+      // });
 
-      setTimeout(() => {
-        navigate("/home");
-        loadingSound.pause();
-      }, 3500);
+      // setTimeout(() => {
+      //   gsap.to("#gem", {
+      //     duration: 2,
+      //     ease: "back.out(.2)",
+      //     rotation: -75,
+      //   });
+      // }, 1500);
+
+      // setTimeout(() => {
+      //   navigate("/home");
+      //   loadingSound.pause();
+      // }, 3500);
     };
   });
+
+  function navigateHome() {
+    navigate("/home");
+    loadingSound.pause();
+  }
 
   return (
     <div className="parallax">

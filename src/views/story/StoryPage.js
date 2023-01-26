@@ -89,6 +89,7 @@ function StoryPage() {
     var tl = gsap.timeline(),
       mySplitText = new SplitText("#storytext", {
         type: "chars,words",
+        linesClass: "secondary-font",
       }),
       chars = mySplitText.chars;
     gsap.set("#storytext", {});
@@ -102,29 +103,29 @@ function StoryPage() {
   }
 
   function next() {
-    console.log("next()");
+    // console.log("next()");
     // mySplitText.revert();
     if (storyElement.current) {
       let i = storyNum + 1;
-      console.log(storyElement.current);
+      // console.log(storyElement.current);
       storyElement.current.innerHTML = stories[i].text;
       setStoryNum(i);
     }
   }
 
   function back() {
-    console.log("back()");
+    // console.log("back()");
     // mySplitText.revert();
     if (storyElement.current) {
       let i = storyNum - 1;
-      console.log(storyElement.current);
-      storyElement.current.innerHTML = stories[storyNum].text;
+      // console.log(storyElement.current);
+      storyElement.current.innerHTML = stories[i].text;
       setStoryNum(i);
     }
   }
 
   function closeDialog() {
-    console.log("close dialog");
+    // console.log("close dialog");
     setOpen(false);
     setStoryNum(0);
   }
@@ -190,7 +191,7 @@ function StoryPage() {
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -200,7 +201,7 @@ function StoryPage() {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-black text-left shadow-xl transition-all w-full sm:my-8 max-w-2xl">
                   <div className="bg-slate-600">
                     <div className="flex justify-center">
                       <Dialog.Title
@@ -226,11 +227,11 @@ function StoryPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="bg-black flex flex-row-reverse">
-                      {storyNum < stories.length && (
+                    <div className="bg-black flex flex-row-reverse px-2">
+                      {storyNum < stories.length - 1 && (
                         <button
                           type="button"
-                          className="mt-3 inline-flex w-full justify-center rounded-md hover:bg-green-500 focus:bg-green-500 bg-green-500 px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                          className="mt-3 ml-4 inline-flex w-full justify-center rounded-md hover:bg-green-500 focus:bg-green-500 bg-green-500 px-4 py-2 sm:px-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                           onClick={() => {
                             next();
                             animateText();
@@ -242,7 +243,7 @@ function StoryPage() {
                       {storyNum > 0 && (
                         <button
                           type="button"
-                          className="mt-3 inline-flex w-full justify-center rounded-md hover:bg-green-500 focus:bg-green-500 bg-green-500 px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                          className="mt-3 inline-flex w-full justify-center rounded-md hover:bg-green-500 focus:bg-green-500 bg-green-500 px-4 py-2 sm:px-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                           onClick={() => {
                             back();
                             animateText();

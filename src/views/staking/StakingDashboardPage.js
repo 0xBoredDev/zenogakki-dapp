@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import staking_dashboard_text from "../../images/staking_dashboard.svg";
+import divider from "../../images/divider.svg";
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -110,8 +112,8 @@ export default function StakingDashboardPage() {
   };
 
   const getStakingInfo = async () => {
-    setTokenBal(Number(await getTokenBalance(walletAddress)).toFixed(5));
-    setTokenBalUnclaimed(Number(await getEarnings(walletAddress)).toFixed(5));
+    setTokenBal(Number(await getTokenBalance(walletAddress)).toFixed(2));
+    setTokenBalUnclaimed(Number(await getEarnings(walletAddress)).toFixed(2));
     setTokenIdsStacked(await getTokenIdsStaked(walletAddress));
   };
 
@@ -122,19 +124,20 @@ export default function StakingDashboardPage() {
   };
 
   const stakeBtnPressed = async () => {
+    // console.log("stake all");
     setDisabledBtn(true);
     const approved = await checkApproval(walletAddress);
-    console.log("approved", approved);
+    // console.log("approved", approved);
     let tokensId = selectedToken.map(function (obj) {
       return Number(obj.tokenId);
     });
     // console.log("staking", tokensId);
 
-    let procced = false;
+    let proceed = false;
     if (!approved) {
       const toastOne = toast.loading(`Requesting for approval for nfts...`);
       const { success, status } = await setApproval(walletAddress);
-      procced = success;
+      proceed = success;
       toast.dismiss(toastOne);
       if (success) {
         toast.success(status);
@@ -143,7 +146,7 @@ export default function StakingDashboardPage() {
       }
     }
 
-    if (approved || procced) {
+    if (approved || proceed) {
       const toastTwo = toast.loading(`Staking your nfts...`);
       const { success, status } = await (tokensId.length > 1
         ? batchStakeNFT(tokensId, walletAddress)
@@ -217,7 +220,7 @@ export default function StakingDashboardPage() {
   };
 
   const aCardPressed = async (tokenId, staked) => {
-    // console.log(tokenId, staked, noStaked, noUnstaked);
+    // console.log("card pressed");
     if (disabledBtn) return;
     if ((staked && noStaked > 0) || (!staked && noUnstaked > 0)) return;
 
@@ -239,9 +242,31 @@ export default function StakingDashboardPage() {
 
   return (
     <main id="main">
-      <div className="relative lg:block h-screen w-full overflow-hidden bg-white dark:bg-black">
-        <div className="absolute inset-0 w-auto h-4 flex flex-row transition-all delay-1000 duration-700">
-          <div className="container mx-auto">
+      <div className="relative lg:block h-screen w-full bg-black">
+        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl">
+          <div className="flex items-center connect mt-3">
+            <button
+              disabled={walletAddress.length > 0}
+              onClick={connectWalletPressed}
+              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_4px_73px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
+            >
+              {walletAddress.length > 0
+                ? truncate(walletAddress)
+                : `Connect Wallet`}
+            </button>
+          </div>
+        </div>
+        <div className="flex w-full h-42 justify-center mt-20">
+          <img
+            height="100%"
+            width="100%"
+            id="stakingtext"
+            className="absolute h-18 w-64 sm:w-96 items-start"
+            src={staking_dashboard_text}
+          />
+        </div>
+        <div className="inset-0 w-auto h-full flex flex-row transition-all delay-1000 duration-700">
+          <div className="mx-auto">
             {!walletAddress.length > 0 ? (
               <>
                 {loadingPage.home ? (
@@ -268,12 +293,12 @@ export default function StakingDashboardPage() {
                 ) : (
                   <div className="flex items-center justify-center ">
                     <section className="text-center mx-6 lg:w-2/3">
-                      <p className="mt-20 text-black dark:text-white secondary-font font-bold">
+                      <p className="mt-20 text-pink secondary-font font-bold">
                         CONNECT YOUR WALLET TO GET STATRED
                       </p>
                       <button
                         onClick={connectWalletPressed}
-                        className="mt-2 border-solid border-2 border-gray-700 font-semibold rounded-lg p-2 px-4 text-black dark:text-white secondary-font"
+                        className="mt-2 bg-gradient-to-r from-[#FF00F5]/[.75] to-[#6B61F3] border-2 border-t-white border-x-white/[.5] border-b-transparent font-semibold rounded-lg p-2 px-4 text-white secondary-font"
                       >
                         Connect Wallet
                       </button>
@@ -285,27 +310,27 @@ export default function StakingDashboardPage() {
               <>
                 {!loadingPage.dashboard ? (
                   <>
-                    <div className="max-w-full pt-8 sm:mx-auto sm:px-6 lg:px-8 mt-10">
-                      <div className="sm:flex sm:space-x-4">
-                        <div className="inline-block align-bottom text-left overflow-hidden rounded-xl border-2 border-gray-700 shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                          <div className="sm:flex sm:items-start justify-center">
-                            <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                              <h3 className="text-sm leading-6 font-bold text-black dark:text-white secondary-font">
+                    <div className="container max-w-full pt-8 sm:mx-auto sm:px-6 lg:px-8 mt-10">
+                      <div className="sm:flex sm:space-x-4 xl:space-x-8">
+                        <div className="inline-block align-bottom overflow-hidden rounded-xl border-2 border-white/[.75] shadow-[0_4px_73px_rgba(255,0,245,0.72)] transform transition-all mb-4 w-full sm:w-1/3 sm:my-8 bg-purple">
+                          <div className="sm:flex sm:items-start justify-center p-2">
+                            <div className="text-center">
+                              <h3 className="text-sm leading-6 font-medium text-white secondary-font">
                                 Token Balance
                               </h3>
-                              <p className="text-3xl font-semibold text-black dark:text-white secondary-font">
+                              <p className="text-3xl font-semibold text-white secondary-font">
                                 {tokenBal}
                               </p>
                             </div>
                           </div>
                         </div>
-                        <div className="inline-block align-bottom text-left overflow-hidden rounded-xl border-2 border-gray-700 shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                          <div className="sm:flex sm:items-start justify-center">
-                            <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                              <h3 className="text-sm leading-6 font-bold text-black dark:text-white secondary-font">
+                        <div className="inline-block align-bottom overflow-hidden rounded-xl border-2 border-white/[.75] shadow-[0_4px_73px_rgba(255,0,245,0.72)] transform transition-all mb-4 w-full sm:w-1/3 sm:my-8 bg-purple">
+                          <div className="sm:flex sm:items-start justify-center p-2">
+                            <div className="text-center">
+                              <h3 className="text-sm leading-6 font-medium text-white secondary-font">
                                 Rewards (unclaimed)
                               </h3>
-                              <p className="text-3xl font-semibold text-black dark:text-white secondary-font">
+                              <p className="text-3xl font-semibold text-white secondary-font">
                                 {tokenBalUnclaimed}
                               </p>
                               {tokenIdsStacked.length > 0 && (
@@ -340,17 +365,17 @@ export default function StakingDashboardPage() {
                             </div>
                           </div>
                         </div>
-                        <div className="inline-block align-bottom text-left overflow-hidden rounded-xl border-2 border-gray-700 shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
-                          <div className="sm:flex sm:items-start justify-center">
-                            <div className="text-center sm:mt-0 sm:ml-2 sm:text-left">
-                              <h3 className="text-sm leading-6 font-bold text-black dark:text-white secondary-font">
+                        <div className="inline-block align-bottom overflow-hidden bg-purple rounded-xl border-2 border-white/[.75] shadow-[0_4px_73px_rgba(255,0,245,0.72)] transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                          <div className="sm:flex sm:items-start justify-center p-2">
+                            <div className="text-center">
+                              <h3 className="text-sm leading-6 font-medium text-white secondary-font">
                                 Total Staked
                               </h3>
-                              <p className="text-3xl font-semibold text-black dark:text-white secondary-font">
+                              <p className="text-3xl font-semibold text-white secondary-font">
                                 {tokenIdsStacked.length}
                               </p>{" "}
                               {tokenIdsStacked.length > 0 && (
-                                <span className="text-sm text-black dark:text-white secondary-font">
+                                <span className="text-sm text-white secondary-font">
                                   Token IDs:{" "}
                                   {tokenIdsStacked
                                     .map((item) => item.tokenId)
@@ -362,14 +387,28 @@ export default function StakingDashboardPage() {
                         </div>
                       </div>
                     </div>
+                    <div className="flex w-full">
+                      <div className="flex flex-col mt-14 w-full">
+                        <span className="text-center text-white text-2xl mb-2 secondary-font">
+                          NFT's
+                        </span>
 
-                    <div className="border-t-4 border-purple rounded px-8 pt-6 pb-8 mb-4 my-2">
+                        <img
+                          height="100%"
+                          width="100%"
+                          id="stakingtext"
+                          className=""
+                          src={divider}
+                        />
+                      </div>
+                    </div>
+                    <div className="container rounded p-8 mb-4">
                       <div className="float-right space-x-1.5">
                         {(noStaked > 0 || noUnstaked > 0) && (
                           <button
                             onClick={clearSelectedPressed}
                             disabled={disabledBtn}
-                            className="border-2 border-gray-700 text-black dark:text-white secondary-font font-semibold p-2 px-4 rounded-md mb-2"
+                            className="text-white bg-purple secondary-font font-thin p-2 px-4 rounded-md mb-2"
                           >
                             Clear
                           </button>
@@ -378,7 +417,7 @@ export default function StakingDashboardPage() {
                           <button
                             onClick={unStakeBtnPressed}
                             disabled={disabledBtn}
-                            className="border-2 border-gray-700 text-black dark:text-white secondary-font font-semibold p-2 px-4 rounded-md mb-2"
+                            className="text-white bg-purple secondary-font font-thin p-2 px-4 rounded-md mb-2"
                           >
                             {disabledBtn
                               ? `Processing...`
@@ -389,7 +428,7 @@ export default function StakingDashboardPage() {
                           <button
                             onClick={stakeBtnPressed}
                             disabled={disabledBtn}
-                            className="border-2 border-gray-700 text-black dark:text-white secondary-font font-semibold p-2 px-4 rounded-md mb-2"
+                            className="text-white bg-purple secondary-font font-thin p-2 px-4 rounded-md mb-2"
                           >
                             {disabledBtn
                               ? `Processing...`
@@ -397,10 +436,6 @@ export default function StakingDashboardPage() {
                           </button>
                         )}
                       </div>
-
-                      <h1 className="text-2xl font-semibold text-black dark:text-white secondary-font mb-1">
-                        NFTS
-                      </h1>
                       {!loadingPage.nft ? (
                         <div className="mt-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 gap-5">
                           {nfts.map((item, i) => {
@@ -419,38 +454,44 @@ export default function StakingDashboardPage() {
                                   selectedToken.some(
                                     (data) => data.tokenId == item.tokenId
                                   )
-                                    ? "ring-2 ring-white"
+                                    ? "ring-2 ring-pink"
                                     : ""
-                                } p-4 rounded-xl border-2 border-gray-700 overflow-hidden shadow-2xl`}
+                                } rounded-3xl overflow-hidden shadow-[0_4px_73px_rgba(255,0,245,0.72)] bg-purple`}
                               >
                                 <img
-                                  className="rounded-xl"
+                                  className="mx-auto"
                                   src={item.img}
                                   alt="pfp"
                                 ></img>
-                                <div className="mt-5 text-center">
-                                  <span className="text-gray-100 font-thin">
-                                    {item.name}
-                                  </span>
+                                <div className="flex flex-col">
+                                  <div className="text-center p-2">
+                                    <span className="text-white font-medium text-md secondary-font">
+                                      {`${item.name} #${item.tokenId}`}
+                                    </span>
+                                    {item.staked && (
+                                      <div className="mt-2">
+                                        <span className="inline-flex text-center p-2 text-sm font-semibold bg-green bg-green-500 rounded-full">
+                                          <svg
+                                            aria-hidden="true"
+                                            className="w-3.5 h-3.5"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              fillRule="evenodd"
+                                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                              clipRule="evenodd"
+                                            ></path>
+                                          </svg>
+                                        </span>
+                                        <p className="text-white font-thin mt-2 mb-0">
+                                          Staked
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
-                                {item.staked && (
-                                  <span className="inline-flex text-center p-1 mr-2 text-sm font-semibold text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                                    <svg
-                                      aria-hidden="true"
-                                      className="w-3.5 h-3.5"
-                                      fill="currentColor"
-                                      viewBox="0 0 20 20"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clipRule="evenodd"
-                                      ></path>
-                                    </svg>
-                                    <span className="sr-only">Staked</span>
-                                  </span>
-                                )}
                               </div>
                             );
                           })}
@@ -507,13 +548,13 @@ export default function StakingDashboardPage() {
         </div>
         <ToastContainer />
       </div>
-      <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
+      {/* <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
         <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white dark:text-white">
           <span className="lg:ml-2 primary-font drop-shadow-lg bg-black/[.3] dark:bg-white/[.3] rounded py-0 px-1">
             Staking
           </span>
         </h3>
-      </div>
+      </div> */}
     </main>
   );
 }
