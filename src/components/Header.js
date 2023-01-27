@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import gem from "../images/gem3.png";
+import gem from "../images/gem.svg";
 // import { gsap } from "gsap";
 
 const Header = () => {

@@ -177,7 +177,7 @@ const Footer = () => {
   }
 
   return (
-    <nav className="navbar fixed-bottom footer">
+    <nav className="navbar fixed-bottom footer pb-0">
       <div className="container-fluid no-pad">
         <div className="flex flex-row footer-section">
           {!smallView || (smallView && !showMusicPlayer) ? (

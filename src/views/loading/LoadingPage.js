@@ -39,7 +39,7 @@ function LoadingPage() {
         ease: "none",
         immediateRender: true,
         motionPath: {
-          path: [{ scale: 1.25 }],
+          path: [{ scale: 1.2 }],
           curviness: 0,
         },
       });
@@ -49,7 +49,7 @@ function LoadingPage() {
         ease: "none",
         immediateRender: true,
         motionPath: {
-          path: "M 150 200 l -150 200",
+          path: "M 100 150 l 100 50",
           align: "#path",
           alignOrigin: [0.5, 0.5],
         },
