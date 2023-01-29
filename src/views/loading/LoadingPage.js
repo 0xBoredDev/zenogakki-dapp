@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import karth from "../../images/karth.png";
-// import gem from "../../images/gem.png";
 import orb from "../../images/orb.png";
 import "../../components/Spinner.css";
 import { ToastContainer, toast } from "react-toastify";

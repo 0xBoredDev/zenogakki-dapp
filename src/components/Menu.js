@@ -66,9 +66,7 @@ const Menu = () => {
                     className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
                     <span className="primary uppercase">Staking</span>
-                    <span className="secondary uppercase dark:text-white">
-                      Staking
-                    </span>
+                    <span className="secondary uppercase">Staking</span>
                   </Link>
                 </li>
                 <li className="flex">

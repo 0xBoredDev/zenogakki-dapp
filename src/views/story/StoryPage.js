@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import "../../components/Spinner.css";
 import labbg from "../../images/lab/labbg.gif";
 import labbgv from "../../images/lab/labbgv.gif";
-import logo from "../../images/logo.png";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import { AiFillFolder } from "react-icons/ai";

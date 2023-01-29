@@ -496,9 +496,9 @@ body,
   transform: translateY(0) rotateX(0deg);
 }
 
-/* a:hover {
-  color: initial !important;
-} */
+a:hover {
+  color: none !important;
+}
 
 .modal-dialog {
   max-width: none !important;
