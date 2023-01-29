@@ -59,6 +59,9 @@ export default function RaffleDashboardPage() {
     if (!success) toast.error(status);
 
     const rafflesResponse = await getRaffles();
+    // rafflesResponse.sort(function (a, b) {
+    //   return a - b;
+    // });
     setRaffles(rafflesResponse);
     setLoadingPage({ dashboard: false });
   };
@@ -80,7 +83,6 @@ export default function RaffleDashboardPage() {
 
   const diffDays = (duration) => {
     var theevent = new Date(parseInt(duration) * 1000);
-
     var now = new Date();
 
     var sec_num = (theevent - now) / 1000;
@@ -113,6 +115,9 @@ export default function RaffleDashboardPage() {
     setLoadingPage({ raffle: true });
     let raffle = raffles[index];
     raffle = { ...raffle, ticketId: index + 1 };
+    raffle.startDate = new Date(
+      parseInt(raffle.startDate) * 1000
+    ).toDateString();
     setRaffleSelected(raffle);
     await new Promise((r) => setTimeout(r, 1000));
     setLoadingPage({ raffle: false });
@@ -120,7 +125,6 @@ export default function RaffleDashboardPage() {
 
   const enterDashboard = async () => {
     setStage(0);
-    setTicketQuantity(1);
     fetchData();
   };
 
@@ -148,8 +152,7 @@ export default function RaffleDashboardPage() {
   };
 
   const buyTicket = async (quantity) => {
-    // console.log("buy ticket", quantity);
-
+    console.log(`buying ${quantity} ticket(s)`);
     setButtonBuy(true);
 
     if (walletAddress == "") {
@@ -415,6 +418,9 @@ export default function RaffleDashboardPage() {
                                 min="0"
                                 max="50"
                                 value={ticketQuantity}
+                                onChange={(e) => {
+                                  setTicketQuantity(e.target.value);
+                                }}
                               />
                             </div>
                             <div className="flex w-full">
@@ -542,7 +548,7 @@ export default function RaffleDashboardPage() {
                                     Raffle Start Date:
                                   </span>
                                   <div className="text-xl text-white/[.48]">
-                                    Jan 6, 2023
+                                    {raffleSelected.startDate}
                                   </div>
                                 </div>
                                 <div className="">
@@ -639,99 +645,17 @@ export default function RaffleDashboardPage() {
                               Raffle tickets will not be refunded if you did not
                               win the raffle.
                             </li>
-                            <li>You can only buy 20% of total tickets.</li>
+                            <li>
+                              {raffleSelected.ticketLimit > 0
+                                ? `This raffle is limited to ${raffleSelected.ticketLimit} ticket(s) per participant.`
+                                : `This raffle entry is not limited to a specific number of tickets per participant.`}
+                            </li>
                           </ol>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                {/* <div className="px-2 pt-10 pb-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-2xl mx-auto">
-                  <div className="rounded-xl overflow-hidden shadow relative">
-                    <img
-                      className="w-full h-1/2"
-                      src={`https://ipfs.io/ipfs/${raffleSelected.imgCid}`}
-                      alt="River"
-                    ></img>
-                  </div>
-                  <div className="rounded-xl border-4 border-transparent hover:border-pink overflow-hidden shadow relative md:hover:scale-[1.03] transition bg-white">
-                    <div className="font-bold text-xl text-white mb-3 mt-5 secondary-font">
-                      {raffleSelected.name}
-                    </div>
-                    <p className="text-white font-extralight secondary-font">
-                      Status
-                    </p>
-                    <span className="text-white font-semibold secondary-font">
-                      {Number(raffleSelected.status) == 0
-                        ? "Not Started"
-                        : Number(raffleSelected.status) == 1 &&
-                          diffDays(raffleSelected.endIn) != 0
-                        ? "In Progress"
-                        : Number(raffleSelected.status) == 2
-                        ? "Completed"
-                        : "Ended"}
-                    </span>
-                    <div className="flex-1 w-64 mt-4">
-                      <p className="text-white font-extralight secondary-font">
-                        Tickets
-                      </p>
-                      <span className="text-white font-semibold secondary-font">
-                        {raffleSelected.totalTickets -
-                          raffleSelected.participants.length}{" "}
-                        / {raffleSelected.totalTickets} -{" "}
-                        {Number(raffleSelected.ticketLimit) == 0
-                          ? "Single entry"
-                          : "Infinite entry"}
-                      </span>
-                    </div>
-                    <div className="flex-1 w-46 mt-4">
-                      {Number(raffleSelected.status) == 1 &&
-                        diffDays(raffleSelected.endIn) != 0 && (
-                          <>
-                            <p className="text-white font-extralight secondary-font">
-                              End In
-                            </p>
-                            <span className="text-white font-semibold secondary-font">
-                              {diffDays(raffleSelected.endIn)}
-                            </span>
-                          </>
-                        )}
-                    </div>
-                  </div>
-                  <div className="rounded-xl border-2 border-gray-700 p-10 w-80 md:w-full lg:w-full">
-                    <div className="font-bold text-xl text-white mb-3 secondary-font">
-                      Participants
-                    </div>
-                    <div
-                      className="overflow-y-scroll"
-                      style={{ height: "350px" }}
-                    >
-                      {participants(raffleSelected.participants).map(
-                        (item, i) => {
-                          return (
-                            <p
-                              key={i}
-                              className="text-white font-extralight secondary-font"
-                            >
-                              {truncate(item.address)} - {item.quantity}
-                            </p>
-                          );
-                        }
-                      )}
-                    </div>
-                    {!/^0x0+$/.test(raffleSelected.winner) && (
-                      <>
-                        <div className="font-bold text-xl text-white mt-4 secondary-font">
-                          Winner
-                        </div>
-                        <p className="text-white font-extralight secondary-font">
-                          {truncate(raffleSelected.winner)}
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </div> */}
               </div>
             ) : (
               <div className="text-center mt-60">
@@ -758,13 +682,6 @@ export default function RaffleDashboardPage() {
           </>
         )}
       </div>
-      {/* <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white dark:text-white">
-          <span className="lg:ml-2 primary-font drop-shadow-lg bg-black/[.1] dark:bg-white/[.1] rounded py-0 px-1">
-            raffle
-          </span>
-        </h3>
-      </div> */}
     </main>
   );
 }

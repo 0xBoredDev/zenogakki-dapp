@@ -201,24 +201,6 @@ export default function StakingDashboardPage() {
     setClaimingReward(false);
   };
 
-  const mintSampleNFT = async (data) => {
-    if (!walletAddress.length > 0) {
-      toast.error("Connect your wallet");
-      return;
-    }
-    const toastOne = toast.loading(`Minting NFTs...`);
-    const { success, status } = await mintNFT(
-      data.contractAddress,
-      walletAddress
-    );
-    toast.dismiss(toastOne);
-    if (success) {
-      toast.success(status);
-    } else {
-      toast.error(status);
-    }
-  };
-
   const aCardPressed = async (tokenId, staked) => {
     // console.log("card pressed");
     if (disabledBtn) return;
@@ -316,7 +298,7 @@ export default function StakingDashboardPage() {
                           <div className="sm:flex sm:items-start justify-center p-2">
                             <div className="text-center">
                               <h3 className="text-sm leading-6 font-medium text-white secondary-font">
-                                Token Balance
+                                ORB Balance
                               </h3>
                               <p className="text-3xl font-semibold text-white secondary-font">
                                 {tokenBal}
@@ -328,7 +310,7 @@ export default function StakingDashboardPage() {
                           <div className="sm:flex sm:items-start justify-center p-2">
                             <div className="text-center">
                               <h3 className="text-sm leading-6 font-medium text-white secondary-font">
-                                Rewards (unclaimed)
+                                ORB (unclaimed)
                               </h3>
                               <p className="text-3xl font-semibold text-white secondary-font">
                                 {tokenBalUnclaimed}
@@ -354,7 +336,7 @@ export default function StakingDashboardPage() {
                                     </svg>
                                   ) : (
                                     <button
-                                      className="border-2 border-gray-700 text-black dark:text-white secondary-font font-semibold p-2 px-4 rounded-md mt-1"
+                                      className="border-2 border-white/[.75] bg-gradient-to-b from-pink to-purple text-white secondary-font font-semibold p-2 px-4 rounded-md mt-1"
                                       onClick={claimRewards}
                                     >
                                       Claim
@@ -548,13 +530,6 @@ export default function StakingDashboardPage() {
         </div>
         <ToastContainer />
       </div>
-      {/* <div className="fixed bottom-8 sm:bottom-10 left-2 w-auto h-4 flex flex-row transition-all delay-1000 duration-700 opacity-100">
-        <h3 className="font-800 cursor-default uppercase text-3xl sm:text-4xl uppercase font-black text-white dark:text-white">
-          <span className="lg:ml-2 primary-font drop-shadow-lg bg-black/[.3] dark:bg-white/[.3] rounded py-0 px-1">
-            Staking
-          </span>
-        </h3>
-      </div> */}
     </main>
   );
 }

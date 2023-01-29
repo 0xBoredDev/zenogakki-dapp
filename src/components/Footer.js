@@ -9,8 +9,6 @@ import {
 } from "react-icons/tb";
 import { themeContext } from "../App";
 import themes from "../helpers/themes";
-import { FaTwitter, FaDiscord } from "react-icons/fa";
-import { GiSailboat } from "react-icons/gi";
 import music_icon_light from "../images/music_icon_light.png";
 import music_icon_dark from "../images/music_icon_dark.png";
 import cyberpunkAudio from "../music/Cyberpunk.wav";
@@ -183,38 +181,9 @@ const Footer = () => {
           {!smallView || (smallView && !showMusicPlayer) ? (
             <div className="grow-0 social" id="social">
               <div>
-                {/* {showIcons && (
-                  <div className="social-icons">
-                    <a
-                      className="social-icon"
-                      target="_blank"
-                      rel="noreferrer"
-                      href=""
-                    >
-                      <FaTwitter className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                    </a>
-                    <a
-                      className="social-icon"
-                      target="_blank"
-                      rel="noreferrer"
-                      href=""
-                    >
-                      <FaDiscord className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                    </a>
-                    <a
-                      className="social-icon"
-                      target="_blank"
-                      rel="noreferrer"
-                      href=""
-                    >
-                      <GiSailboat className="dark:text-black drop-shadow-lg bg-white/[.3] rounded p-1" />
-                    </a>
-                  </div>
-                )} */}
                 <a
                   className="relative"
                   onClick={(e) => {
-                    // setShowIcons(!showIcons);
                     setDarkModeOn(!darkModeOn);
                     changeTheme(!darkModeOn ? themes.DARK : themes.LIGHT);
                   }}

@@ -7,7 +7,7 @@ const erc20tokenAbi = require("./abi/token.json");
 const tokenContractAddress = "0x275352a6CBe9298D657ef7eC105ce698D4a0D744";
 
 const raffleAbi = require("./abi/raffle.json");
-const raffleContractAddress = "0x229196d1922e60B099957C4C6e7960C024857c6a";
+const raffleContractAddress = "0x6436dd179e180c2433a5a67a690463b455B8c961";
 
 const tokenContract = new web3.eth.Contract(
   erc20tokenAbi,

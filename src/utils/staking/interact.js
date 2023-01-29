@@ -316,7 +316,7 @@ export const unStakeNFT = async (token, wallectAddress) => {
     .then(function (receipt) {
       // console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "Unstacked successfully";
+      response.status = "Unstaked successfully";
     })
     .catch(function (error) {
       // console.log("error: ", error);
@@ -336,7 +336,7 @@ export const batchUnStakeNFT = async (tokens, wallectAddress) => {
     .then(function (receipt) {
       // console.log("receipt: ", receipt);
       response.success = true;
-      response.status = "Unstacked successfully";
+      response.status = "Unstaked successfully";
     })
     .catch(function (error) {
       // console.log("error: ", error);

@@ -1,5 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
 import utopia from "../../images/utopia/utopia.png";
