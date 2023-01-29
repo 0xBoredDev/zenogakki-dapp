@@ -33,10 +33,14 @@ const Menu = () => {
                   <Link
                     to="/home"
                     data-bs-dismiss="offcanvas"
-                    className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
+                    className="menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
-                    <span className="primary uppercase">Home</span>
-                    <span className="secondary uppercase">Home</span>
+                    <span className="text-black dark:text-white primary uppercase">
+                      Home
+                    </span>
+                    <span className="text-black dark:text-white secondary uppercase">
+                      Home
+                    </span>
                   </Link>
                 </li>
                 <li className="flex">
@@ -45,8 +49,12 @@ const Menu = () => {
                     data-bs-dismiss="offcanvas"
                     className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
-                    <span className="primary uppercase">Utopia</span>
-                    <span className="secondary uppercase">Utopia</span>
+                    <span className="text-black dark:text-white primary uppercase">
+                      Utopia
+                    </span>
+                    <span className="text-black dark:text-white secondary uppercase">
+                      Utopia
+                    </span>
                   </Link>
                 </li>
                 <li className="flex">
@@ -55,8 +63,12 @@ const Menu = () => {
                     data-bs-dismiss="offcanvas"
                     className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
-                    <span className="primary uppercase">Story</span>
-                    <span className="secondary uppercase">Story</span>
+                    <span className="text-black dark:text-white primary uppercase">
+                      Story
+                    </span>
+                    <span className="text-black dark:text-white secondary uppercase">
+                      Story
+                    </span>
                   </Link>
                 </li>
                 <li className="flex">
@@ -65,8 +77,12 @@ const Menu = () => {
                     data-bs-dismiss="offcanvas"
                     className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
-                    <span className="primary uppercase">Staking</span>
-                    <span className="secondary uppercase">Staking</span>
+                    <span className="text-black dark:text-white primary uppercase">
+                      Staking
+                    </span>
+                    <span className="text-black dark:text-white secondary uppercase">
+                      Staking
+                    </span>
                   </Link>
                 </li>
                 <li className="flex">
@@ -75,8 +91,12 @@ const Menu = () => {
                     data-bs-dismiss="offcanvas"
                     className="dark:text-white menu-link flex items-start text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl"
                   >
-                    <span className="primary uppercase">Raffle</span>
-                    <span className="secondary uppercase">Raffle</span>
+                    <span className="text-black dark:text-white primary uppercase">
+                      Raffle
+                    </span>
+                    <span className="text-black dark:text-white secondary uppercase">
+                      Raffle
+                    </span>
                   </Link>
                 </li>
               </ul>
