@@ -396,6 +396,11 @@ body,
   width: 100%;
   object-fit: cover;
   object-position: center;
+  transform: translate(-200px, 0);
+  /* scale: 1.2; */
+}
+.menu-bg2 {
+  scale: 2.5;
 }
 
 .menu-spinners {
