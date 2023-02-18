@@ -16,7 +16,8 @@ const nftContract = new web3.eth.Contract(nftAbi, nftContractAddress);
 
 //reward config
 const tokenABI = require("./abi/token.json");
-const tokenContractAddress = "0xD453404DF6FFAeeEC52F6F9DbB0e93101412cF4d";
+const tokenContractAddress = "0x854c376a30ba8536e92befca5157c54a1581dd28";
+// const tokenContractAddress = "0xD453404DF6FFAeeEC52F6F9DbB0e93101412cF4d";
 const tokenContract = new web3.eth.Contract(tokenABI, tokenContractAddress);
 
 //staking config
