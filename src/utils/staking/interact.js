@@ -1,18 +1,17 @@
 import axios from "axios";
 import { Network, Alchemy } from "alchemy-sdk";
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(
-  "https://eth-goerli.g.alchemy.com/v2/r4KAf-wVLQ7-4pqQ15PSz7CVKHMQnMzD"
-);
+const web3 = createAlchemyWeb3(process.env.REACT_APP_ALCHEMY_STAKING_URL);
 
 const alchemy = new Alchemy({
-  apiKey: "r4KAf-wVLQ7-4pqQ15PSz7CVKHMQnMzD",
-  network: Network.ETH_GOERLI,
+  apiKey: process.env.REACT_APP_ALCHEMY_STAKING_API,
+  network: Network.ETH_MAINNET,
 });
 
 //collection config
 const nftAbi = require("./abi/erc721.json");
-const nftContractAddress = "0xF3235bCBb701217CCa644e46bcB9AC03362C7565";
+const nftContractAddress = "0x6372E41Cd6415261CF38DACCEfeD2f0cc206C282";
+// const nftContractAddress = "0xF3235bCBb701217CCa644e46bcB9AC03362C7565";
 const nftContract = new web3.eth.Contract(nftAbi, nftContractAddress);
 
 //reward config
@@ -22,7 +21,7 @@ const tokenContract = new web3.eth.Contract(tokenABI, tokenContractAddress);
 
 //staking config
 const stakingABI = require("./abi/staking.json");
-const stakingContractAddress = "0x83A9967Be134410F2648A0147636634eC87f0754";
+const stakingContractAddress = "0xd886D431F7a83d7ecD3789A86AC6a095db1EF25c";
 const stakingContract = new web3.eth.Contract(
   stakingABI,
   stakingContractAddress
@@ -37,10 +36,10 @@ export const connectWallet = async () => {
 
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
 
-      if (chainId != "0x5") {
+      if (chainId != "0x1") {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x5" }],
+          params: [{ chainId: "0x1" }],
         });
       }
 

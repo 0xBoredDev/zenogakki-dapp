@@ -27,13 +27,19 @@ function RafflePage() {
           }}
         >
           <div style={{ willChange: "transform" }}>
-            <img height="100%" className="absolute throne-ratio" src={throne} />
+            <img
+              height="100%"
+              className="absolute throne-ratio"
+              src={throne}
+              alt="throne raffle room"
+            />
             <img
               height="100%"
               className="absolute"
               id="arrow"
               src={arrow}
               onClick={toDashboard}
+              alt="arrow to enter"
             />
           </div>
         </div>

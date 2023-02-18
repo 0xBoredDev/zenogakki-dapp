@@ -1,13 +1,11 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(
-  "https://eth-goerli.g.alchemy.com/v2/CH1V81ZMzVXNjIFWnRNNTTgY0nD_Twh6"
-);
+const web3 = createAlchemyWeb3(process.env.REACT_APP_ALCHEMY_RAFFLE_URL);
 
 const erc20tokenAbi = require("./abi/token.json");
-const tokenContractAddress = "0x275352a6CBe9298D657ef7eC105ce698D4a0D744";
+const tokenContractAddress = "0x854C376A30bA8536e92Befca5157C54a1581dd28";
 
 const raffleAbi = require("./abi/raffle.json");
-const raffleContractAddress = "0x6436dd179e180c2433a5a67a690463b455B8c961";
+const raffleContractAddress = "0x6c6538495f989df04c58caf07c100d8bb5a118de";
 
 const tokenContract = new web3.eth.Contract(
   erc20tokenAbi,

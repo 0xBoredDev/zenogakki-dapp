@@ -17,8 +17,6 @@ import {
   unStakeNFT,
   batchUnStakeNFT,
   claimReward,
-  mintNFT,
-  getTokenStakedBalance,
 } from "../../utils/staking/interact";
 
 const toastStyle = {
