@@ -254,13 +254,13 @@ body,
 .media-logo:hover {
   scale: 1.1;
   transition: all 1s ease;
-  transform: translate(-3px, -5px);
+  transform: translate(-2px, -5px);
 }
 
 .zoomed {
   scale: 1.1;
   transition: all 1s ease;
-  transform: translate(-3px, -5px);
+  transform: translate(-2px, -5px);
 }
 
 .audio-player {
@@ -399,6 +399,11 @@ body,
   transform: translate(-200px, 0);
   /* scale: 1.2; */
 }
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
 .menu-bg2 {
   scale: 2.5;
 }
@@ -841,6 +846,10 @@ a:hover {
     margin-right: 0;
   }
 
+  #controls {
+    padding-right: 0;
+  }
+
   .media-controls svg {
     margin-right: 0;
   }
@@ -851,13 +860,32 @@ a:hover {
 
   #track-name {
     font-size: 1rem;
+    padding-left: 10px;
   }
 
   #track-artist {
     font-size: 0.5rem;
+    padding-left: 10px;
   }
+
   .media-section {
-    height: 100px;
+    height: 80px;
+  }
+
+  #menu {
+    width: 140px;
+    height: 130px;
+    transform: translate(20px, -30px);
+  }
+
+  #orbicon {
+    scale: 0.7;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .media-logo {
+    height: 105px;
   }
 }
 
