@@ -223,8 +223,8 @@ export default function StakingDashboardPage() {
   return (
     <main id="main">
       <div className="relative lg:block h-screen w-full bg-black">
-        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl">
-          <div className="flex items-center connect mt-3">
+        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl sm:mt-2">
+          <div className="flex items-center connect mt-3 pt-[2px]">
             <button
               disabled={walletAddress.length > 0}
               onClick={connectWalletPressed}
@@ -236,7 +236,7 @@ export default function StakingDashboardPage() {
             </button>
           </div>
         </div>
-        <div className="flex w-full h-42 justify-center mt-20">
+        <div className="flex w-full h-42 justify-center mt-4">
           <img
             height="100%"
             width="100%"
@@ -446,7 +446,7 @@ export default function StakingDashboardPage() {
                                 <div className="flex flex-col">
                                   <div className="text-center p-2">
                                     <span className="text-white font-medium text-md secondary-font">
-                                      {`${item.name} #${item.tokenId}`}
+                                      #{item.tokenId}
                                     </span>
                                     {item.staked && (
                                       <div className="mt-2">

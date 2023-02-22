@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import throne from "../../images/throne.png";
+import throne from "../../images/throne.webp";
 import arrow from "../../images/arrow.png";
 
 function RafflePage() {

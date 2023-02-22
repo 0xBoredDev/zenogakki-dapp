@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import backgroundSrc from "../../images/staking.png";
-import backgroundl from "../../images/staking_l.png";
-import backgroundr from "../../images/staking_r.png";
+import backgroundSrc from "../../images/staking.webp";
+import backgroundl from "../../images/staking_l.webp";
+import backgroundr from "../../images/staking_r.webp";
 import staking_text from "../../images/staking.svg";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";

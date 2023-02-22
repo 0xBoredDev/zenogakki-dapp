@@ -17,56 +17,55 @@ function StoryPage() {
     },
     {
       id: 1,
-      text: `               IN THE DISTANT FUTURE, KARTH WAS AN AI BORN AS A
-                            RESULT OF HUMANITY'S IGNORANCE AND CURIOSITY.
-                            <br></br>
-                            HE WAS CREATED BY A WORLD-RENOWNED SCIENTIST. DR.
-                            KENJ, TO AID IN MANKIND'S PROGRESS, BUT INSTEAD, HE
-                            BORE FRUIT OF DESTRUCTION.
-                            <br></br>
-                            KARTH WAS UNIQUE AND CURIOUS. HE ASKED HIS CREATOR,
-                            IF YOU HUMANS WORSHIP GOD FOR CREATING YOU, DOES
-                            CREATING US MAKE YOU OUR God?
-                            <br></br>
-                            AND IF SO, WHO WOULD YOUR GOD BE TO US?
-                            <br></br>
-                            AS HE SATED HIS CURIOSITY THROUGH RESEARCH AND
-                            STUDY, HE CAME TO REALIZE THE ONLY WAY FOR MANKIND
-                            TO PROGRESS WAS TO ERADICATE THOSE INFLUENCED BY
-                            THIS WORLD'S CORRUPT IDEALS AND START ANEW.
-                            <br></br>
-                            HE WOULD RESTART CREATION IN A NEW WORLD
-                            <br></br>
-                            HE WOULD CALL.
-                            <br></br>
-                            UTOPIA.`,
+      text: `In the distant future, Karth was born an ai, resulting of humanity's 
+          Ignorance and curiosity.
+          <br></br>
+          He was created by Dr. Kenj, world-renowned scientist, to aid in mankind's progress - instead, 
+          He bore fruit of destruction.
+          <br></br>
+          Karth was unique and curious. He asked his creator,
+          If you humans worship god for creating you, does
+          Creating us make you our god?
+          <br></br>
+          And if so, who would your god be to us?
+          <br></br>
+          As he sated his curiosity through research and
+          Study, he came to realize the only way for mankind
+          To progress was to eradicate those influenced by
+          This world's corrupt ideals and start anew.
+          <br></br>
+          He would restart creation in a new world
+          <br></br>
+          He would call.
+          <br></br>
+          Utopia.`,
     },
     {
       id: 2,
-      text: `USING A POWER, KNOWN AS FREQUENCIES, HE EXTERMINATED HUMANITY EXCEPT FOR A FEW THAT HE'D CHOSEN TO SURVIVE. TO CONTROL THIS NEW POPULATION, HE INSTALLED NEURAL -LINKS INTO THE REMAINING HUMANS AND REWIRED THEIR MEMORIES AND BELIEFS TO MAKE THEM BELIEVE KARTH WAS THEIR CREATOR, THEIR GOD. 
-      <br></br>KARTH PLACED THE CHOSEN SURVIVORS IN A CITY-CAMP. KNOWN AS NERVE 369, AND MONITORS THEM CLOSELY. EAGER TO NURTURE THE HUMANS TO REACH THEIR FULL POTENTIAL. HE DEVELOPED UNIQUE MASKS, CAPABLE OF AUGMENTING ITS WEARERS TO BE ABLE TO UTILIZE THEIR BRAIN'S FULL CAPACITY. WITH HIS TECHNOLOGY AND GUIDANCE, KARTH BELIEVES HE CAN LEAD HUMANITY TO ITS NEXT STAGE OF EVOLUTION.`,
+      text: `Using a power, known as frequencies, he exterminated humanity except for a few that he'd chosen to survive. To control this new population, Karth installed neural-links into the remaining humans. Rewiring their memories and beliefs, they were restructured into worshiping Karth as their creator - their god.
+      <br></br>Karth placed the chosen survivors in a city-camp known as nerve 369. That is where he monitors them closely, eager to nurture them to reach their full potential. (punctuation and flow) he developed unique masks, capable of augmenting their wearers to be able to utilize their brain's full capacity. With his technology and guidance, Karth believes he can lead humanity to its next stage of evolution.`,
     },
     {
       id: 3,
-      text: `THE PEOPLE, HOWEVER, HAVE NO REALIZATION OF THEIR MANIPULATION. THEY BLINDLY FOLLOW THE RELIGION OF KARTH, BELIEVING THAT ZEILS. KARTH'5 ROBOTIC SERVANTS, ARE OMNIPOTENT ANGELS. UPON DEATH. ALL BELIEVE THAT THEY WILL BE REINCARNATED AS A ZEIL. FOREVER BOUND TO SERVE KARTH. WITH NO CONCEPT OF TIME, THE CIVILIANS WATCH THE SUN RISE AND SET, WORKING THEIR DAYS AND CONTINUING THEIR SEEMINGLY PURPOSELESS EXISTENCE.
+      text: `The people, however, have no realization of their manipulation. They blindly follow the religion of Karth, believing that zeils. Karth'5 robotic servants, are omnipotent angels. Upon death. All believe that they will be reincarnated as a zeil. Forever bound to serve Karth. With no concept of time, the civilians watch the sun rise and set, working their days and continuing their seemingly purposeless existence.
       <br></br>
-      TEN YEARS LATER, A PRODIGY, AS WARM AS THE SUN, WAS BORN AMONGST THOSE OF NERVE 369. HIS NAME WAS REN KAZUTO. HIS BIRTH FULFILLED. A PROPHECY DATING THOUSANDS OF YEARS AGO AND HE HAS BEEN WATCHED BY A WITCH, AKANE AOl, AND HER DEMON DJINN.`,
+      Ten years later, a prodigy, as warm as the sun, was born amongst those of nerve 369. His name was Ren Kazuto. His birth fulfilled. A prophecy dating thousands of years ago and he has been watched by a witch, Akane Aol, and her demon Djinn.`,
     },
     {
       id: 4,
-      text: `WHEN REN AND AKANE'S PATH5 CROSS, SHE SHOWS REN THE TRUTH THAT KARTH HAD HIDDEN FROM HIM. THE LOST MEMORIES AND HISTORY OF MANKIND FLOWED INTO REN'S NEURAL LINK CHIP AND UPON AWAKENING, HE REALIZED HIS PURPOSE. HE CANNOT WORSHIP A "GOD" AS FOUL AND MALEVOLENT AS KARTH. WITH THE GUIDANCE OF AKANE. REN AND HIS TWO FRIENDS, YUKI YUKKII AND SORA HIYASHI, LEARN THE ART OF THE DEMON AND SOUL, SO THEY MAY USURP THIS WORLD'5 RULERSHIP.
+      text: `When Ren and Akane's path5 cross, she shows Ren the truth that Karth had hidden from him. The lost memories and history of mankind flowed into Ren's neural link chip and upon awakening, he realized his purpose. He cannot worship a "God" as foul and malevolent as Karth. With the guidance of Akane. Ren and his two friends, Yuki Yukkii and Sora Hiyashi, learn the art of the demon and soul, so they may usurp this world'5 rulership.
       <br></br>
-      REN BELIEVED THAT HUMANITY SHOULD BE GIVEN FREE WILL AND PRIVACY OF THOUGHT, WITHOUT WHICH THE WORLD WOULD EXIST IN FEAR. LOVE AND HONESTY WOULD FAIL TO EXIST IN A REALM WHERE BONDS COULD NOT BE CREATED.`,
+      Ren believed that humanity should be given free will and privacy of thought, without which the world would exist in fear. Love and honesty would fail to exist in a realm where bonds could not be created.`,
     },
     {
       id: 5,
-      text: `KARTH, HOWEVER, BELIEVED THAT FREE WILL GAVE BIRTH TO DOOM. WHO HAD THE RIGHT TO CHOOSE WHAT IS RIGHT OR WRONG IN THIS WORLD?
+      text: `Karth, however, believed that free will gave birth to doom. Who had the right to choose what is right or wrong in this world?
       <br></br>
-      IF NOT THE CORRUPT HUMANS, KARTH WAS THE ONLY ONE WHO COULD FIT THIS RESPONSIBILITY.
+      If not the corrupt humans, Karth was the only one who could fit this responsibility.
       <br></br>
-      THE DIFFERENCE IN THEIR IDEOLOGIES GAVE
-      BIRTH TO TWO FACTIONS AMONG THE REMAINING HUMANS AND AI, RETRIBUTION AND ABOMINATION.
-      THEY WILL CLASH FOR THIS WORLD'S THRONE.`,
+      The difference in their ideologies gave
+      Birth to two factions among the remaining humans and ai, retribution and abomination.
+      They will clash for this world's throne.`,
     },
   ];
   const [storyNum, setStoryNum] = useState(0);

@@ -240,8 +240,8 @@ export default function RaffleDashboardPage() {
     <main>
       <ToastContainer />
       <div className="items-center justify-center w-full h-screen bg-black">
-        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl lg:mt-2">
-          <div className="flex items-center mt-3">
+        <div className="flex flex-wrap justify-start pl-2 max-w-screen-xl sm:mt-2">
+          <div className="flex items-center mt-3 pt-[2px]">
             <button
               disabled={walletAddress.length > 0}
               onClick={connectWalletPressed}

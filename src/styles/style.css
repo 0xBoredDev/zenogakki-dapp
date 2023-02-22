@@ -595,9 +595,11 @@ a:hover {
   top: 10px !important;
   right: 10px !important;
   position: absolute !important;
-  /* box-shadow: 0 0 14px 0 rgb(255, 255, 255); */
   z-index: 1000;
   padding: 0;
+  width: 2em !important;
+  height: 2em !important;
+  /* box-shadow: 0 0 14px 0 rgb(255, 255, 255); */
   /* background: transparent !important; */
   /* background-color: transparent !important; */
 }

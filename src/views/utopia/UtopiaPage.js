@@ -1,86 +1,87 @@
 import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Modal } from "bootstrap";
-import utopia from "../../images/utopia/utopia.png";
-import utopia_sm from "../../images/utopia/utopia_vertical.png";
+import closeImg from "../../images/close.png";
+import utopia from "../../images/utopia/utopia.webp";
+import utopia_sm from "../../images/utopia/utopia_vertical.webp";
 //earth
 import earth from "../../images/utopia/earth/earth.svg";
-import earth1 from "../../images/utopia/earth/earth1.png";
-import earth2 from "../../images/utopia/earth/earth2.png";
-import earth3 from "../../images/utopia/earth/earth3.png";
-import earthv1 from "../../images/utopia/earth/earthv1.png";
-import earthv2 from "../../images/utopia/earth/earthv2.png";
-import earthv3 from "../../images/utopia/earth/earthv3.png";
+import earth1 from "../../images/utopia/earth/earth1.webp";
+import earth2 from "../../images/utopia/earth/earth2.webp";
+import earth3 from "../../images/utopia/earth/earth3.webp";
+import earthv1 from "../../images/utopia/earth/earthv1.webp";
+import earthv2 from "../../images/utopia/earth/earthv2.webp";
+import earthv3 from "../../images/utopia/earth/earthv3.webp";
 //fire
 import fire from "../../images/utopia/fire/fire.svg";
-import fire1 from "../../images/utopia/fire/fire1.png";
-import fire2 from "../../images/utopia/fire/fire2.png";
-import fire3 from "../../images/utopia/fire/fire3.png";
-import firev1 from "../../images/utopia/fire/firev1.png";
-import firev2 from "../../images/utopia/fire/firev2.png";
-import firev3 from "../../images/utopia/fire/firev3.png";
+import fire1 from "../../images/utopia/fire/fire1.webp";
+import fire2 from "../../images/utopia/fire/fire2.webp";
+import fire3 from "../../images/utopia/fire/fire3.webp";
+import firev1 from "../../images/utopia/fire/firev1.webp";
+import firev2 from "../../images/utopia/fire/firev2.webp";
+import firev3 from "../../images/utopia/fire/firev3.webp";
 //light
 import light from "../../images/utopia/light/light.svg";
-import light1 from "../../images/utopia/light/light1.png";
-import light2 from "../../images/utopia/light/light2.png";
-import light3 from "../../images/utopia/light/light3.png";
-import lightv1 from "../../images/utopia/light/lightv1.png";
-import lightv2 from "../../images/utopia/light/lightv2.png";
-import lightv3 from "../../images/utopia/light/lightv3.png";
+import light1 from "../../images/utopia/light/light1.webp";
+import light2 from "../../images/utopia/light/light2.webp";
+import light3 from "../../images/utopia/light/light3.webp";
+import lightv1 from "../../images/utopia/light/lightv1.webp";
+import lightv2 from "../../images/utopia/light/lightv2.webp";
+import lightv3 from "../../images/utopia/light/lightv3.webp";
 //mecha
 import mecha from "../../images/utopia/mecha/mecha.svg";
-import mecha1 from "../../images/utopia/mecha/mecha1.png";
-import mecha2 from "../../images/utopia/mecha/mecha2.png";
-import mecha3 from "../../images/utopia/mecha/mecha3.png";
-import mechav1 from "../../images/utopia/mecha/mechav1.png";
-import mechav2 from "../../images/utopia/mecha/mechav2.png";
-import mechav3 from "../../images/utopia/mecha/mechav3.png";
+import mecha1 from "../../images/utopia/mecha/mecha1.webp";
+import mecha2 from "../../images/utopia/mecha/mecha2.webp";
+import mecha3 from "../../images/utopia/mecha/mecha3.webp";
+import mechav1 from "../../images/utopia/mecha/mechav1.webp";
+import mechav2 from "../../images/utopia/mecha/mechav2.webp";
+import mechav3 from "../../images/utopia/mecha/mechav3.webp";
 //lostcity
 import lostcity from "../../images/utopia/lostcity/lostcity.svg";
-import lostcity1 from "../../images/utopia/lostcity/lostcity1.png";
-import lostcity2 from "../../images/utopia/lostcity/lostcity2.png";
-import lostcity3 from "../../images/utopia/lostcity/lostcity3.png";
-import lostcityv1 from "../../images/utopia/lostcity/lostcityv1.png";
-import lostcityv2 from "../../images/utopia/lostcity/lostcityv2.png";
-import lostcityv3 from "../../images/utopia/lostcity/lostcityv3.png";
+import lostcity1 from "../../images/utopia/lostcity/lostcity1.webp";
+import lostcity2 from "../../images/utopia/lostcity/lostcity2.webp";
+import lostcity3 from "../../images/utopia/lostcity/lostcity3.webp";
+import lostcityv1 from "../../images/utopia/lostcity/lostcityv1.webp";
+import lostcityv2 from "../../images/utopia/lostcity/lostcityv2.webp";
+import lostcityv3 from "../../images/utopia/lostcity/lostcityv3.webp";
 //wind
 import wind from "../../images/utopia/wind/wind.svg";
-import wind1 from "../../images/utopia/wind/wind1.png";
-import wind2 from "../../images/utopia/wind/wind2.png";
-import wind3 from "../../images/utopia/wind/wind3.png";
-import windv1 from "../../images/utopia/wind/windv1.png";
-import windv2 from "../../images/utopia/wind/windv2.png";
-import windv3 from "../../images/utopia/wind/windv3.png";
+import wind1 from "../../images/utopia/wind/wind1.webp";
+import wind2 from "../../images/utopia/wind/wind2.webp";
+import wind3 from "../../images/utopia/wind/wind3.webp";
+import windv1 from "../../images/utopia/wind/windv1.webp";
+import windv2 from "../../images/utopia/wind/windv2.webp";
+import windv3 from "../../images/utopia/wind/windv3.webp";
 //water
 import water from "../../images/utopia/water/water.svg";
-import water1 from "../../images/utopia/water/water1.png";
-import water2 from "../../images/utopia/water/water2.png";
-import water3 from "../../images/utopia/water/water3.png";
-import waterv1 from "../../images/utopia/water/waterv1.png";
-import waterv2 from "../../images/utopia/water/waterv2.png";
-import waterv3 from "../../images/utopia/water/waterv3.png";
+import water1 from "../../images/utopia/water/water1.webp";
+import water2 from "../../images/utopia/water/water2.webp";
+import water3 from "../../images/utopia/water/water3.webp";
+import waterv1 from "../../images/utopia/water/waterv1.webp";
+import waterv2 from "../../images/utopia/water/waterv2.webp";
+import waterv3 from "../../images/utopia/water/waterv3.webp";
 //mystical
 import mystical from "../../images/utopia/mystical/mystical.svg";
-import mystical1 from "../../images/utopia/mystical/mystical1.png";
-import mystical2 from "../../images/utopia/mystical/mystical2.png";
-import mystical3 from "../../images/utopia/mystical/mystical3.png";
-import mysticalv1 from "../../images/utopia/mystical/mysticalv1.png";
-import mysticalv2 from "../../images/utopia/mystical/mysticalv2.png";
-import mysticalv3 from "../../images/utopia/mystical/mysticalv3.png";
+import mystical1 from "../../images/utopia/mystical/mystical1.webp";
+import mystical2 from "../../images/utopia/mystical/mystical2.webp";
+import mystical3 from "../../images/utopia/mystical/mystical3.webp";
+import mysticalv1 from "../../images/utopia/mystical/mysticalv1.webp";
+import mysticalv2 from "../../images/utopia/mystical/mysticalv2.webp";
+import mysticalv3 from "../../images/utopia/mystical/mysticalv3.webp";
 //theunknown
 import theunknown from "../../images/utopia/theunknown/theunknown.svg";
-import theunknown1 from "../../images/utopia/theunknown/theunknown1.png";
-import theunknownv1 from "../../images/utopia/theunknown/theunknownv1.png";
+import theunknown1 from "../../images/utopia/theunknown/theunknown1.webp";
+import theunknownv1 from "../../images/utopia/theunknown/theunknownv1.webp";
 //shadow
 import shadow from "../../images/utopia/shadow/shadow.svg";
-import shadow1 from "../../images/utopia/shadow/shadow1.png";
-import shadow2 from "../../images/utopia/shadow/shadow2.png";
-import shadow3 from "../../images/utopia/shadow/shadow3.png";
-import shadow4 from "../../images/utopia/shadow/shadow4.png";
-import shadowv1 from "../../images/utopia/shadow/shadowv1.png";
-import shadowv2 from "../../images/utopia/shadow/shadowv2.png";
-import shadowv3 from "../../images/utopia/shadow/shadowv3.png";
-import shadowv4 from "../../images/utopia/shadow/shadowv4.png";
+import shadow1 from "../../images/utopia/shadow/shadow1.webp";
+import shadow2 from "../../images/utopia/shadow/shadow2.webp";
+import shadow3 from "../../images/utopia/shadow/shadow3.webp";
+import shadow4 from "../../images/utopia/shadow/shadow4.webp";
+import shadowv1 from "../../images/utopia/shadow/shadowv1.webp";
+import shadowv2 from "../../images/utopia/shadow/shadowv2.webp";
+import shadowv3 from "../../images/utopia/shadow/shadowv3.webp";
+import shadowv4 from "../../images/utopia/shadow/shadowv4.webp";
 
 var utopiaModal;
 const elemImages = {
@@ -411,7 +412,7 @@ function UtopiaPage() {
               </div>
             </div>
 
-            <div className="absolute w-20 h-20 pointer-events-auto top-[74%] left-[50%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[73%] left-[53%]">
               <div className="relative">
                 <div>
                   <button
@@ -437,7 +438,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-            <div className="absolute w-20 h-20 pointer-events-auto top-[90%] left-[60%] lg:top-[80%] lg:left-[75%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[88%] left-[60%] lg:top-[80%] lg:left-[75%]">
               <div className="relative">
                 <div>
                   <button
@@ -463,7 +464,7 @@ function UtopiaPage() {
                 </div>
               </div>
             </div>
-            <div className="absolute w-20 h-20 pointer-events-auto top-[80%] left-[25%] lg:top-[77%] lg:left-[20%]">
+            <div className="absolute w-20 h-20 pointer-events-auto top-[77%] left-[25%] lg:top-[77%] lg:left-[20%]">
               <div className="relative">
                 <div>
                   <button
@@ -513,12 +514,9 @@ function UtopiaPage() {
       >
         <div className="modal-dialog">
           <div className="modal-content rounded-none border-0">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" data-bs-dismiss="modal" aria-label="Close">
+              <img src={closeImg} className="btn-close" alt="close" />
+            </button>
             <div
               id="carouselCaptions"
               className="carousel slide carousel-fade"

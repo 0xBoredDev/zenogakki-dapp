@@ -9,8 +9,8 @@ import {
 } from "react-icons/tb";
 import { themeContext } from "../App";
 import themes from "../helpers/themes";
-import music_icon_light from "../images/music_icon_light.png";
-import music_icon_dark from "../images/music_icon_dark.png";
+import music_icon_light from "../images/music_icon_light.webp";
+import music_icon_dark from "../images/music_icon_dark.webp";
 import cyberpunkAudio from "../music/Cyberpunk.wav";
 import futuristicAudio from "../music/Futuristic.mp3";
 import introcyberpunkAudio from "../music/Into_Cyberpunk.mp3";
