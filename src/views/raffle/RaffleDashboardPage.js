@@ -245,7 +245,7 @@ export default function RaffleDashboardPage() {
             <button
               disabled={walletAddress.length > 0}
               onClick={connectWalletPressed}
-              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_4px_73px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
+              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_1px_23px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
             >
               {walletAddress.length > 0
                 ? truncate(walletAddress)
@@ -253,7 +253,7 @@ export default function RaffleDashboardPage() {
             </button>
           </div>
         </div>
-        <div className="flex w-full h-42 justify-center mt-4">
+        <div className="flex w-full h-42 justify-center mt-5">
           <img
             height="100%"
             width="100%"
@@ -382,7 +382,7 @@ export default function RaffleDashboardPage() {
               </div>
             ) : (
               <>
-                <div className="mt-60">
+                <div className="mt-40">
                   <p className="text-center text-white uppercase font-normal secondary-font">
                     no available raffles, check back later.
                   </p>

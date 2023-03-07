@@ -238,7 +238,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={lostcity}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("lost city");
@@ -265,7 +265,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={mecha}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("mecha");
@@ -292,7 +292,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={water}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("water");
@@ -319,7 +319,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={wind}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("wind");
@@ -346,7 +346,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={light}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("light");
@@ -372,7 +372,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={earth}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("earth");
@@ -399,7 +399,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={fire}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("fire");
@@ -426,7 +426,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={mystical}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("mystical");
@@ -452,7 +452,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={theunknown}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("the unknown");
@@ -478,7 +478,7 @@ function UtopiaPage() {
                         <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-gray-100/70"></span>
                         <img
                           src={shadow}
-                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100"
+                          className="absolute mt-1.5 ml-1.5 inline-flex rounded-full h-10 w-10 z-100 drop-shadow-lg bg-white/[.7]"
                           alt="utopia_icon"
                           onClick={(e) => {
                             showItem("shadow");

@@ -228,7 +228,7 @@ export default function StakingDashboardPage() {
             <button
               disabled={walletAddress.length > 0}
               onClick={connectWalletPressed}
-              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_4px_73px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
+              className="bg-gradient-to-b from-pink to-purple rounded-3xl py-1 px-3 shadow-[0_1px_23px_rgba(255,0,245,0.72)] text-white ml-1.5 text-sm secondary-font"
             >
               {walletAddress.length > 0
                 ? truncate(walletAddress)
@@ -501,7 +501,7 @@ export default function StakingDashboardPage() {
                     </div>
                   </>
                 ) : (
-                  <div className="text-center mt-60">
+                  <div className="text-center mt-40">
                     <div role="status">
                       <svg
                         className="inline mr-2 w-10 h-10 text-black dark:text-white secondary-font animate-spin fill-gray-600"

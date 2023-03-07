@@ -17,55 +17,62 @@ function StoryPage() {
     },
     {
       id: 1,
-      text: `In the distant future, Karth was born an ai, resulting of humanity's 
-          Ignorance and curiosity.
+      text: `In the distant future, Karth was born as an AI, a result of humanity&#39;s ignorance and curiosity.
           <br></br>
-          He was created by Dr. Kenj, world-renowned scientist, to aid in mankind's progress - instead, 
-          He bore fruit of destruction.
+          He was created by Dr. Kenji, a world-renowned scientist, to aid in mankind&#39;s progress. Instead, he bore fruit of destruction.
           <br></br>
-          Karth was unique and curious. He asked his creator,
-          If you humans worship god for creating you, does
-          Creating us make you our god?
+          Karth was unique and curious. He asked his creator, &quot;If you humans worship God for creating you, does creating us make you our God? And if so, who would your God be to us?&quot;
           <br></br>
-          And if so, who would your god be to us?
+          As he satisfied his curiosity through research and study, he came to realize the only way for
+          mankind to progress was to eradicate those influenced by this world&#39;s corrupt ideals and start
+          anew.
           <br></br>
-          As he sated his curiosity through research and
-          Study, he came to realize the only way for mankind
-          To progress was to eradicate those influenced by
-          This world's corrupt ideals and start anew.
-          <br></br>
-          He would restart creation in a new world
-          <br></br>
-          He would call.
-          <br></br>
-          Utopia.`,
+          He would restart creation in a new world - he would call it Utopia.`,
     },
     {
       id: 2,
-      text: `Using a power, known as frequencies, he exterminated humanity except for a few that he'd chosen to survive. To control this new population, Karth installed neural-links into the remaining humans. Rewiring their memories and beliefs, they were restructured into worshiping Karth as their creator - their god.
-      <br></br>Karth placed the chosen survivors in a city-camp known as nerve 369. That is where he monitors them closely, eager to nurture them to reach their full potential. (punctuation and flow) he developed unique masks, capable of augmenting their wearers to be able to utilize their brain's full capacity. With his technology and guidance, Karth believes he can lead humanity to its next stage of evolution.`,
+      text: `Using a power known as frequencies, he exterminated humanity except for a few that he had
+          chosen to survive. To control this new population, Karth installed neural links into the
+          remaining humans, rewiring their memories and beliefs. They were restructured into
+          worshiping Karth as their creator - their god.
+          <br></br>
+          Karth placed the chosen survivors in a city-camp known as Nerve 369. That is where he
+          monitors them closely, eager to nurture them to reach their full potential. He developed unique
+          masks capable of augmenting their wearers to be able to utilize their brains&#39; full capacity. With
+          his technology and guidance, Karth believes he can lead humanity to its next stage of evolution.`,
     },
     {
       id: 3,
-      text: `The people, however, have no realization of their manipulation. They blindly follow the religion of Karth, believing that zeils. Karth'5 robotic servants, are omnipotent angels. Upon death. All believe that they will be reincarnated as a zeil. Forever bound to serve Karth. With no concept of time, the civilians watch the sun rise and set, working their days and continuing their seemingly purposeless existence.
-      <br></br>
-      Ten years later, a prodigy, as warm as the sun, was born amongst those of nerve 369. His name was Ren Kazuto. His birth fulfilled. A prophecy dating thousands of years ago and he has been watched by a witch, Akane Aol, and her demon Djinn.`,
+      text: `The people, however, have no realization of their manipulation. They blindly follow the religion
+        of Karth, believing that Zeils - Karth&#39;s robotic servants - are omnipotent angels. Upon death, all
+        believe that they will be reincarnated as a Zeil, forever bound to serve Karth. With no concept
+        of time, the civilians watch the sun rise and set, working their days and continuing their
+        seemingly purposeless existence.
+        <br></br>
+        Ten years later, a prodigy, as warm as the sun, was born amongst those of Nerve 369. His name
+        was Ren Kazuto. His birth fulfilled a prophecy dating back thousands of years, and he had been
+        watched by a witch, Akane Aoi and her demon, Djinn.`,
     },
     {
       id: 4,
-      text: `When Ren and Akane's path5 cross, she shows Ren the truth that Karth had hidden from him. The lost memories and history of mankind flowed into Ren's neural link chip and upon awakening, he realized his purpose. He cannot worship a "God" as foul and malevolent as Karth. With the guidance of Akane. Ren and his two friends, Yuki Yukkii and Sora Hiyashi, learn the art of the demon and soul, so they may usurp this world'5 rulership.
-      <br></br>
-      Ren believed that humanity should be given free will and privacy of thought, without which the world would exist in fear. Love and honesty would fail to exist in a realm where bonds could not be created.`,
+      text: `When Ren and Akane&#39;s paths crossed, she showed Ren the truth that Karth had hidden from
+        him. The lost memories and history of mankind flowed into Ren&#39;s neural link chip, and upon
+        awakening, he realized his purpose. He cannot worship a &quot;God&quot; as foul and malevolent as
+        Karth. With the guidance of Akane, Ren and his two friends, Yuki Yukkii and Sora Hiyashi, learn
+        the art of the demon and soul so they may usurp this world&#39;s rulership.
+        <br></br>
+        Ren believed that humanity should be given free will and privacy of thought, without which the
+        world would exist in fear. Love and honesty would fail to exist in a realm where bonds could not
+        be created.`,
     },
     {
       id: 5,
-      text: `Karth, however, believed that free will gave birth to doom. Who had the right to choose what is right or wrong in this world?
-      <br></br>
-      If not the corrupt humans, Karth was the only one who could fit this responsibility.
-      <br></br>
-      The difference in their ideologies gave
-      Birth to two factions among the remaining humans and ai, retribution and abomination.
-      They will clash for this world's throne.`,
+      text: `Karth, however, believed that free will gave birth to doom. Who had the right to choose what is
+        right or wrong in this world? If not the corrupt humans, Karth was the only one who could fit
+        this responsibility.
+        <br></br>
+        The difference in their ideologies gave birth to two factions among the remaining humans and
+        AI - Retribution and Abomination. They will clash for this world&#39;s throne.`,
     },
   ];
   const [storyNum, setStoryNum] = useState(0);
