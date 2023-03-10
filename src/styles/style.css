@@ -19,9 +19,9 @@ body,
 }
 
 .parallax {
+  background-color: #0c0414;
   perspective: 100px;
   overflow: hidden;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@ body,
   bottom: 0;
   left: 0;
   height: 100vh;
-  width: 100%;
+  /* width: 100%; */
   background-position-x: center;
   object-fit: cover;
 }
@@ -67,6 +67,8 @@ body,
 .loading-bg {
   /* background-image: url("../images/karth.jpg"); */
   transform: translateZ(0) scale(1);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #gem {
@@ -86,6 +88,8 @@ body,
   /* background-image: url("../images/orb.png"); */
   transform: translateZ(0) scale(1);
   animation: hoverfx 4s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .flash {
@@ -927,11 +931,11 @@ a:hover {
 }
 
 @media screen and (max-height: 735px) and (min-width: 1567px) {
-  #gem {
+  /* #gem {
     width: 81px;
     height: 110px;
     transform: translate(-120px, -265px);
-  }
+  } */
 }
 
 @keyframes bounce {
